@@ -36,3 +36,22 @@ app.config(['$routeProvider', function($routeProvider) {
     redirectTo: 'home'
   });
 }]);
+
+app.controller("VerbListController", ["$http", function($http){
+
+  console.log('VerbListController running');
+
+  var self = this;
+  self.verbs = [];
+
+  getVerbs();
+
+  function getVerbs() {
+    //$.ajax
+    $http.get('/phrasal_verbs')
+      .then(function(response) {
+        console.log(response.data);
+        self.verbs = response.data;
+      });
+  }
+  }]);
