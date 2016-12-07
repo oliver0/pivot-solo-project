@@ -1,3 +1,16 @@
 h1{
   color: blue;
 }
+
+h2 {
+  padding: 10px;
+}
+
+.definition {
+  text-align: center;
+  margin: 50px;
+  width: 80%;
+  height: 50px;
+  font-size: 25px;
+  background-color: #eeeeee;
+}

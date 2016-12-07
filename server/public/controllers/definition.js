@@ -16,13 +16,17 @@ app.controller("DefinitionController", ["$http", function($http){
         });
     }
 
+    self.getCurrentVerb = function(){
+      self.currentVerb = self.gameVerbs.pop();
+      console.log(self.currentVerb);
+    };
+
     function addVerbsToGame(){
       for (var i = 0; i < GAME_VERBS_NUMBER ; i++) {
         var verb = self.databaseVerbs[randomNumber(0, self.databaseVerbs.length-1)];
         //console.log(verb.phrasal_verb, "=", verb.definition);
         self.gameVerbs.push(verb);
-        console.log("Game Array: ", self.gameVerbs);
-
+        console.log(self.gameVerbs);
       }
     }
 
