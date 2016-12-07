@@ -8,7 +8,8 @@ app.controller("DefinitionController", ["$http", function($http){
   self.currentVerbDefinition = "";
   self.currentVerb = "";
   self.guessOptions = [];
-  self.uniquePhrasalVerbs = ['bring up', 'give in', 'stay up', 'go out', 'look into'];
+  self.uniquePhrasalVerbs = ['bring up', 'give in', 'stay up', 'go out', 'look into', 'turn up', 'take off', 'put off'];
+
 
     getVerbs();
 
@@ -36,10 +37,18 @@ app.controller("DefinitionController", ["$http", function($http){
           self.guessOptions.push(self.currentVerb);
         } else{
           var wrongVerb = self.uniquePhrasalVerbs[randomNumber(0, self.uniquePhrasalVerbs.length-1)];
-          self.guessOptions.push(wrongVerb);
+          self.guessOptions.push(checkForDuplicates(wrongVerb));
         }
       }
       console.log(self.guessOptions);
+    }
+
+    function checkForDuplicates(verb){
+
+      while (verb == self.currentVerb ){
+        verb = self.uniquePhrasalVerbs[randomNumber(0, self.uniquePhrasalVerbs.length-1)];
+      }
+      return verb;
     }
 
     function addVerbsToGame(){
@@ -48,6 +57,14 @@ app.controller("DefinitionController", ["$http", function($http){
         //console.log(verb.phrasal_verb, "=", verb.definition);
         self.gameVerbs.push(verb);
         //console.log(self.gameVerbs);
+      }
+    }
+
+    self.isCorrect = function(verbPicked){
+      if(this.currentVerb == verbPicked){
+        console.log('correct');
+      } else {
+        console.log('incorrect');
       }
     }
 
