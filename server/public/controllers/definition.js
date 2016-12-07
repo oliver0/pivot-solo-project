@@ -9,7 +9,8 @@ app.controller("DefinitionController", ["$http", function($http){
   self.currentVerb = "";
   self.guessOptions = [];
   self.uniquePhrasalVerbs = ['bring up', 'give in', 'stay up', 'go out', 'look into', 'turn up', 'take off', 'put off'];
-  self.currentScore = 0;
+  self.correct = 0;
+  self.incorrect = 0;
 
     getVerbs();
 
@@ -31,13 +32,22 @@ app.controller("DefinitionController", ["$http", function($http){
 
     function assignGuessOptions(){
       self.guessOptions = [];
+      var uniqueVerbs = self.uniquePhrasalVerbs.slice(0);
+      for (var i = 0; i < uniqueVerbs.length; i++) {
+        if(uniqueVerbs[i]==self.currentVerb){
+          uniqueVerbs.splice(i,1);
+        }
+      }
       var correctAnswerPosition = randomNumber(0, GUESS_OPTIONS-1);
       for (var i = 0; i < GUESS_OPTIONS; i++) {
         if(i == correctAnswerPosition){
           self.guessOptions.push(self.currentVerb);
         } else{
-          var wrongVerb = self.uniquePhrasalVerbs[randomNumber(0, self.uniquePhrasalVerbs.length-1)];
-          self.guessOptions.push(checkForDuplicates(wrongVerb));
+          var indexWrongVerb = randomNumber(0, uniqueVerbs.length-1);
+          var wrongVerb = uniqueVerbs.splice(indexWrongVerb,1);
+          // console.log("wrong verb:", wrongVerb);
+          // console.log("uniqueVerbs:", uniqueVerbs);
+          self.guessOptions.push(wrongVerb[0]);
         }
       }
       console.log(self.guessOptions);
@@ -62,10 +72,11 @@ app.controller("DefinitionController", ["$http", function($http){
 
     self.isCorrect = function(verbPicked){
       if(this.currentVerb == verbPicked){
-        self.currentScore++;
-        console.log(self.currentScore);
+        self.correct++;
+        console.log(self.correct);
       } else {
-        console.log('incorrect');
+        self.incorrect++;
+        console.log(self.incorrect);
       }
     }
 

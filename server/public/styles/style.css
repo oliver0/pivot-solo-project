@@ -6,6 +6,11 @@ h2 {
   padding: 10px;
 }
 
+#gameScore{
+  font-size: 40px;
+  float: right;
+}
+
 .definition {
   text-align: center;
   margin: 50px;
