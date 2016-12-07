@@ -5,14 +5,14 @@ var connectionString = 'postgres://localhost:5432/pivot';
 
 router.get('/', function(req, res) {
   console.log('reached get route!')
-  // get customers from DB
+  // get verbs from DB
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
       console.log('connection error: ', err);
       res.sendStatus(500);
     }
 
-    client.query('SELECT * FROM pivot',
+    client.query('SELECT * FROM phrasal_verbs',
     function(err, result) {
       done(); // close the connection.
 
@@ -27,3 +27,5 @@ router.get('/', function(req, res) {
 
   });
 });
+
+module.exports = router;
