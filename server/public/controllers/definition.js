@@ -1,17 +1,34 @@
 app.controller("DefinitionController", ["$http", function($http){
 
   var self = this;
-    self.verbs = [];
+  var GAME_VERBS_NUMBER = 10;
+  self.databaseVerbs = [];
+  self.gameVerbs = [];
 
     getVerbs();
 
     function getVerbs() {
-      console.log('hit function getVerbs');
       $http.get('/verbs')
         .then(function(response) {
-          console.log(response.data);
-          self.verbs = response.data;
+          self.databaseVerbs = response.data;
+          addVerbsToGame();
         });
     }
 
+    function addVerbsToGame(){
+      for (var i = 0; i < GAME_VERBS_NUMBER ; i++) {
+        var verb = self.databaseVerbs[randomNumber(0, self.databaseVerbs.length-1)];
+        console.log(verb.phrasal_verb, "=", verb.definition);
+
+      }
+    }
+
+
+
   }]);
+
+
+
+  function randomNumber(min, max){
+    return Math.floor(Math.random() * (1 + max - min) + min);
+}
