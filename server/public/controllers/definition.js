@@ -4,6 +4,7 @@ app.controller("DefinitionController", ["$http", function($http){
   var GAME_VERBS_NUMBER = 10;
   self.databaseVerbs = [];
   self.gameVerbs = [];
+  self.currentVerb = {};
 
     getVerbs();
 
@@ -18,7 +19,9 @@ app.controller("DefinitionController", ["$http", function($http){
     function addVerbsToGame(){
       for (var i = 0; i < GAME_VERBS_NUMBER ; i++) {
         var verb = self.databaseVerbs[randomNumber(0, self.databaseVerbs.length-1)];
-        console.log(verb.phrasal_verb, "=", verb.definition);
+        //console.log(verb.phrasal_verb, "=", verb.definition);
+        self.gameVerbs.push(verb);
+        console.log("Game Array: ", self.gameVerbs);
 
       }
     }
