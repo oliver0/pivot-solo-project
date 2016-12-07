@@ -37,11 +37,7 @@ app.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-app.controller("HomeController", ["$http", function($http){
 
-  console.log("HomeControler running");
-
-  }]);
 
 // app.controller("VerbListController", ["$http", function($http){
 //
