@@ -9,7 +9,7 @@ app.controller("DefinitionController", ["$http", function($http){
   self.currentVerb = "";
   self.guessOptions = [];
   self.uniquePhrasalVerbs = ['bring up', 'give in', 'stay up', 'go out', 'look into', 'turn up', 'take off', 'put off'];
-
+  self.currentScore = 0;
 
     getVerbs();
 
@@ -62,7 +62,8 @@ app.controller("DefinitionController", ["$http", function($http){
 
     self.isCorrect = function(verbPicked){
       if(this.currentVerb == verbPicked){
-        console.log('correct');
+        self.currentScore++;
+        console.log(self.currentScore);
       } else {
         console.log('incorrect');
       }
