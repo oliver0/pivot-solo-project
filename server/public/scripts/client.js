@@ -37,21 +37,27 @@ app.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-app.controller("VerbListController", ["$http", function($http){
+app.controller("HomeController", ["$http", function($http){
 
-  console.log('VerbListController running');
+  console.log("HomeControler running");
 
-  var self = this;
-  self.verbs = [];
-
-  getVerbs();
-
-  function getVerbs() {
-    //$.ajax
-    $http.get('/phrasal_verbs')
-      .then(function(response) {
-        console.log(response.data);
-        self.verbs = response.data;
-      });
-  }
   }]);
+
+// app.controller("VerbListController", ["$http", function($http){
+//
+//   console.log('VerbListController running');
+//
+//   var self = this;
+//   self.verbs = [];
+//
+//   getVerbs();
+//
+//   function getVerbs() {
+//     //$.ajax
+//     $http.get('/phrasal_verbs')
+//       .then(function(response) {
+//         console.log(response.data);
+//         self.verbs = response.data;
+//       });
+//   }
+//   }]);
