@@ -73,6 +73,7 @@ app.controller("DefinitionController", ["$http", function($http){
     self.isCorrect = function(verbPicked){
       if(this.currentVerb == verbPicked){
         self.correct++;
+        self.getCurrentVerb();
         console.log(self.correct);
       } else {
         self.incorrect++;
