@@ -1,4 +1,4 @@
-app.controller("DefinitionController", ["$http", function($http){
+app.controller("DefinitionController", ["$http", "$location", function($http, $location){
 
   var self = this;
   var GAME_VERBS = 10;
@@ -12,6 +12,10 @@ app.controller("DefinitionController", ["$http", function($http){
   self.correct = 0;
   self.incorrect = 0;
 
+  self.changeView = function(){
+    $location.path("score");
+  }
+
     getVerbs();
 
     function getVerbs() {
@@ -23,10 +27,15 @@ app.controller("DefinitionController", ["$http", function($http){
     }
 
     self.getCurrentVerb = function(){
-      var currentVerbObject = self.gameVerbs.pop();
-      self.currentVerbDefinition = currentVerbObject.definition;
-      self.currentVerb = currentVerbObject.phrasal_verb;
-      assignGuessOptions();
+      if(self.gameVerbs.length ==0){
+        self.changeView();
+      } else {
+        var currentVerbObject = self.gameVerbs.pop();
+        self.currentVerbDefinition = currentVerbObject.definition;
+        self.currentVerb = currentVerbObject.phrasal_verb;
+        assignGuessOptions();
+      }
+
 
     };
 
