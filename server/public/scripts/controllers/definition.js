@@ -8,7 +8,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", fun
   self.currentVerbDefinition = "";
   self.currentVerb = "";
   self.guessOptions = [];
-  self.uniquePhrasalVerbs = []; //['bring up', 'give in', 'stay up', 'go out', 'look into', 'turn up', 'take off', 'put off'];
+  self.uniquePhrasalVerbs = [];
   self.correct = 0;
   self.incorrect = 0;
 
