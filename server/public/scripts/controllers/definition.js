@@ -1,4 +1,4 @@
-app.controller("DefinitionController", ["$http", "$location", function($http, $location){
+app.controller("DefinitionController", ["$http", "GameFactory", "$location", function($http, GameFactory, $location){
 
   var self = this;
   var GAME_VERBS = 10;
