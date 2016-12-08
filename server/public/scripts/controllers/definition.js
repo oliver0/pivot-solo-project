@@ -38,15 +38,17 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", fun
       if(self.gameVerbs.length ==0){
         self.changeView();
       } else {
-        var currentVerbObject = self.gameVerbs.pop();
-        self.currentVerbDefinition = currentVerbObject.definition;
-        self.currentVerb = currentVerbObject.phrasal_verb;
-        assignGuessOptions();
+          var verbAndDefinition = GameFactory.getVerbAndDefinition(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
+          self.currentVerbDefinition = verbAndDefinition.currentVerbDefinition;
+          self.currentVerb = verbAndDefinition.currentVerb;
+          assignGuessOptions();
       }
     };
 
     // copy unique phrasal verb array, if correct verb in it remove it. For loop runs as long as number of options,
     // assign correct answer to random position and random wrong answers to other positions
+
+
     function assignGuessOptions(){
       self.guessOptions = [];
       var uniqueVerbs = self.uniquePhrasalVerbs.slice(0); //uniqueVerbs is a list of objects. {phrasal_verb: "get up"}
