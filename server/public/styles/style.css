@@ -6,15 +6,32 @@ h2 {
   padding: 10px;
 }
 
+h3{
+  text-align: center;
+}
+
+
+
 #gameScore{
   font-size: 40px;
   float: right;
 }
 
+#guessOptions{
+  margin-top: 50px;
+}
+
+.guessOption {
+  border: 2px solid black;
+  margin-bottom: 5px;
+}
+
+.guessOption:hover{
+  background-color: #dddddd;
+}
+
 .definition {
   text-align: center;
-  margin: 50px;
-  width: 80%;
   height: 50px;
   font-size: 25px;
   background-color: #eeeeee;
