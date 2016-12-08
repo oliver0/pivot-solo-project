@@ -2,6 +2,8 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", fun
 
   var self = this;
 
+  var timer;
+  var TIME_INTERVAL = 5000; // in milliseconds
   var GUESS_OPTIONS = 4;
   self.databaseVerbs = [];
   self.gameVerbs = [];
@@ -16,7 +18,16 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", fun
     $location.path("score");
   }
 
+
+    startTimer();
     getVerbs();
+
+    function startTimer(){
+    timer = setInterval(function(){
+      self.getCurrentVerb();
+      console.log('something');
+    }, TIME_INTERVAL);
+  }
 
     function getVerbs() {
     // does the factory have data?
@@ -26,6 +37,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", fun
         self.databaseVerbs = GameFactory.databaseVerbs();
         self.uniquePhrasalVerbs = GameFactory.uniquePhrasalVerbs();
         self.gameVerbs = GameFactory.gameVerbs(); //get array of verb objects to be used in game.
+        self.getCurrentVerb();
       });
     }
   }
@@ -51,10 +63,10 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", fun
     self.isCorrect = function(verbPicked){
       if(this.currentVerb == verbPicked){
         self.correct++;
-        self.getCurrentVerb();
+        getCurrentVerb();
       } else {
         self.incorrect++;
-        self.getCurrentVerb();
+        getCurrentVerb();
       }
     }
 
