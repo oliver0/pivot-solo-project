@@ -4,7 +4,7 @@ var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/pivot';
 
 router.get('/', function(req, res) {
-  console.log('reached get route!')
+  var data = {};
   // get verbs from DB
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
@@ -21,10 +21,20 @@ router.get('/', function(req, res) {
         res.sendStatus(500);
       }
       console.log(result.rows);
-      res.send(result.rows);
-
+      data.verbs = result.rows;
     });
+    client.query('SELECT phrasal_verb FROM phrasal_verbs GROUP BY phrasal_verb',
+    function(err, result) {
+      done(); // close the connection.
 
+      if(err) {
+        console.log('select query error: ', err);
+        res.sendStatus(500);
+      }
+      console.log(result.rows);
+      data.uniquePhrasalVerbs  = result.rows;
+      res.send(data);
+    });
   });
 });
 
