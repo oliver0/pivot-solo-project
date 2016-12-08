@@ -83,10 +83,9 @@ app.controller("DefinitionController", ["$http", "$location", function($http, $l
       if(this.currentVerb == verbPicked){
         self.correct++;
         self.getCurrentVerb();
-        console.log(self.correct);
       } else {
         self.incorrect++;
-        console.log(self.incorrect);
+        self.getCurrentVerb();
       }
     }
 
