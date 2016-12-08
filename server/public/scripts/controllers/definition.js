@@ -16,19 +16,25 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", fun
     $location.path("score");
   }
 
+
     getVerbs();
 
-    // get data from phrasal_verb table. id, phrasal_verb, base, preposition, definition
     function getVerbs() {
-      $http.get('/verbs')
-        .then(function(response) {
-          self.databaseVerbs = response.data.verbs;
-          self.uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
-          console.log("database verbs:", self.databaseVerbs);
-          console.log("uniqueVerbs verbs:", self.uniquePhrasalVerbs );
-          addVerbsToGame();
-        });
+    // does the factory have data?
+    if(GameFactory.databaseVerbs() === undefined) {
+      // have the factory go get the data and let us know when it's done
+      GameFactory.getVerbs().then(function(response) {
+        console.log("GAME FACTORY DATABASE VERBS", GameFactory.databaseVerbs());
+        self.databaseVerbs = GameFactory.databaseVerbs();
+        console.log("CLIENT DATABASE VERBS", GameFactory.databaseVerbs());
+        self.uniquePhrasalVerbs = GameFactory.uniquePhrasalVerbs();
+        addVerbsToGame()
+        //console.log("Controller got stuff from the factory: ", self.uniquePhrasalVerbs);
+      });
     }
+
+  }
+
 
     // add verbs to game array, currently 10 but can be changed.
 
