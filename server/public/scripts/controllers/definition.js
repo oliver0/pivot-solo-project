@@ -1,7 +1,7 @@
 app.controller("DefinitionController", ["$http", "GameFactory", "$location", function($http, GameFactory, $location){
 
   var self = this;
-  var GAME_VERBS = 10;
+
   var GUESS_OPTIONS = 4;
   self.databaseVerbs = [];
   self.gameVerbs = [];
@@ -16,36 +16,21 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", fun
     $location.path("score");
   }
 
-
     getVerbs();
 
     function getVerbs() {
     // does the factory have data?
     if(GameFactory.databaseVerbs() === undefined) {
-      // have the factory go get the data and let us know when it's done
+      // get the verb data from GameFactory
       GameFactory.getVerbs().then(function(response) {
-        console.log("GAME FACTORY DATABASE VERBS", GameFactory.databaseVerbs());
         self.databaseVerbs = GameFactory.databaseVerbs();
-        console.log("CLIENT DATABASE VERBS", GameFactory.databaseVerbs());
         self.uniquePhrasalVerbs = GameFactory.uniquePhrasalVerbs();
-        addVerbsToGame()
-        //console.log("Controller got stuff from the factory: ", self.uniquePhrasalVerbs);
+        self.gameVerbs = GameFactory.gameVerbs(); //get array of verb objects to be used in game.
       });
     }
 
   }
 
-
-    // add verbs to game array, currently 10 but can be changed.
-
-    function addVerbsToGame(){
-      for (var i = 0; i < GAME_VERBS ; i++) {
-        var verb = self.databaseVerbs[randomNumber(0, self.databaseVerbs.length-1)];
-        //console.log(verb.phrasal_verb, "=", verb.definition);
-        self.gameVerbs.push(verb);
-        //console.log(self.gameVerbs);
-      }
-    }
 
     // if there are no more verbs in game array, switch to score view. otherwise, take verb object from game array,
     // seperate out definition and correct verb, call assignGuessOptions()
