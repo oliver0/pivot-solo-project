@@ -3,7 +3,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$i
   var self = this;
 
 
-  var TIME_INTERVAL = 3000; // in milliseconds
+  var TIME_INTERVAL = 10000; // in milliseconds
   var promise;
   var GUESS_OPTIONS = 4;
   self.databaseVerbs = [];
@@ -16,6 +16,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$i
   self.incorrect = 0;
 
   self.changeView = function(){
+    self.stop();
     $location.path("score");
   }
 
