@@ -2,7 +2,7 @@ var admin = require("firebase-admin");
 
 admin.initializeApp({
   credential: admin.credential.cert("./server/firebase-service-account.json"),
-  databaseURL: "https://sigma-test-run.firebaseio.com"
+  databaseURL: "https://pivot-90277.firebaseio.com"
 });
 
 /* pull the id_token off of the request,

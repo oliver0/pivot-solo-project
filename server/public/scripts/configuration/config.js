@@ -8,4 +8,4 @@ console.log("hello!");
     storageBucket: "pivot-90277.appspot.com",
     messagingSenderId: "159126597362"
   };
-  //firebase.initializeApp(config);
+  firebase.initializeApp(config);
