@@ -1,7 +1,10 @@
-app.controller("DefinitionController", ["$http", "GameFactory", "$location", function($http, GameFactory, $location){
+app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$interval", function($http, GameFactory, $location, $interval){
 
   var self = this;
-  var GAME_VERBS = 10;
+
+
+  var TIME_INTERVAL = 10000; // in milliseconds
+  var promise;
   var GUESS_OPTIONS = 4;
   self.databaseVerbs = [];
   self.gameVerbs = [];
@@ -13,88 +16,73 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", fun
   self.incorrect = 0;
 
   self.changeView = function(){
+    self.stop();
     $location.path("score");
   }
 
-  getVerbs();
+    getVerbs();
 
-  // get data from phrasal_verb table. id, phrasal_verb, base, preposition, definition
-  function getVerbs() {
-    $http.get('/verbs')
-    .then(function(response) {
-      self.databaseVerbs = response.data.verbs;
-      self.uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
-      console.log("database verbs:", self.databaseVerbs);
-      console.log("uniqueVerbs verbs:", self.uniquePhrasalVerbs );
-      addVerbsToGame();
-    });
-  }
+    self.start = function(){
+      self.stop();
+      self.getCurrentVerb();
 
-  // add verbs to game array, currently 10 but can be changed.
+      promise = $interval(function(){
+        self.getCurrentVerb();
+      }, TIME_INTERVAL);
+    };
 
-  function addVerbsToGame(){
-    for (var i = 0; i < GAME_VERBS ; i++) {
-      var verb = self.databaseVerbs[randomNumber(0, self.databaseVerbs.length-1)];
-      //console.log(verb.phrasal_verb, "=", verb.definition);
-      self.gameVerbs.push(verb);
-      //console.log(self.gameVerbs);
+    self.stop = function(){
+      $interval.cancel(promise);
+    };
+
+    //   self.$on('$destroy', function() {
+    //    self.stop();
+    //  });
+
+    // if there are no more verbs in game array, switch to score view. otherwise, take verb object from game array,
+    // seperate out definition and correct verb, call assignGuessOptions()
+    self.getCurrentVerb = function(){
+      if(self.gameVerbs.length ==0){
+        self.changeView();
+      } else {
+          var verbAndDefinition = GameFactory.getVerbAndDefinition(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
+
+          self.currentVerbDefinition = verbAndDefinition.currentVerbDefinition;
+          self.currentVerb = verbAndDefinition.currentVerb;
+          console.log(self.currentVerbDefinition, self.currentVerb);
+          assignGuessOptions();
+      }
+    };
+
+
+    function getVerbs() {
+      console.log("GAME VERBS!");
+      GameFactory.getVerbs().then(function(response) {
+        self.databaseVerbs = GameFactory.databaseVerbs();
+        self.uniquePhrasalVerbs = GameFactory.uniquePhrasalVerbs();
+        self.gameVerbs = GameFactory.gameVerbs(); //get array of verb objects to be used in game.
+        //self.getCurrentVerb();
+        self.start();
+      });
     }
-  }
 
-  // if there are no more verbs in game array, switch to score view. otherwise, take verb object from game array,
-  // seperate out definition and correct verb, call assignGuessOptions()
-  self.getCurrentVerb = function(){
-    if(self.gameVerbs.length ==0){
-      self.changeView();
-    } else {
-      var currentVerbObject = self.gameVerbs.pop();
-      self.currentVerbDefinition = currentVerbObject.definition;
-      self.currentVerb = currentVerbObject.phrasal_verb;
-      assignGuessOptions();
+
+
+    function assignGuessOptions(){
+      self.guessOptions = GameFactory.assignGuessOptions();
+      console.log(self.guessOptions);
     }
-  };
 
-  // copy unique phrasal verb array, if correct verb in it remove it. For loop runs as long as number of options,
-  // assign correct answer to random position and random wrong answers to other positions
-  function assignGuessOptions(){
-    self.guessOptions = [];
-    var uniqueVerbs = self.uniquePhrasalVerbs.slice(0); //uniqueVerbs is a list of objects. {phrasal_verb: "get up"}
-    for (var i = 0; i < uniqueVerbs.length; i++) {
-      if(uniqueVerbs[i].phrasal_verb == self.currentVerb) { // finds correct verb in uniqueVerbs
-        uniqueVerbs.splice(i, 1); // removes it so we don't have duplicate correct answers.
+
+    // check if answer correct/incorrect. Call getCurrentVerb to move on to next question
+    self.isCorrect = function(verbPicked){
+      if(this.currentVerb == verbPicked){
+        self.correct++;
+        self.start();
+      } else {
+        self.incorrect++;
+        self.start();
       }
     }
-    var correctAnswerPosition = randomNumber(0, GUESS_OPTIONS-1);
-    for (var i = 0; i < GUESS_OPTIONS; i++) {
-      if(i == correctAnswerPosition){
-        self.guessOptions.push(self.currentVerb);
-      } else{
-        var indexWrongVerb = randomNumber(0, uniqueVerbs.length-1);
-        var wrongVerb = uniqueVerbs.splice(indexWrongVerb,1);
 
-        self.guessOptions.push(wrongVerb[0].phrasal_verb);
-      }
-    }
-    console.log(self.guessOptions);
-  }
-
-  // check if answer correct/incorrect. Call getCurrentVerb to move on to next question
-  self.isCorrect = function(verbPicked){
-    if(this.currentVerb == verbPicked){
-      self.correct++;
-      self.getCurrentVerb();
-    } else {
-      self.incorrect++;
-      self.getCurrentVerb();
-    }
-  }
-
-
-
-}]);
-
-
-
-function randomNumber(min, max){
-  return Math.floor(Math.random() * (1 + max - min) + min);
-}
+  }]);
