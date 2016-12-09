@@ -1,9 +1,9 @@
-app.controller("DefinitionController", ["$http", "GameFactory", "$location", function($http, GameFactory, $location){
+app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$interval", function($http, GameFactory, $location, $interval){
 
   var self = this;
 
-  var timer;
-  var TIME_INTERVAL = 5000; // in milliseconds
+
+  var TIME_INTERVAL = 10000; // in milliseconds
   var GUESS_OPTIONS = 4;
   self.databaseVerbs = [];
   self.gameVerbs = [];
@@ -19,15 +19,15 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", fun
   }
 
 
-    startTimer();
+    //startTimer();
     getVerbs();
 
-    function startTimer(){
-    timer = setInterval(function(){
+
+    $interval(function(){
       self.getCurrentVerb();
       console.log('something');
     }, TIME_INTERVAL);
-  }
+
 
     function getVerbs() {
     // does the factory have data?
@@ -49,24 +49,27 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", fun
         self.changeView();
       } else {
           var verbAndDefinition = GameFactory.getVerbAndDefinition(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
+
           self.currentVerbDefinition = verbAndDefinition.currentVerbDefinition;
           self.currentVerb = verbAndDefinition.currentVerb;
+          console.log(self.currentVerbDefinition, self.currentVerb);
           assignGuessOptions();
       }
     };
 
     function assignGuessOptions(){
       self.guessOptions = GameFactory.assignGuessOptions();
+      console.log(self.guessOptions);
     }
 
     // check if answer correct/incorrect. Call getCurrentVerb to move on to next question
     self.isCorrect = function(verbPicked){
       if(this.currentVerb == verbPicked){
         self.correct++;
-        getCurrentVerb();
+        self.getCurrentVerb();
       } else {
         self.incorrect++;
-        getCurrentVerb();
+        self.getCurrentVerb();
       }
     }
 
