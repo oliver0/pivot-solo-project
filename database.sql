@@ -13,7 +13,7 @@ FROM phrasal_verbs;
 
 INSERT INTO phrasal_verbs (phrasal_verb, base, preposition, definition)
 VALUES ('break up', 'break', 'up', 'To come to an end (marriage, relationship)'),
-('check in', 'call', 'off', 'To register at a hotel or airport'),
+('check in', 'check', 'in', 'To register at a hotel or airport'),
 ('calm down', 'call', 'off', 'To become more relaxed, less angry or upset'),
 ('drop off', 'drop', 'off', 'To deliver someone or something'),
 ('call off', 'call', 'off', 'To cancel'),
