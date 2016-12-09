@@ -3,7 +3,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$i
   var self = this;
 
 
-  var TIME_INTERVAL = 10000; // in milliseconds
+  var TIME_INTERVAL = 3000; // in milliseconds
   var promise;
   var GUESS_OPTIONS = 4;
   self.databaseVerbs = [];
@@ -20,7 +20,6 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$i
   }
 
 
-    //startTimer();
     getVerbs();
 
     self.start = function(){
@@ -36,11 +35,9 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$i
       $interval.cancel(promise);
     };
 
-
-
-    // self.$on('$destroy', function(){
-    //   self.stop();
-    // });
+    //   self.$on('$destroy', function() {
+    //    self.stop();
+    //  });
 
     // if there are no more verbs in game array, switch to score view. otherwise, take verb object from game array,
     // seperate out definition and correct verb, call assignGuessOptions()
@@ -59,9 +56,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$i
 
 
     function getVerbs() {
-    // does the factory have data?
-    if(GameFactory.databaseVerbs() === undefined) {
-      // get the verb data from GameFactory
+      console.log("GAME VERBS!");
       GameFactory.getVerbs().then(function(response) {
         self.databaseVerbs = GameFactory.databaseVerbs();
         self.uniquePhrasalVerbs = GameFactory.uniquePhrasalVerbs();
@@ -70,7 +65,6 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$i
         self.start();
       });
     }
-  }
 
 
 
