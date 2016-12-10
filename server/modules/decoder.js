@@ -9,7 +9,9 @@ admin.initializeApp({
 verify it against firebase service account private_key.
 Then add the decodedToken */
 var tokenDecoder = function(req, res, next){
+  console.log("TOKEN DECODER: ", req.headers.id_token);
   admin.auth().verifyIdToken(req.headers.id_token).then(function(decodedToken) {
+
     // Adding the decodedToken to the request so that downstream processes can use it
     req.decodedToken = decodedToken;
     next();
