@@ -1,18 +1,21 @@
-app.factory('GameFactory', ["$http", function($http) {
+app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactory) {
   console.log('Game Factory running');
 
   var GAME_VERBS = 10;
   var GUESS_OPTIONS = 4;
   var databaseVerbs = undefined;
   var uniquePhrasalVerbs = undefined;
+  var sentences = undefined;
   var gameVerbs = [];
   var guessOptions = [];
+
+  var currentGameId = ScoreFactory.getGameId();
 
 
   function getVerbs() {
     return $http.get('/verbs')
     .then(function(response) {
-      console.log('SENTENCE DATA', response.data.sentences);
+      sentences = response.data.sentences;
       databaseVerbs = response.data.verbs;
       uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
       addVerbsToGame();

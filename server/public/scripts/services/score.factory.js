@@ -11,6 +11,10 @@ app.factory("ScoreFactory", ["$http", function($http) {
     return;
   }
 
+  function getGameId(){
+    return gameId;
+  }
+
   function addCorrect(){
     correct++;
     console.log("Correct", correct);
@@ -33,6 +37,9 @@ app.factory("ScoreFactory", ["$http", function($http) {
   var scoreData = {
     setGameId: function(id) {
       return setGameId(id);
+    },
+    getGameId: function() {
+      return getGameId();
     },
     correct: function() {
       return correct;
