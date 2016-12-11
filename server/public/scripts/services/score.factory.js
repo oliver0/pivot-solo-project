@@ -23,6 +23,13 @@ app.factory("ScoreFactory", ["$http", function($http) {
     return;
   }
 
+  function resetGameData(){
+    console.log("GAME RESET!");
+    correct = 0;
+    incorrect = 0;
+    return;
+  }
+
   var scoreData = {
     setGameId: function(id) {
       return setGameId(id);
@@ -39,6 +46,10 @@ app.factory("ScoreFactory", ["$http", function($http) {
     addIncorrect: function() {
       return addInCorrect();
     },
+    resetGameData: function() {
+      return resetGameData();
+    }
+
 
   }
 
