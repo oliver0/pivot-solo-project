@@ -12,6 +12,7 @@ app.factory('GameFactory', ["$http", function($http) {
   function getVerbs() {
     return $http.get('/verbs')
     .then(function(response) {
+      console.log('SENTENCE DATA', response.data.sentences);
       databaseVerbs = response.data.verbs;
       uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
       addVerbsToGame();
