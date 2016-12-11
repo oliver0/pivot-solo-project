@@ -80,7 +80,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
         self.start();
       } else {
         ScoreFactory.addIncorrect();
-        self.correct = ScoreFactory.incorrect();
+        self.incorrect = ScoreFactory.incorrect();
         self.start();
       }
     }

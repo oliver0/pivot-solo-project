@@ -12,14 +12,14 @@ app.factory("ScoreFactory", ["$http", function($http) {
   }
 
   function addCorrect(){
-    console.log("Correct", correct);
     correct++;
+    console.log("Correct", correct);
     return;
   }
 
   function addInCorrect(){
-    console.log("Incorrect:", incorrect);
     incorrect++;
+    console.log("Incorrect:", incorrect);
     return;
   }
 
