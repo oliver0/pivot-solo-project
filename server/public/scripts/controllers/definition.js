@@ -1,9 +1,9 @@
-app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", "$location", "$interval", function($http, GameFactory, ScoreFactory, $location, $interval){
+app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", "$location", "$interval", "$rootScope", function($http, GameFactory, ScoreFactory, $location, $interval, $rootScope){
 
   var self = this;
 
 
-  var TIME_INTERVAL = 10000; // in milliseconds
+  var TIME_INTERVAL = 4000; // in milliseconds
   var promise;
   var GUESS_OPTIONS = 4;
   self.databaseVerbs = [];
@@ -36,9 +36,10 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
       $interval.cancel(promise);
     };
 
-    //   self.$on('$destroy', function() {
-    //    self.stop();
-    //  });
+    var destroy = $rootScope.$on('$locationChangeSuccess', function(){
+      $interval.cancel(promise);
+      destroy();
+    });
 
     // if there are no more verbs in game array, switch to score view. otherwise, take verb object from game array,
     // seperate out definition and correct verb, call assignGuessOptions()
@@ -63,8 +64,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
         self.databaseVerbs = GameFactory.databaseVerbs();
         self.uniquePhrasalVerbs = GameFactory.uniquePhrasalVerbs();
         self.gameVerbs = GameFactory.gameVerbs(); //get array of verb objects to be used in game.
-        //self.getCurrentVerb();
-        self.start();
+        self.start(); //start timer
       });
     }
 
@@ -73,7 +73,10 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
       console.log(self.guessOptions);
     }
 
-    // check if answer correct/incorrect. Call getCurrentVerb to move on to next question
+    // check if answer correct/incorrect, add to variable in factory.
+    // Assign self.correct/incorrect to update variables in factory,
+    // reset timer which calls self.getCurrentVerb() to repopulate game
+    // with definition and guess options
     self.isCorrect = function(verbPicked){
       if(this.currentVerb == verbPicked){
         ScoreFactory.addCorrect();
