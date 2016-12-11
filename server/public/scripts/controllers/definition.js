@@ -1,4 +1,4 @@
-app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$interval", function($http, GameFactory, $location, $interval){
+app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", "$location", "$interval", function($http, GameFactory, ScoreFactory, $location, $interval){
 
   var self = this;
 
@@ -43,6 +43,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$i
     // seperate out definition and correct verb, call assignGuessOptions()
     self.getCurrentVerb = function(){
       if(self.gameVerbs.length ==0){
+        self.stop();
         self.changeView();
       } else {
           var verbAndDefinition = GameFactory.getVerbAndDefinition(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
@@ -66,21 +67,20 @@ app.controller("DefinitionController", ["$http", "GameFactory", "$location", "$i
       });
     }
 
-
-
     function assignGuessOptions(){
       self.guessOptions = GameFactory.assignGuessOptions();
       console.log(self.guessOptions);
     }
 
-
     // check if answer correct/incorrect. Call getCurrentVerb to move on to next question
     self.isCorrect = function(verbPicked){
       if(this.currentVerb == verbPicked){
-        self.correct++;
+        ScoreFactory.addCorrect();
+        self.correct = ScoreFactory.correct();
         self.start();
       } else {
-        self.incorrect++;
+        ScoreFactory.addIncorrect();
+        self.correct = ScoreFactory.incorrect();
         self.start();
       }
     }
