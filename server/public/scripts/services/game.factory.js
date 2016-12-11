@@ -8,24 +8,34 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
   var sentences = undefined;
   var gameVerbs = [];
   var guessOptions = [];
-
-  var currentGameId = ScoreFactory.getGameId();
+  var currentGameId;
 
 
   function getVerbs() {
+    currentGameId = ScoreFactory.getGameId();
     return $http.get('/verbs')
     .then(function(response) {
       sentences = response.data.sentences;
       databaseVerbs = response.data.verbs;
       uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
-      addVerbsToGame();
+      console.log('CURRENT GAME ID:', currentGameId);
+      addVerbsToGame(currentGameId);
+
     });
   }
 
   // add verbs to game array, currently 10 but can be changed.
-  function addVerbsToGame(){
+  function addVerbsToGame(gameId){
+    console.log('GAME ID:', gameId);
+    var verbList;
+    if(gameId === 1){
+      verbList = databaseVerbs;
+    }
+    if(gameId === 2){
+      verbList = sentences;
+    }
     for (var i = 0; i < GAME_VERBS ; i++) {
-      var verb = databaseVerbs[randomNumber(0, databaseVerbs.length-1)];
+      var verb = verbList[randomNumber(0, verbList.length-1)];
       gameVerbs.push(verb);
     }
   }
@@ -34,8 +44,9 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
     var currentVerbObject = gameVerbs.pop();
     currentVerb = currentVerbObject.phrasal_verb;
     currentVerbDefinition = currentVerbObject.definition;
+    currentVerbSentence = currentVerbObject.sentence;
     console.log("factory current verb object", currentVerbObject);
-    return {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
+    return {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition, currentVerbSentence: currentVerbSentence}
   }
 
   // copy unique phrasal verb array, if correct verb in it remove it. For loop runs as long as number of options,
@@ -71,6 +82,9 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
   var gameData = {
     databaseVerbs: function() {
       return databaseVerbs;
+    },
+    sentences: function() {
+      return sentences;
     },
     uniquePhrasalVerbs: function() {
       return uniquePhrasalVerbs;
