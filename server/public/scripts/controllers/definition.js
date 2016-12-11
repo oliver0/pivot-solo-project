@@ -27,6 +27,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
       self.getCurrentVerb();
 
       promise = $interval(function(){
+        ScoreFactory.addIncorrect();
         self.getCurrentVerb();
       }, TIME_INTERVAL);
     };
