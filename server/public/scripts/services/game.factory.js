@@ -43,9 +43,11 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
   // get verb and definition from object returned from gameVerbs.pop(). return both in an object
   function getCurrentVerbObject(){
     currentVerbObject = gameVerbs.pop();
+    console.log('CURRENT VERB OBJECT:', currentVerbObject);
+    //console.log('currentVerbObject ID:', currentVerbObject.id );
     ScoreFactory.setVerbId(currentVerbObject.id);
     currentVerb = currentVerbObject.phrasal_verb;
-    console.log('CURRENT VERB OBJECT', currentVerbObject);
+    //console.log('CURRENT VERB OBJECT', currentVerbObject);
     return currentVerbObject;
   }
 

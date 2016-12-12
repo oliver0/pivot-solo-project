@@ -26,10 +26,10 @@ router.get('/', function(req, res) {
       //console.log(result.rows);
       data.verbs = result.rows;
     });
-    client.query('SElECT sentence, phrasal_verb, base, preposition ' +
+    client.query('SElECT sentence, phrasal_verb, id, base, preposition ' +
                  'FROM phrasal_verbs ' +
                  'JOIN sentences ON phrasal_verbs.id = sentences.verb_id ' +
-                 'GROUP BY sentence, phrasal_verb, base, preposition;',
+                 'GROUP BY sentence, phrasal_verb, id, base, preposition;',
     function(err, result) {
       done(); // close the connection.
 
