@@ -12,10 +12,10 @@ sentence text NOT NULL,
 verb_id INTEGER NOT NULL REFERENCES phrasal_verbs(id)
 );
 
-SElECT sentence, phrasal_verb, base, preposition
+SElECT sentence, phrasal_verb, base, id preposition
 FROM phrasal_verbs
 JOIN sentences ON phrasal_verbs.id = sentences.verb_id
-GROUP BY sentence, phrasal_verb, base, preposition;
+GROUP BY sentence, phrasal_verb, base, id, preposition;
 
 -- test data
 
