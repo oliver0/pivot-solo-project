@@ -45,7 +45,8 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
     currentVerb = currentVerbObject.phrasal_verb;
     currentVerbDefinition = currentVerbObject.definition;
     currentVerbSentence = currentVerbObject.sentence;
-    console.log("factory current verb object", currentVerbObject);
+    //console.log("factory current verb object", currentVerbObject);
+    console.log('SENTENCE:', currentVerbSentence );
     return {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition, currentVerbSentence: currentVerbSentence}
   }
 

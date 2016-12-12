@@ -37,6 +37,13 @@ h3{
   background-color: #eeeeee;
 }
 
+.blank {
+  text-align: center;
+  height: 75px;
+  font-size: 25px;
+  background-color: #eeeeee;
+}
+
 .jumbotron {
   text-align: center;
 }
