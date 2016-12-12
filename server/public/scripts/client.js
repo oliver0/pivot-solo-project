@@ -1,4 +1,4 @@
-var app = angular.module('pivotApp', ['ngRoute']);
+var app = angular.module('pivotApp', ['ngRoute', 'firebase']);
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider

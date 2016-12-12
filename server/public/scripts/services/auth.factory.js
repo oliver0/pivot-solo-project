@@ -8,11 +8,13 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
   function logIn(){
     auth.$signInWithPopup("google").then(function(firebaseUser) {
       currentUser = firebaseUser;
-      console.log(currentUser);
-      console.log("Firebase Authenticated as: ", firebaseUser.user.displayName);
+      console.log("Firebase Authenticated as: ", currentUser.user.displayName);
+      return currentUser;
     }).catch(function(error) {
       console.log("Authentication failed: ", error);
     });
+    return
+
   };
 
   // This code runs whenever the user changes authentication states
@@ -21,11 +23,13 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
   auth.$onAuthStateChanged(function(firebaseUser){
     // firebaseUser will be null if not logged in
     if(firebaseUser) {
-      console.log(firebaseUser);
+      firebaseUser.getToken().then(function(idToken){
+        console.log(idToken);
+      })
+
     } else {
       console.log('Not logged in or not authorized.');
     }
-
   });
 
   // This code runs when the user logs out
@@ -46,5 +50,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
       return currentUser;
     }
   }
+
+  return userData;
 
 }]);
