@@ -4,6 +4,7 @@ var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/pivot';
 
 router.post('/', function(req, res) {
+  console.log('POST SUCCESSFUL');
   var scoreInfo = req.body;
   console.log(scoreInfo);
   pg.connect(connectionString, function(err, client, done) {
@@ -15,7 +16,7 @@ router.post('/', function(req, res) {
     client.query(
       'INSERT INTO scores (user_id, correct, incorrect, verb_id, game_id) ' +
       'VALUES ($1, $2, $3, $4, $5)',
-      [scoreInfo.user_id, scoreInfo.author, scoreInfo.incorrect, scoreInfo.verb_id, scoreInfo.game_id],
+      [scoreInfo.user_id, scoreInfo.correct, scoreInfo.incorrect, scoreInfo.verb_id, scoreInfo.game_id],
       function(err, result) {
         done();
 

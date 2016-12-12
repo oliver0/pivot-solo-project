@@ -7,9 +7,15 @@ app.factory("ScoreFactory", ["$http", function($http) {
   var incorrect = 0;
   var currentUserId = 1;
   var scoreInfo = {};
+  var verb_id;
 
   function setGameId(id){
     gameId = id;
+    return;
+  }
+
+  function setVerbId(id){
+    verb_id  = id;
     return;
   }
 
@@ -17,29 +23,35 @@ app.factory("ScoreFactory", ["$http", function($http) {
     return gameId;
   }
 
-  // function addScore() {
-  //   scoreInfo.user_id = currentUserId;
-  //   scoreInfo.verb_id
-  //   return $http.get('/scores', )
-  //   .then(function(response) {
-  //     console.log('POST SUCCESSFUL');
-  //   });
-  // }
+  function addScore(correct, incorrect) {
+    scoreInfo.user_id = currentUserId;
+    scoreInfo.correct = correct;
+    scoreInfo.incorrect = incorrect;
+    scoreInfo.verb_id = verb_id;
+    scoreInfo.game_id = gameId;
+    console.log('SCORE INFO:', scoreInfo);
+    return $http.post('/scores', scoreInfo)
+    .then(function(response) {
+      console.log('POST SUCCESSFUL');
+    });
+  }
 
   function addCorrect(){
     correct++;
-    console.log("Correct", correct);
+    addScore(1, 0);
+    //console.log("Correct", correct);
     return;
   }
 
-  function addInCorrect(){
+  function addInCorrect(verb_id){
     incorrect++;
-    console.log("Incorrect:", incorrect);
+    addScore(0, 1);
+    //console.log("Incorrect:", incorrect);
     return;
   }
 
   function resetGameData(){
-    console.log("GAME RESET!");
+    //console.log("GAME RESET!");
     correct = 0;
     incorrect = 0;
     return;
@@ -48,6 +60,9 @@ app.factory("ScoreFactory", ["$http", function($http) {
   var scoreData = {
     setGameId: function(id) {
       return setGameId(id);
+    },
+    setVerbId: function(id) {
+      return setVerbId(id);
     },
     getGameId: function() {
       return getGameId();

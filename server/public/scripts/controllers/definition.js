@@ -52,14 +52,14 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
           currentVerbObject = GameFactory.getCurrentVerbObject(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
           self.currentVerbDefinition = currentVerbObject.definition;
           self.currentVerb = currentVerbObject.phrasal_verb;
-          console.log(self.currentVerbDefinition, self.currentVerb);
+          //console.log(self.currentVerbDefinition, self.currentVerb);
           assignGuessOptions();
       }
     };
 
 
     function getVerbs() {
-      console.log("GAME VERBS!");
+      //console.log("GAME VERBS!");
       GameFactory.getVerbs().then(function(response) {
         self.databaseVerbs = GameFactory.databaseVerbs();
         self.uniquePhrasalVerbs = GameFactory.uniquePhrasalVerbs();
@@ -70,7 +70,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
 
     function assignGuessOptions(){
       self.guessOptions = GameFactory.assignGuessOptions();
-      console.log(self.guessOptions);
+      //console.log(self.guessOptions);
     }
 
     // check if answer correct/incorrect, add to variable in factory.
