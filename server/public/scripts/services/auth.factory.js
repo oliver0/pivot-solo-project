@@ -1,9 +1,9 @@
-app.factory('AuthFactory', ["$http", function($http, $firebaseAuth) {
-
+app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseAuth) {
+  console.log('AuthFactory up and running');
   var auth = $firebaseAuth();
   var self = this;
   var currentUser;
-  
+
   // This code runs whenever the user logs in
   function logIn(){
     auth.$signInWithPopup("google").then(function(firebaseUser) {
