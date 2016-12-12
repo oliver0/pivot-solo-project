@@ -4,6 +4,7 @@ var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/pivot';
 
 router.get('/', function(req, res) {
+  console.log('ARRIVED IN VERB_TABLE GET!');
   var verbTableData = {};
   // get verbs from DB
   pg.connect(connectionString, function(err, client, done) {
@@ -16,6 +17,7 @@ router.get('/', function(req, res) {
                  'FROM scores ' +
                  'JOIN phrasal_verbs ON scores.verb_id = phrasal_verbs.id ' +
                  'GROUP BY phrasal_verb, verb_id, definition;',
+    //client.query('SELECT * FROM scores',
     function(err, result) {
       done(); // close the connection.
 
@@ -23,8 +25,9 @@ router.get('/', function(req, res) {
         console.log('select query error: ', err);
         res.sendStatus(500);
       }
-      //console.log(result.rows);
-      verbTableData.phrasal_verbs = result.rows;
+      verbTableData.verbData = result.rows
+      console.log(verbTableData);
+      res.send(verbTableData);
     });
 
   });

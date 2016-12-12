@@ -10,9 +10,9 @@ app.controller("ProgressController", ["$http", function($http){
 
   function getVerbTableData() {
     $http.get('/verb_table')
-    .then(function(response) {
-      console.log(response.verbTableData);
-      //console.log('TABLE DATA:', self.tableData);
+    .then(function(verbTableData) {
+      console.log(verbTableData.data.verbData);
+
 
     });
   }
