@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
       res.sendStatus(500);
     }
 
-    client.query('SELECT phrasal_verb, verb_id, definition, SUM(correct) / (SUM(correct) + SUM(incorrect)) AS percentage ' +
+    client.query('SELECT phrasal_verb, verb_id, definition, (SUM(correct) / (SUM(correct) + SUM(incorrect)))*100 AS percentage ' +
                  'FROM scores ' +
                  'JOIN phrasal_verbs ON scores.verb_id = phrasal_verbs.id ' +
                  'GROUP BY phrasal_verb, verb_id, definition;',

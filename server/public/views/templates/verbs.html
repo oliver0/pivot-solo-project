@@ -24,7 +24,7 @@
       <tr ng-repeat="verbData in verbs.tableData">
         <td>{{verbData.phrasal_verb}}</td>
         <td>{{verbData.definition}}</td>
-        <td>{{verbData.percentage}}</td>
+        <td>{{verbData.percentage | number:1}}%</td>
       </tr>
 
     </tbody>
