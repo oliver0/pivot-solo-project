@@ -14,9 +14,9 @@ router.post('/', function(req, res) {
     }
 
     client.query(
-      'INSERT INTO scores (user_id, correct, incorrect, verb_id, game_id) ' +
-      'VALUES ($1, $2, $3, $4, $5)',
-      [scoreInfo.user_id, scoreInfo.correct, scoreInfo.incorrect, scoreInfo.verb_id, scoreInfo.game_id],
+      'INSERT INTO scores (user_id, correct, incorrect, verb_id, game_id, date) ' +
+      'VALUES ($1, $2, $3, $4, $5, $6)',
+      [scoreInfo.user_id, scoreInfo.correct, scoreInfo.incorrect, scoreInfo.verb_id, scoreInfo.game_id, scoreInfo.date],
       function(err, result) {
         done();
 

@@ -1,4 +1,4 @@
-app.factory("ScoreFactory", ["$http", function($http) {
+app.factory("ScoreFactory", ["$http", "$location", function($http, $location) {
 
   console.log("ScoreFactory up and running");
 
@@ -29,6 +29,7 @@ app.factory("ScoreFactory", ["$http", function($http) {
     scoreInfo.incorrect = incorrect;
     scoreInfo.verb_id = verb_id;
     scoreInfo.game_id = gameId;
+    scoreInfo.date = new Date();
     console.log('SCORE INFO:', scoreInfo);
     return $http.post('/scores', scoreInfo)
     .then(function(response) {
@@ -48,6 +49,10 @@ app.factory("ScoreFactory", ["$http", function($http) {
     addScore(0, 1);
     //console.log("Incorrect:", incorrect);
     return;
+  }
+
+  function currentGameView(){
+
   }
 
   function resetGameData(){

@@ -20,14 +20,14 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
       sentences = response.data.sentences;
       databaseVerbs = response.data.verbs;
       uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
-      console.log('CURRENT GAME ID:', currentGameId);
+      //console.log('CURRENT GAME ID:', currentGameId);
       addVerbsToGame(currentGameId);
     });
   }
 
   // add verbs to game array, currently 10 but can be changed.
   function addVerbsToGame(gameId){
-    console.log('GAME ID:', gameId);
+    //console.log('GAME ID:', gameId);
     var verbList;
     if(gameId === 1){
       verbList = databaseVerbs;
@@ -43,7 +43,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
   // get verb and definition from object returned from gameVerbs.pop(). return both in an object
   function getCurrentVerbObject(){
     currentVerbObject = gameVerbs.pop();
-    console.log('CURRENT VERB OBJECT:', currentVerbObject);
+    //console.log('CURRENT VERB OBJECT:', currentVerbObject);
     //console.log('currentVerbObject ID:', currentVerbObject.id );
     ScoreFactory.setVerbId(currentVerbObject.id);
     currentVerb = currentVerbObject.phrasal_verb;

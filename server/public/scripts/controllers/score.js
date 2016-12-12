@@ -20,6 +20,8 @@ app.controller("ScoreController", ["$http", "ScoreFactory", "$rootScope", functi
     console.log('CURRENT GAME:',currentGame );
   }
 
+  
+
   self.correct = ScoreFactory.correct();
   self.incorrect = ScoreFactory.incorrect();
   self.percentage = (self.correct / (self.correct + self.incorrect))*100;
