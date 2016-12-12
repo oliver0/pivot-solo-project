@@ -4,7 +4,6 @@ app.controller("VerbsController", ["$http", function($http){
 
   var self = this;
 
-  self.tableData;
 
   getVerbTableData();
 

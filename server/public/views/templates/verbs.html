@@ -1,10 +1,32 @@
-<h1>Phrasal Verbs!</h1>
 
-<div class="row">
-    <div class="col-md-3 col-md-offset-3">
-        <ul class="nav nav-pills nav-justified">
-            <li><a href="#home">Home</a></li>
+<div class="container">
+  <h1>Phrasal Verbs!</h1>
 
-        </ul>
-    </div>
+  <div class="row">
+      <div class="col-md-3 col-md-offset-3">
+          <ul class="nav nav-pills nav-justified">
+              <li><a href="#home">Home</a></li>
+
+          </ul>
+      </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Phrasal Verb</th>
+        <th>Definition</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr ng-repeat="verbData in verbs.tableData">
+        <td>{{verbData.phrasal_verb}}</td>
+        <td>{{verbData.definition}}</td>
+        <td>{{verbData.percentage}}</td>
+      </tr>
+
+    </tbody>
+  </table>
 </div>
