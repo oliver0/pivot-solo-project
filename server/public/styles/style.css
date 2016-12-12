@@ -10,8 +10,6 @@ h3{
   text-align: center;
 }
 
-
-
 #gameScore{
   font-size: 40px;
   float: right;
@@ -21,6 +19,9 @@ h3{
   margin-top: 50px;
 }
 
+input {
+  margin-bottom: 50px;
+}
 .guessOption {
   border: 2px solid black;
   margin-bottom: 5px;
