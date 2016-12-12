@@ -4,7 +4,8 @@ app.controller("ProgressController", ["$http", function($http){
 
   var self = this;
 
-  self.tableData;
+  //self.tableData;
+
 
   getProgressTableData();
 
@@ -12,7 +13,10 @@ app.controller("ProgressController", ["$http", function($http){
     $http.get('/progress')
     .then(function(progressData) {
       self.tableData = progressData.data.progress;
-      console.log(self.tableData);
+
+      for (var i = 0; i < self.tableData.length; i++) {
+        self.tableData[i].date = self.tableData[i].date.substring(0,10);
+      }
 
     });
   }

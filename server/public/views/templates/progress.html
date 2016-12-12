@@ -1,10 +1,37 @@
-<h1>Progress!</h1>
 
-<div class="row">
-    <div class="col-md-3 col-md-offset-3">
-        <ul class="nav nav-pills nav-justified">
-            <li><a href="#home">Home</a></li>
+<div  class="container">
 
-        </ul>
-    </div>
+  <h1>Progress!</h1>
+
+  <div class="row">
+      <div class="col-md-3 col-md-offset-3">
+          <ul class="nav nav-pills nav-justified">
+              <li><a href="#home">Home</a></li>
+
+          </ul>
+      </div>
+  </div>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Correct</th>
+        <th>Incorrect</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr ng-repeat="verbData in prog.tableData">
+        <td>{{verbData.date}}</td>
+        <td>{{verbData.correct}}</td>
+        <td>{{verbData.incorrect}}</td>
+        <td>{{verbData.percentage}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
 </div>
