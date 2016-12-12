@@ -4,6 +4,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 
 var verbs = require('./routes/verbs.js');
+var scores = require('./routes/scores.js');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -13,6 +14,7 @@ app.use(express.static(path.resolve('./server/public')));
 
 //my routes
 app.use('/verbs', verbs);
+app.use('/scores', scores);
 
 // server index file
 app.get('/', function(req, res) {

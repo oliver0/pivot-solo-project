@@ -5,6 +5,8 @@ app.factory("ScoreFactory", ["$http", function($http) {
   var gameId;
   var correct = 0;
   var incorrect = 0;
+  var currentUserId = 1;
+  var scoreInfo = {};
 
   function setGameId(id){
     gameId = id;
@@ -14,6 +16,15 @@ app.factory("ScoreFactory", ["$http", function($http) {
   function getGameId(){
     return gameId;
   }
+
+  // function addScore() {
+  //   scoreInfo.user_id = currentUserId;
+  //   scoreInfo.verb_id
+  //   return $http.get('/scores', )
+  //   .then(function(response) {
+  //     console.log('POST SUCCESSFUL');
+  //   });
+  // }
 
   function addCorrect(){
     correct++;
