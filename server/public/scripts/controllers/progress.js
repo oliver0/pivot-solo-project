@@ -13,11 +13,6 @@ app.controller("ProgressController", ["$http", function($http){
     $http.get('/progress')
     .then(function(progressData) {
       self.tableData = progressData.data.progress;
-
-      for (var i = 0; i < self.tableData.length; i++) {
-        self.tableData[i].date = self.tableData[i].date.substring(0,10);
-      }
-
     });
   }
   }]);
