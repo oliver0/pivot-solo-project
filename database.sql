@@ -12,10 +12,27 @@ sentence text NOT NULL,
 verb_id INTEGER NOT NULL REFERENCES phrasal_verbs(id)
 );
 
+CREATE TABLE scores (
+  score_id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  correct INTEGER NOT NULL,
+  incorrect INTEGER NOT NULL,
+  verb_id INTEGER NOT NULL,
+  game_id INTEGER NOT NULL,
+  date DATE NOT NULL
+  );
+
+-- Query for sentences
 SElECT sentence, phrasal_verb, base, id preposition
 FROM phrasal_verbs
 JOIN sentences ON phrasal_verbs.id = sentences.verb_id
 GROUP BY sentence, phrasal_verb, base, id, preposition;
+
+--  Query for Phrasal Verb List
+SELECT phrasal_verb, verb_id, definition, SUM(correct) / (SUM(correct) + SUM(incorrect)) AS percentage
+FROM scores
+JOIN phrasal_verbs ON scores.verb_id = phrasal_verbs.id
+GROUP BY phrasal_verb, verb_id, definition;
 
 -- test data
 
