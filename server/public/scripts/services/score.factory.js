@@ -82,8 +82,6 @@ app.factory("ScoreFactory", ["$http", function($http) {
     resetGameData: function() {
       return resetGameData();
     }
-
-
   }
 
   return scoreData;
