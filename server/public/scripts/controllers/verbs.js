@@ -11,7 +11,8 @@ app.controller("VerbsController", ["$http", function($http){
   function getVerbTableData() {
     $http.get('/verb_table')
     .then(function(verbTableData) {
-      console.log(verbTableData.data.verbData);
+      self.tableData = verbTableData.data.verbData;
+      console.log(self.tableData);
 
 
     });

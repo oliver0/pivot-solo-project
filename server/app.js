@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var verbs = require('./routes/verbs.js');
 var scores = require('./routes/scores.js');
 var verbTable = require('./routes/verb_table.js')
+var progress = require('./routes/progress.js')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -17,6 +18,7 @@ app.use(express.static(path.resolve('./server/public')));
 app.use('/verbs', verbs);
 app.use('/scores', scores);
 app.use('/verb_table', verbTable);
+app.use('/progress', progress);
 
 // server index file
 app.get('/', function(req, res) {

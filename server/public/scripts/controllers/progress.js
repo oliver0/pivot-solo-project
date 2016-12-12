@@ -6,12 +6,13 @@ app.controller("ProgressController", ["$http", function($http){
 
   self.tableData;
 
-  getVerbTableData();
+  getProgressTableData();
 
-  function getVerbTableData() {
-    $http.get('/verb_table')
-    .then(function(verbTableData) {
-      console.log(verbTableData.data.verbData);
+  function getProgressTableData() {
+    $http.get('/progress')
+    .then(function(progressData) {
+      self.tableData = progressData.data.progress;
+      console.log(self.tableData);
 
     });
   }
