@@ -13,7 +13,6 @@ app.controller("ProgressController", ["$http", function($http){
     .then(function(verbTableData) {
       console.log(verbTableData.data.verbData);
 
-
     });
   }
   }]);
