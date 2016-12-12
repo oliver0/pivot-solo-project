@@ -11,6 +11,7 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
   var GUESS_OPTIONS = 4;
   self.sentences = [];
   self.gameVerbs = [];
+  self.currentVerbObject = {};
   self.currentVerbSentence = "";
   self.currentVerb = "";
   self.guessOptions = [];
@@ -51,9 +52,9 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
         self.stop();
         self.changeView();
       } else {
-          var verbAndSentence = GameFactory.getVerbAndDefinition(); // {currentVerb:currentVerb, currentVerbSentence:currentVerbSentence}
-          self.currentVerbSentence = verbAndSentence.currentVerbSentence;
-          self.currentVerb = verbAndSentence.currentVerb;
+          currentVerbObject = GameFactory.getCurrentVerbObject(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
+          self.currentVerbSentence = currentVerbObject.sentence;
+          self.currentVerb = currentVerbObject.phrasal_verb;
           assignGuessOptions();
       }
     };

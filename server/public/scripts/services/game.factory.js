@@ -8,6 +8,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
   var sentences = undefined;
   var gameVerbs = [];
   var guessOptions = [];
+  var currentVerb;
   var currentGameId;
 
 
@@ -41,12 +42,9 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
   // get verb and definition from object returned from gameVerbs.pop(). return both in an object
   function getCurrentVerbObject(){
     var currentVerbObject = gameVerbs.pop();
+    currentVerb = currentVerbObject.phrasal_verb;
     console.log('CURRENT VERB OBJECT', currentVerbObject);
     return currentVerbObject;
-    // currentVerb = currentVerbObject.phrasal_verb;
-    // currentVerbDefinition = currentVerbObject.definition;
-    // currentVerbSentence = currentVerbObject.sentence;
-    //return {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition, currentVerbSentence: currentVerbSentence}
   }
 
   // copy unique phrasal verb array, if correct verb in it remove it. For loop runs as long as number of options,

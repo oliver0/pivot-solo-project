@@ -50,7 +50,6 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
         self.changeView();
       } else {
           currentVerbObject = GameFactory.getCurrentVerbObject(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
-
           self.currentVerbDefinition = currentVerbObject.definition;
           self.currentVerb = currentVerbObject.phrasal_verb;
           console.log(self.currentVerbDefinition, self.currentVerb);
