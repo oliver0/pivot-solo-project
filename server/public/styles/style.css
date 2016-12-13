@@ -1,5 +1,5 @@
 h1{
-  color: blue;
+  font-size: 50px;
 }
 
 h2 {
@@ -10,18 +10,20 @@ h3{
   text-align: center;
 }
 
+input {
+  margin-bottom: 50px;
+}
+
 #gameScore{
   font-size: 40px;
-  float: right;
+  margin: 25px 0
 }
 
 #guessOptions{
   margin-top: 50px;
 }
 
-input {
-  margin-bottom: 50px;
-}
+
 .guessOption {
   border: 2px solid black;
   margin-bottom: 5px;
