@@ -16,7 +16,7 @@ input {
 
 #gameScore{
   font-size: 40px;
-  margin: 25px 0
+  margin: 25px 0;
 }
 
 #guessOptions{

@@ -5,7 +5,7 @@ app.factory("ScoreFactory", ["$http", "$location", function($http, $location) {
   var gameId;
   var correct = 0;
   var incorrect = 0;
-  var currentUserId = 1;
+  var currentUserId = 2;
   var scoreInfo = {};
   var verb_id;
 

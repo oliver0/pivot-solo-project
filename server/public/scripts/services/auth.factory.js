@@ -3,12 +3,13 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
   var auth = $firebaseAuth();
   var self = this;
   var currentUser;
+  var currentUserId = 2;
 
   // This code runs whenever the user logs in
   function logIn(){
     auth.$signInWithPopup("google").then(function(firebaseUser) {
       currentUser = firebaseUser;
-      console.log("Firebase Authenticated as: ", currentUser.user.displayName);
+      console.log("Firebase Authenticated as: ", currentUser.user);
       return currentUser;
     }).catch(function(error) {
       console.log("Authentication failed: ", error);
@@ -48,6 +49,9 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
     },
     currentUser: function(){
       return currentUser;
+    },
+    currentUserId: function(){
+      return currentUserId;
     }
   }
 
