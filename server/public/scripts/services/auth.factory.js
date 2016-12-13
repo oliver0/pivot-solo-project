@@ -25,7 +25,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
     // firebaseUser will be null if not logged in
     if(firebaseUser) {
       firebaseUser.getToken().then(function(idToken){
-        console.log(idToken);
+        //console.log(idToken);
       })
 
     } else {
