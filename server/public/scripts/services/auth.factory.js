@@ -9,8 +9,21 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
   function logIn(){
     auth.$signInWithPopup("google").then(function(firebaseUser) {
       currentUser = firebaseUser;
-      console.log("Firebase Authenticated as: ", currentUser.user);
-      return currentUser;
+      console.log('currentUser:',currentUser);
+      if(currentUser) {
+        firebaseUser.getToken().then(function(idToken){
+          console.log('ID TOKEN:', idToken)
+          $http({
+            method: 'GET',
+            url: '/users',
+            headers: {
+              id_token: idToken
+            }
+          });
+        });
+      } else {
+        console.log('Not logged in or not authorized.');
+      }
     }).catch(function(error) {
       console.log("Authentication failed: ", error);
     });
@@ -21,17 +34,20 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
   // This code runs whenever the user changes authentication states
   // e.g. whevenever the user logs in or logs out
   //
-  auth.$onAuthStateChanged(function(firebaseUser){
-    // firebaseUser will be null if not logged in
-    if(firebaseUser) {
-      firebaseUser.getToken().then(function(idToken){
-        //console.log(idToken);
-      })
-
-    } else {
-      console.log('Not logged in or not authorized.');
-    }
-  });
+  // auth.$onAuthStateChanged(function(firebaseUser){
+  //   // firebaseUser will be null if not logged in
+  //   if(firebaseUser) {
+  //     firebaseUser.getToken().then(function(idToken){
+  //       $http({
+  //         method: 'GET',
+  //         url: '/'
+  //       })
+  //     })
+  //
+  //   } else {
+  //     console.log('Not logged in or not authorized.');
+  //   }
+  // });
 
   // This code runs when the user logs out
   function logOut (){
@@ -45,7 +61,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
       return logIn();
     },
     logOut: function() {
-      return logIn();
+      return logOut();
     },
     currentUser: function(){
       return currentUser;
