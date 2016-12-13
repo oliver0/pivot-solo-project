@@ -31,6 +31,9 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
           headers: {
             id_token: idToken
           }
+        })
+        .then(function(response){
+          console.log("USER RESPONSE:", response.data);
         });
       });
     } else {

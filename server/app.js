@@ -16,7 +16,7 @@ app.use(express.static(path.resolve('./server/public')));
 
 app.use('/verbs', verbs);
 
-//app.use(decoder.token);
+app.use(decoder.token);
 //my routes
 app.use('/users', users);
 // app.use('/scores', scores);
