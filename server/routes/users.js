@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
     if(err) {
       console.log('connection error: ', err);
       res.sendStatus(500);
-    } else {}
+    } else {
     client.query('SELECT * FROM users WHERE email = $1',
     [userEmail],
     function(err, result) {
@@ -27,6 +27,7 @@ router.get('/', function(req, res) {
       userExists = result.rows.length > 0;
       res.send(userExists);
     });
+  }
 
   });
 });

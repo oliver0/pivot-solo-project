@@ -51,15 +51,12 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
               console.log('POST SUCCESSFUL');
             });
           }
-          // } else {
-          //   console.log(currentUser.user.displayName);
-          // }
         });
-      });
-    } else {
-      console.log('Not logged in or not authorized.');
-    }
-  });
+        });
+      } else {
+        console.log('Not logged in or not authorized.');
+      }
+    });
 
   // This code runs when the user logs out
   function logOut (){
