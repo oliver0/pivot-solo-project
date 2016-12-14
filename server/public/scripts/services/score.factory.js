@@ -32,10 +32,10 @@ app.factory("ScoreFactory", ["$http", "AuthFactory", "$location", function($http
     scoreInfo.date = new Date();
     console.log('DIFFERENT!');
     currentUser = AuthFactory.getCurrentUser();
-    console.log('CURRENT USER:', currentUser);
+    //console.log('CURRENT USER:', currentUser);
     if(currentUser) {
       currentUser.getToken().then(function(idToken){
-        console.log('USER:', idToken);
+        //console.log('USER:', idToken);
         return $http({
           method: 'POST',
           url: '/scores',
