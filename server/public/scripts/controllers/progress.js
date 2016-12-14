@@ -1,4 +1,4 @@
-app.controller("ProgressController", "AuthFactory" ["$http", function($http, AuthFactory){
+app.controller("ProgressController", ["$http", "AuthFactory", function($http, AuthFactory){
 
   console.log("ProgressControler running");
 

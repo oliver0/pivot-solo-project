@@ -3,7 +3,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
   var auth = $firebaseAuth();
   var self = this;
   var currentUser;
-  var currentUserId = 2;
+  var currentUserId = 1;
 
   // This code runs whenever the user logs in
   function logIn(){

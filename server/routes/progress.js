@@ -6,6 +6,7 @@ var connectionString = 'postgres://localhost:5432/pivot';
 router.get('/', function(req, res) {
   console.log('ARRIVED IN PROGRESS GET!');
   var progressData = {};
+  //var userId = req.params.id;
   // get verbs from DB
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
@@ -16,6 +17,8 @@ router.get('/', function(req, res) {
     client.query('SELECT date, SUM(correct) AS correct, SUM(incorrect) AS incorrect, (SUM(correct) / (SUM(correct) + SUM(incorrect)))*100 AS percentage ' +
                  'FROM scores ' +
                  'JOIN phrasal_verbs ON scores.verb_id = phrasal_verbs.id ' +
+                 'JOIN users ON scores.user_id = users.id ' +
+                 'WHERE users.id = 1 ' +
                  'GROUP BY date;',
     function(err, result) {
       done(); // close the connection.

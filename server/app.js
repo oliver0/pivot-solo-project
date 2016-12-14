@@ -19,13 +19,14 @@ app.get('/', function(req, res) {
 });
 
 app.use('/verbs', verbs);
+app.use('/verb_table', verbTable);
+app.use('/progress', progress);
 
 app.use(decoder.token);
 //my routes
 app.use('/users', users);
 app.use('/scores', scores);
-app.use('/verb_table', verbTable);
-app.use('/progress', progress);
+
 
 // server index file
 

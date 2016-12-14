@@ -3,10 +3,10 @@ var router = express.Router();
 var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/pivot';
 
-router.get('/:id', function(req, res) {
+router.get('/', function(req, res) {
   console.log('ARRIVED IN VERB_TABLE GET!');
   var verbTableData = {};
-  var userId = req.params.id;
+  //var userId = req.params.id;
   // get verbs from DB
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
@@ -18,7 +18,7 @@ router.get('/:id', function(req, res) {
                  'FROM scores ' +
                  'JOIN phrasal_verbs ON scores.verb_id = phrasal_verbs.id ' +
                  'JOIN users ON scores.user_id = users.id ' +
-                 'WHERE users.id = '+userId+' ' +
+                 'WHERE users.id = 1 '+
                  'GROUP BY phrasal_verb, verb_id, definition, users.id;',
     //client.query('SELECT * FROM scores',
     function(err, result) {
