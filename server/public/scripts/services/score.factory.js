@@ -1,4 +1,4 @@
-app.factory("ScoreFactory", ["$http", "$location", function($http, $location) {
+app.factory("ScoreFactory", ["$http", "AuthFactory", "$location", function($http, AuthFactory, $location) {
 
   console.log("ScoreFactory up and running");
 
@@ -8,6 +8,7 @@ app.factory("ScoreFactory", ["$http", "$location", function($http, $location) {
   var currentUserId = 2;
   var scoreInfo = {};
   var verb_id;
+  var authFactory = AuthFactory;
 
   function setGameId(id){
     gameId = id;
@@ -24,18 +25,28 @@ app.factory("ScoreFactory", ["$http", "$location", function($http, $location) {
   }
 
   function addScore(correct, incorrect) {
-    scoreInfo.user_id = currentUserId;
     scoreInfo.correct = correct;
     scoreInfo.incorrect = incorrect;
     scoreInfo.verb_id = verb_id;
     scoreInfo.game_id = gameId;
     scoreInfo.date = new Date();
-    console.log('SCORE INFO:', scoreInfo);
-    return $http.post('/scores', scoreInfo)
-    .then(function(response) {
-      console.log('POST SUCCESSFUL');
-    });
+    console.log('DIFFERENT!');
+    currentUser = AuthFactory.getCurrentUser();
+    console.log('CURRENT USER:', currentUser);
+    if(currentUser) {
+      currentUser.getToken().then(function(idToken){
+        console.log('USER:', idToken);
+        return $http({
+          method: 'POST',
+          url: '/scores',
+          data: scoreInfo,
+          headers: {
+            id_token: idToken
+          }
+        });
+  });
   }
+}
 
   function addCorrect(){
     correct++;

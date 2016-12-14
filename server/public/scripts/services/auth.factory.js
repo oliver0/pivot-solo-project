@@ -8,12 +8,17 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
   // This code runs whenever the user logs in
   function logIn(){
     auth.$signInWithPopup("google").then(function(firebaseUser) {
+      currentUser = firebaseUser;
       console.log(firebaseUser.user.displayName);
     }).catch(function(error) {
       console.log("Authentication failed: ", error);
     });
-    return
-};
+
+  };
+
+  function getCurrentUser(){
+    return currentUser;
+  }
 
   // This code runs whenever the user changes authentication states
   // e.g. whevenever the user logs in or logs out
@@ -24,7 +29,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
     console.log('currentUser:',currentUser);
     if(currentUser) {
       firebaseUser.getToken().then(function(idToken){
-        console.log('ID TOKEN:', idToken)
+        //console.log('ID TOKEN:', idToken)
         $http({
           method: 'GET',
           url: '/users',
@@ -32,8 +37,23 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
             id_token: idToken
           }
         })
-        .then(function(response){
-          console.log("USER RESPONSE:", response.data);
+        .then(function(userExists){
+          //console.log("USER RESPONSE:", userExists.data);
+          if (userExists.data == false){
+            return $http({
+              method: 'POST',
+              url: '/users',
+              headers: {
+                id_token: idToken
+              }
+            })
+            .then(function(response) {
+              console.log('POST SUCCESSFUL');
+            });
+          }
+          // } else {
+          //   console.log(currentUser.user.displayName);
+          // }
         });
       });
     } else {
@@ -55,8 +75,8 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
     logOut: function() {
       return logOut();
     },
-    currentUser: function(){
-      return currentUser;
+    getCurrentUser: function(){
+      return getCurrentUser();
     },
     currentUserId: function(){
       return currentUserId;

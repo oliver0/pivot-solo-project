@@ -23,11 +23,39 @@ router.get('/', function(req, res) {
         console.log('select query error: ', err);
         res.sendStatus(500);
       }
+      console.log('Length of rows:', result.rows.length);
       userExists = result.rows.length > 0;
       res.send(userExists);
     });
 
   });
+});
+
+router.post('/', function(req, res) {
+  console.log('POST SUCCESSFUL');
+  var userEmail = req.decodedToken.email;
+  pg.connect(connectionString, function(err, client, done) {
+    if(err) {
+      console.log('connection error: ', err);
+      res.sendStatus(500);
+    }
+    client.query(
+      'INSERT INTO users (email) ' +
+      'VALUES ($1)',
+      [userEmail],
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log('insert query error: ', err);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      });
+
+  });
+
 });
 
 module.exports = router;

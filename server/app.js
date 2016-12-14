@@ -14,19 +14,21 @@ app.use(bodyParser.json());
 // serve static files
 app.use(express.static(path.resolve('./server/public')));
 
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, './public/views/index.html'));
+});
+
 app.use('/verbs', verbs);
 
 app.use(decoder.token);
 //my routes
 app.use('/users', users);
-// app.use('/scores', scores);
-// app.use('/verb_table', verbTable);
-// app.use('/progress', progress);
+app.use('/scores', scores);
+app.use('/verb_table', verbTable);
+app.use('/progress', progress);
 
 // server index file
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, './public/views/index.html'));
-});
+
 
 app.listen(3000, function() {
   console.log("server running, check localhost:3000");
