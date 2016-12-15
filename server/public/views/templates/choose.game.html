@@ -1,12 +1,17 @@
 <div class="container">
-  <h1 class="jumbotron">Choose Game!</h1>
-  <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-          <ul class="nav nav-pills nav-justified">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#definition" ng-click="choice.setGameId(1)">Definition Match</a></li>
-              <li><a href="#blank" ng-click="choice.setGameId(2)">Fill in the blanks</a></li>
-          </ul>
-      </div>
+  <div>
+    <h1 class="jumbotron">Choose Game!</h1>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href="#home">Home</a></li>
+            </ul>
+        </div>
+    </div>
+  </div>
+
+  <div id="gamesContainer">
+    <a href="#definition" ><div class="gameSquare grow" ng-click="choice.setGameId(1)">Definition Match</div></a>
+    <a href="#blank" ><div class="gameSquare grow" ng-click="choice.setGameId(2)">Fill in the blanks</div></a>
   </div>
 </div>

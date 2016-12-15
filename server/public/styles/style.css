@@ -23,6 +23,38 @@ input {
   margin-top: 50px;
 }
 
+#gamesContainer{
+  margin-top: 75px;
+  text-align: center;
+}
+
+.gameSquare {
+  height: 200px;
+  width: 200px;
+  border: 2px solid black;
+  text-align: center;
+  line-height: 200px;
+  display: inline-block;
+  font-size: 20px;
+  margin: 50px;
+}
+
+.grow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.grow:hover, .hvr-grow:focus, .hvr-grow:active {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
 
 .guessOption {
   border: 2px solid black;
