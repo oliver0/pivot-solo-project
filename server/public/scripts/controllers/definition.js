@@ -25,11 +25,11 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
 
     self.start = function(){
       self.stop();
-      self.getCurrentVerb();
+      getCurrentVerb();
 
       promise = $interval(function(){
         ScoreFactory.addIncorrect();
-        self.getCurrentVerb();
+        getCurrentVerb();
       }, TIME_INTERVAL);
     };
 
@@ -44,7 +44,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
 
     // if there are no more verbs in game array, switch to score view. otherwise, take verb object from game array,
     // seperate out definition and correct verb, call assignGuessOptions()
-    self.getCurrentVerb = function(){
+    function getCurrentVerb(){
       if(self.gameVerbs.length ==0){
         self.stop();
         self.changeView();
