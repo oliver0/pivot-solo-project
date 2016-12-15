@@ -62,10 +62,6 @@ app.factory("ScoreFactory", ["$http", "AuthFactory", "$location", function($http
     return;
   }
 
-  function currentGameView(){
-
-  }
-
   function resetGameData(){
     //console.log("GAME RESET!");
     correct = 0;

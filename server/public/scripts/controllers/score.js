@@ -1,37 +1,33 @@
-app.controller("ScoreController", ["$http", "ScoreFactory", "$rootScope", function($http, ScoreFactory, $rootScope){
+app.controller("ScoreController", ["$http", "ScoreFactory", "$rootScope", "$location", function($http, ScoreFactory, $rootScope, $location){
 
   console.log("ScoreController running");
 
   var self = this;
-
   var currentGame;
-
-  getCurrentGame();
-
-  function getCurrentGame(){
-    var gameId = ScoreFactory.getGameId();
-    console.log('GAME ID:', gameId);
-    if(gameId === 1){
-      currentGame = "#definition";
-    }
-    if(gameId ===2){
-      currentGame = "#blank";
-    }
-    console.log('CURRENT GAME:',currentGame );
-  }
-
-  
+  // reset score on view change -
+  var destroy = $rootScope.$on('$locationChangeSuccess', function(){
+    ScoreFactory.resetGameData();
+    destroy();
+  });
 
   self.correct = ScoreFactory.correct();
   self.incorrect = ScoreFactory.incorrect();
   self.percentage = (self.correct / (self.correct + self.incorrect))*100;
 
-  //when home/repeat clicked, ScoreFactory function resetGameData is called.
+  self.changeView = function(){
+    $location.path(currentGame);
+  }
 
-  // reset score on view change
-  var destroy = $rootScope.$on('$locationChangeSuccess', function(){
-    ScoreFactory.resetGameData();
-    destroy();
-  });
+  getCurrentGame();
+
+  function getCurrentGame(){
+    var gameId = ScoreFactory.getGameId();
+    if(gameId === 1){
+      currentGame = "definition";
+    }
+    if(gameId ===2){
+      currentGame = "blank";
+    }
+  }
 
   }]);
