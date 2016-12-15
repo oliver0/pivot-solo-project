@@ -15,12 +15,23 @@ app.controller("VerbsController", ["$http", "AuthFactory", function($http, AuthF
     console.log('getVerbTableData() ');
     //var user_id = getCurrentUserId()
     //console.log(user_id);;
-    $http.get('/verb_table')
-    .then(function(verbTableData) {
-      self.tableData = verbTableData.data.verbData;
-      console.log(self.tableData);
-
-
-    });
-  }
+    currentUser = AuthFactory.getCurrentUser();
+    //console.log('CURRENT USER:', currentUser);
+    if(currentUser) {
+      currentUser.getToken().then(function(idToken){
+        //console.log('USER:', idToken);
+        return $http({
+          method: 'GET',
+          url: '/verb_table',
+          headers: {
+            id_token: idToken
+          }
+        })
+        .then(function(verbTableData) {
+              self.tableData = verbTableData.data.verbData;
+              console.log(self.tableData);
+            });
+          });
+        }
+      }
   }]);

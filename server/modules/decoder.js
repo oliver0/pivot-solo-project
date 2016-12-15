@@ -22,14 +22,7 @@ var tokenDecoder = function(req, res, next){
       // req.userId = 17;
       console.log('DECODED TOKEN:', decodedToken);
 
-      //var userEmail = req.decodedToken.email;
-
-      //  if()){
-      //    console.log('SUCCESS');
-      //  }
       userIdQuery(decodedToken.email, req, next);
-
-
     })
     .catch(function(error) {
       // If the id_token isn't right, you end up in this callback function
@@ -39,6 +32,7 @@ var tokenDecoder = function(req, res, next){
     });
 
   } else {
+    console.log('HERE');
     res.send(403);
   }
 }
@@ -59,7 +53,7 @@ function userIdQuery(userEmail, req, next){
         console.log('select query error: ', err);
         res.sendStatus(500);
       } else {
-        console.log('Length of rows:', result.rows.length);
+        console.log('Length of ROWS:', result.rows.length);
         var userId = result.rows[0].id; // this is the id that corresponds to users email in users table
         console.log('USER ID DECODER:', userId);
         req.userId = userId;

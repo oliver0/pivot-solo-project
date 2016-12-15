@@ -6,7 +6,8 @@ var connectionString = 'postgres://localhost:5432/pivot';
 router.get('/', function(req, res) {
   console.log('ARRIVED IN VERB_TABLE GET!');
   var verbTableData = {};
-  //var userId = req.params.id;
+  var userId = req.userId;
+  console.log('USER ID:', userId);
   // get verbs from DB
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
@@ -18,7 +19,7 @@ router.get('/', function(req, res) {
                  'FROM scores ' +
                  'JOIN phrasal_verbs ON scores.verb_id = phrasal_verbs.id ' +
                  'JOIN users ON scores.user_id = users.id ' +
-                 'WHERE users.id = 1 '+
+                 'WHERE users.id = ' + userId + ' ' +
                  'GROUP BY phrasal_verb, verb_id, definition, users.id;',
     //client.query('SELECT * FROM scores',
     function(err, result) {

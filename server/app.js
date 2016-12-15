@@ -6,8 +6,8 @@ var decoder = require('./modules/decoder');
 var users = require('./routes/users.js');
 var verbs = require('./routes/verbs.js');
 var scores = require('./routes/scores.js');
-var verbTable = require('./routes/verb_table.js')
-var progress = require('./routes/progress.js')
+var verbTable = require('./routes/verb_table.js');
+var progress = require('./routes/progress.js');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -19,13 +19,14 @@ app.get('/', function(req, res) {
 });
 
 app.use('/verbs', verbs);
-app.use('/verb_table', verbTable);
-app.use('/progress', progress);
+
 
 app.use(decoder.token);
 //my routes
 app.use('/users', users);
 app.use('/scores', scores);
+app.use('/verb_table', verbTable);
+app.use('/progress', progress);
 
 
 // server index file
