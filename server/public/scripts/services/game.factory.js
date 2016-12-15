@@ -13,9 +13,16 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
   var currentGameId;
 
 
+  function resetGame(){
+    ScoreFactory.resetGameData();
+    gameVerbs = [];
+    guessOptions = [];
+  }
+
   function getVerbs() {
+    resetGame();
     currentGameId = ScoreFactory.getGameId();
-    ScoreFactory.resetGameData(); // reset correct/incorrect to 0
+     // reset correct/incorrect to 0
     return $http.get('/verbs')
     .then(function(response) {
       sentences = response.data.sentences;
