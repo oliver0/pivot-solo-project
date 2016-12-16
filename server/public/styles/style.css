@@ -1,3 +1,6 @@
+body{
+  background-color: #00ace6;
+}
 h1{
   font-size: 50px;
 }
@@ -8,16 +11,15 @@ h2 {
 
 h3{
   text-align: center;
+  font-size: 30px;
 }
 
 input {
   margin-bottom: 50px;
 }
 
-#gameScore{
-  font-size: 40px;
-  margin: 25px 0;
-  float: right;
+#verbs{
+  background-color: #3F88C5
 }
 
 #guessOptions{
@@ -29,20 +31,50 @@ input {
   text-align: center;
 }
 
+.container{
+  height: 950px;;
+}
+
+.gameBackground{
+  background-color: #ffdb4d;
+}
+
+.home{
+  float: left;
+}
+
+.gameScore{
+  font-size: 40px;
+  margin: 25px 0;
+  float: right;
+}
+
+.blue{
+  background-color: #3F88C5;
+  color: white;
+}
+
+.red{
+  background-color: #D00000;
+  color: white;
+}
+
 .digit{
   font-size: 60px;
 }
 
 .timer {
-  width: 120px;
-  height: 120px;
-  border-radius: 60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
   border: 6px solid black;
   text-align: center;
-  line-height: 120px;
-  font-size: 60px;
-  margin: 0 auto;
+  line-height: 200px;
+  font-size: 100px;
+  margin: 0 auto 50px auto;
   font-family: 'Orbitron', sans-serif;
+  background-color: #FF3562;
+  color: white;
 }
 
 /*.timer{
@@ -60,7 +92,7 @@ input {
   text-align: center;
   line-height: 200px;
   display: inline-block;
-  font-size: 20px;
+  font-size: 25px;
   margin: 50px;
 
 }
@@ -83,8 +115,9 @@ input {
 
 
 .guessOption {
+  height: 75px;
   border: 2px solid black;
-  margin-bottom: 5px;
+  background-color: white;
 }
 
 .guessOption:hover{
@@ -103,6 +136,7 @@ input {
   height: 75px;
   font-size: 25px;
   background-color: #eeeeee;
+  margin: 20px 0;
 }
 
 .jumbotron {

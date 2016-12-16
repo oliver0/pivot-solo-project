@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container gameBackground">
   <h1 class ="jumbotron">Fill in the blanks!</h1>
 
   <div class="row">
@@ -8,7 +8,7 @@
           </ul>
       </div>
   </div>
-  <div id="gameScore">Score: <span class="digit">{{blank.correct}}</span></div>
+  <div class="gameScore">Score: <span class="digit">{{blank.correct}}</span></div>
   <div class ="timer">{{blank.counter}}</div>
 
 
@@ -19,18 +19,18 @@
 
   <div id="guessOptions">
     <div class="row">
-      <div ng-click="blank.isCorrect(blank.guessOptions[0])" class="col-md-6 guessOption">
+      <div ng-click="blank.isCorrect(blank.guessOptions[0])" class="col-md-offset-2 col-md-4 guessOption">
         <h3 >{{blank.guessOptions[0]}}</h3>
       </div>
-      <div ng-click="blank.isCorrect(blank.guessOptions[1])" class="col-md-6 guessOption">
+      <div ng-click="blank.isCorrect(blank.guessOptions[1])" class="col-md-4 guessOption">
         <h3 >{{blank.guessOptions[1]}}</h3>
       </div>
     </div>
     <div class="row">
-      <div ng-click="blank.isCorrect(blank.guessOptions[2])" class="col-md-6 guessOption">
+      <div ng-click="blank.isCorrect(blank.guessOptions[2])" class="col-md-offset-2 col-md-4 guessOption">
         <h3 >{{blank.guessOptions[2]}}</h3>
       </div>
-      <div ng-click="blank.isCorrect(blank.guessOptions[3])" class="col-md-6 guessOption">
+      <div ng-click="blank.isCorrect(blank.guessOptions[3])" class="col-md-4 guessOption">
         <h3 >{{blank.guessOptions[3]}}</h3>
       </div>
     </div>

@@ -1,14 +1,14 @@
-<div class="container">
+<div class="container gameBackground">
   <h1 class="jumbotron">Definition Match!</h1>
 
   <div class="row">
       <div class="col-md-3 col-md-offset-3">
-          <ul class="nav nav-pills nav-justified">
+          <ul class="nav home">
               <li><a href="#home">Home</a></li>
           </ul>
       </div>
   </div>
-  <div id="gameScore">Score: {{def.correct}}</div>
+  <div class="gameScore">Score: <span class="digit">{{def.correct}}</span></div>
   <div class ="timer">{{def.counter}}</div>
   <!-- <div id="timer">
     <countdown timer="def.timer" radius="50" stroke="10"></countdown>
@@ -23,18 +23,18 @@
 
   <div id="guessOptions">
     <div class="row">
-      <div ng-click="def.isCorrect(def.guessOptions[0])" class="col-md-6 guessOption">
+      <div ng-click="def.isCorrect(def.guessOptions[0])" class="col-md-offset-2 col-md-4 guessOption">
         <h3 >{{def.guessOptions[0]}}</h3>
       </div>
-      <div ng-click="def.isCorrect(def.guessOptions[1])" class="col-md-6 guessOption">
+      <div ng-click="def.isCorrect(def.guessOptions[1])" class="col-md-4 guessOption">
         <h3 >{{def.guessOptions[1]}}</h3>
       </div>
     </div>
     <div class="row">
-      <div ng-click="def.isCorrect(def.guessOptions[2])" class="col-md-6 guessOption">
+      <div ng-click="def.isCorrect(def.guessOptions[2])" class="col-md-offset-2 col-md-4 guessOption">
         <h3 >{{def.guessOptions[2]}}</h3>
       </div>
-      <div ng-click="def.isCorrect(def.guessOptions[3])" class="col-md-6 guessOption">
+      <div ng-click="def.isCorrect(def.guessOptions[3])" class="col-md-4 guessOption">
         <h3 >{{def.guessOptions[3]}}</h3>
       </div>
     </div>
