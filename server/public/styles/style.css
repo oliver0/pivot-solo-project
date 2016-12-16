@@ -2,7 +2,6 @@ body{
   background-color: #00ace6;
 }
 h1{
-  font-size: 50px;
   font-family: 'Montserrat Alternates', sans-serif;
 }
 
@@ -26,7 +25,7 @@ input {
   color: #FF3562;
 }
 #t{
-  color: #ffdb4d;
+  color: #39e600;
 }
 
 #verbs{
@@ -42,8 +41,8 @@ input {
   text-align: center;
 }
 
-.chooseGame{
-  background-color: #66ff66;
+.title{
+  font-size: 85px;
 }
 
 .container{
@@ -71,6 +70,14 @@ input {
 .blue{
   background-color: #3F88C5;
   color: white;
+}
+
+.yellow{
+  background-color: #ffdb4d;
+}
+
+.green{
+  background-color: #39e600;
 }
 
 .red{
