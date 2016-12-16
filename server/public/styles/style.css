@@ -49,9 +49,9 @@ input {
 
 #scoreData{
   margin: 50px auto 0 auto;
-  width: 400px;
-  height: 400px;
-  padding: 20px;
+  width: 500px;
+  height: 500px;
+  padding: 25px;
   border-radius: 10px;
   border: 5px solid white;
 
@@ -67,6 +67,11 @@ input {
 .container{
   height: 120%;
   padding-bottom: 200px;
+}
+
+.jumbotron{
+  width: 100%;
+  color: black;
 }
 
 .progress{
@@ -87,28 +92,28 @@ input {
 
 .gameScore{
   font-size: 40px;
-  margin: 25px 0;
+  margin: 25px 40px 0 0;;
   float: right;
+}
+
+.whiteFont{
+  color: white;
 }
 
 .blue{
   background-color: #00ace6;
-  color: white;
 }
 
 .yellow{
   background-color: #ffdb4d;
-  color: white;
 }
 
 .green{
   background-color: #80f25a;
-  color: white;
 }
 
 .orange{
     background-color: #ff8533;
-    color: white;
 }
 
 .white{
@@ -117,7 +122,6 @@ input {
 
 .fuschia{
   background-color: #FF3562;
-  color: white;
 }
 
 .red{
@@ -126,14 +130,14 @@ input {
 }
 
 .digit{
-  font-size: 60px;
+  font-size: 85px;
 }
 
 .timer {
   width: 200px;
   height: 200px;
   border-radius: 100px;
-  border: 6px solid black;
+  border: 8px solid black;
   text-align: center;
   line-height: 200px;
   font-size: 100px;
@@ -143,14 +147,6 @@ input {
   color: white;
 }
 
-/*.timer{
-  width: 50px;
-  height: 50px;
-  text-align: center;
-}*/
-
-
-
 .gameSquare {
   height: 200px;
   width: 200px;
@@ -159,8 +155,9 @@ input {
   text-align: center;
   line-height: 200px;
   display: inline-block;
-  font-size: 25px;
+  font-size: 20px;
   margin: 50px;
+  font-family: 'Walter Turncoat', cursive;
 
 }
 
@@ -185,6 +182,7 @@ input {
   height: 75px;
   border: 2px solid black;
   background-color: white;
+  font-family: 'Walter Turncoat', cursive;
 }
 
 .guessOption:hover{
