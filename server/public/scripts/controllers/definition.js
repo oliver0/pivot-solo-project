@@ -1,11 +1,13 @@
-app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", "$location", "$interval", "$rootScope", function($http, GameFactory, ScoreFactory, $location, $interval, $rootScope){
+app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", "$location", "$interval", "$rootScope", "CountdownTimer", "$timeout",function($http, GameFactory, ScoreFactory, $location, $interval, $rootScope, CountdownTimer, $timeout){
 
   var self = this;
 
 
-  var TIME_INTERVAL = 10000; // in milliseconds
+  var TIME_INTERVAL = 11000; // in milliseconds
   var promise;
   var GUESS_OPTIONS = 4;
+  self.counter = 10;
+  var stopped;
   self.databaseVerbs = [];
   self.gameVerbs = [];
   self.currentVerbObject = {};
@@ -16,20 +18,40 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
   self.correct = 0;
   self.incorrect = 0;
 
+
   self.changeView = function(){
     self.stop();
     $location.path("score");
   }
 
+    // self.timer = new CountdownTimer(10000);
+
+    self.countdown = function() {
+    stopped = $timeout(function() {
+       console.log(self.counter);
+     self.counter--;
+     self.countdown();
+    }, 1000);
+  };
+
+  self.stopVisibleTimer = function(){
+
+   $timeout.cancel(stopped);
+
+    }
+
     getVerbs();
 
     self.start = function(){
       self.stop();
-      getCurrentVerb();
+      self.stopVisibleTimer();
 
+      getCurrentVerb();
+      self.countdown();
       promise = $interval(function(){
         ScoreFactory.addIncorrect();
         getCurrentVerb();
+
       }, TIME_INTERVAL);
     };
 
@@ -39,6 +61,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
 
     var destroy = $rootScope.$on('$locationChangeSuccess', function(){
       $interval.cancel(promise);
+      self.stopVisibleTimer();
       destroy();
     });
 
@@ -47,8 +70,10 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
     function getCurrentVerb(){
       if(self.gameVerbs.length ==0){
         self.stop();
+        self.stopVisibleTimer();
         self.changeView();
       } else {
+          self.counter = 10;
           currentVerbObject = GameFactory.getCurrentVerbObject(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
           self.currentVerbDefinition = currentVerbObject.definition;
           self.currentVerb = currentVerbObject.phrasal_verb;

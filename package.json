@@ -10,10 +10,14 @@
   "author": "Oliver Alexander",
   "license": "ISC",
   "dependencies": {
+    "angular-countdown": "^1.2.1",
     "angular-route": "^1.6.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "firebase-admin": "^4.0.4",
     "pg": "^6.1.0"
+  },
+  "peerDependencies": {
+    "browserify": ">= 2.3.0 < 14"
   }
 }
