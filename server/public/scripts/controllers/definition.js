@@ -3,7 +3,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
   var self = this;
 
 
-  var TIME_INTERVAL = 11000; // in milliseconds
+  var TIME_INTERVAL = 10000; // in milliseconds
   var promise;
   var GUESS_OPTIONS = 4;
   self.counter = 10;
@@ -29,10 +29,10 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
     self.countdown = function() {
     stopped = $timeout(function() {
        console.log(self.counter);
-     self.counter--;
      self.countdown();
+     self.counter--;
     }, 1000);
-  };
+    };
 
   self.stopVisibleTimer = function(){
 
@@ -61,7 +61,6 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
 
     var destroy = $rootScope.$on('$locationChangeSuccess', function(){
       $interval.cancel(promise);
-      self.stopVisibleTimer();
       destroy();
     });
 
@@ -70,7 +69,6 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
     function getCurrentVerb(){
       if(self.gameVerbs.length ==0){
         self.stop();
-        self.stopVisibleTimer();
         self.changeView();
       } else {
           self.counter = 10;

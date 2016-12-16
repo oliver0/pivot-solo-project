@@ -24,12 +24,26 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
     $location.path("score");
   }
 
+  self.countdown = function() {
+  stopped = $timeout(function() {
+     console.log(self.counter);
+   self.counter--;
+   self.countdown();
+  }, 1000);
+  };
+
+self.stopVisibleTimer = function(){
+ $timeout.cancel(stopped);
+  }
+
     getVerbs();
 
     self.start = function(){
       self.stop();
-      self.getCurrentVerb();
+      self.stopVisibleTimer();
 
+      self.getCurrentVerb();
+      self.countdown();
       promise = $interval(function(){
         ScoreFactory.addIncorrect();
         self.getCurrentVerb();
