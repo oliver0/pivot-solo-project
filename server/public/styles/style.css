@@ -3,6 +3,7 @@ body{
 }
 h1{
   font-size: 50px;
+  font-family: 'Montserrat Alternates', sans-serif;
 }
 
 h2 {
@@ -18,8 +19,18 @@ input {
   margin-bottom: 50px;
 }
 
+#p{
+  color: #00ace6;
+}
+#v{
+  color: #FF3562;
+}
+#t{
+  color: #ffdb4d;
+}
+
 #verbs{
-  background-color: #3F88C5
+  background-color: #3F88C5;
 }
 
 #guessOptions{
@@ -29,6 +40,10 @@ input {
 #gamesContainer{
   margin-top: 75px;
   text-align: center;
+}
+
+.chooseGame{
+  background-color: #66ff66;
 }
 
 .container{
@@ -41,6 +56,10 @@ input {
 
 .home{
   float: left;
+}
+
+.quote{
+  font-family: 'Walter Turncoat', cursive;
 }
 
 .gameScore{
@@ -129,6 +148,8 @@ input {
   height: 50px;
   font-size: 25px;
   background-color: #eeeeee;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: bold;
 }
 
 .blank {
@@ -137,6 +158,8 @@ input {
   font-size: 25px;
   background-color: #eeeeee;
   margin: 20px 0;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: bold;
 }
 
 .jumbotron {
