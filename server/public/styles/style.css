@@ -1,5 +1,6 @@
 body{
-  background-color: #00ace6;
+  /*background-color: #00ace6;*/
+  background-color: #ffdb4d;
 }
 h1{
   font-family: 'Montserrat Alternates', sans-serif;
@@ -25,7 +26,7 @@ input {
   color: #FF3562;
 }
 #t{
-  color: #39e600;
+  color: #ff8533;
 }
 
 #verbs{
@@ -41,12 +42,35 @@ input {
   text-align: center;
 }
 
-.title{
+#title{
   font-size: 85px;
+  color: black;
 }
 
+#scoreData{
+  margin: 50px auto 0 auto;
+  width: 400px;
+  height: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 5px solid white;
+
+}
+
+#logIn{
+  text-align: center;
+  margin-top: 30px;
+}
+
+
+
 .container{
-  height: 950px;;
+  height: 120%;
+  padding-bottom: 200px;
+}
+
+.progress{
+  height: 1200px;
 }
 
 .gameBackground{
@@ -68,16 +92,32 @@ input {
 }
 
 .blue{
-  background-color: #3F88C5;
+  background-color: #00ace6;
   color: white;
 }
 
 .yellow{
   background-color: #ffdb4d;
+  color: white;
 }
 
 .green{
-  background-color: #39e600;
+  background-color: #80f25a;
+  color: white;
+}
+
+.orange{
+    background-color: #ff8533;
+    color: white;
+}
+
+.white{
+  background-color: white;
+}
+
+.fuschia{
+  background-color: #FF3562;
+  color: white;
 }
 
 .red{
@@ -115,6 +155,7 @@ input {
   height: 200px;
   width: 200px;
   border: 2px solid black;
+  border-radius: 10px;
   text-align: center;
   line-height: 200px;
   display: inline-block;
