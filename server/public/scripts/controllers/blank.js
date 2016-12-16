@@ -1,4 +1,4 @@
-app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$location", "$interval", "$rootScope", function($http, GameFactory, ScoreFactory, $location, $interval, $rootScope){
+app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$location", "$interval", "$rootScope", "$timeout", function($http, GameFactory, ScoreFactory, $location, $interval, $rootScope, $timeout){
 
   console.log("BlankControler running");
 
@@ -9,6 +9,8 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
   var TIME_INTERVAL = 10000; // in milliseconds
   var promise;
   var GUESS_OPTIONS = 4;
+  self.counter = 10;
+  var stopped;
   self.sentences = [];
   self.gameVerbs = [];
   self.currentVerbObject = {};
@@ -27,8 +29,9 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
   self.countdown = function() {
   stopped = $timeout(function() {
      console.log(self.counter);
-   self.counter--;
-   self.countdown();
+     self.countdown();
+     self.counter--;
+
   }, 1000);
   };
 
@@ -66,6 +69,7 @@ self.stopVisibleTimer = function(){
         self.stop();
         self.changeView();
       } else {
+          self.counter = 10;
           currentVerbObject = GameFactory.getCurrentVerbObject(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
           self.currentVerbSentence = currentVerbObject.sentence;
           self.currentVerb = currentVerbObject.phrasal_verb;

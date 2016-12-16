@@ -17,6 +17,7 @@ input {
 #gameScore{
   font-size: 40px;
   margin: 25px 0;
+  float: right;
 }
 
 #guessOptions{
@@ -26,6 +27,10 @@ input {
 #gamesContainer{
   margin-top: 75px;
   text-align: center;
+}
+
+.digit{
+  font-size: 60px;
 }
 
 .timer {
