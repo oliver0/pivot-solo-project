@@ -2,7 +2,6 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
 
   var self = this;
 
-
   var TIME_INTERVAL = 10000; // in milliseconds
   var promise;
   var GUESS_OPTIONS = 4;
