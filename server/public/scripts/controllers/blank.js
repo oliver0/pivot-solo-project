@@ -22,7 +22,6 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
   self.incorrect = 0;
 
   self.changeView = function(){
-    self.stop();
     $location.path("score");
   }
 
@@ -58,6 +57,7 @@ self.stopVisibleTimer = function(){
     };
 
     var destroy = $rootScope.$on('$locationChangeSuccess', function(){
+      $timeout.cancel(stopped);
       $interval.cancel(promise);
       destroy();
     });
