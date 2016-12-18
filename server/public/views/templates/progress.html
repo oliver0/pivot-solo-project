@@ -3,13 +3,8 @@
 
   <h1 class='jumbotron orange whiteFont darkShadow'>Progress!</h1>
 
-  <div class="row">
-      <div class="col-md-3 col-md-offset-3">
-          <ul class="nav nav-pills nav-justified">
-              <li><a href="#home">Home</a></li>
-
-          </ul>
-      </div>
+  <div class="row center">
+    <a href="#home"><span class="glyphicon glyphicon-home grow"></span></a>
   </div>
 
 
@@ -28,7 +23,7 @@
         <td>{{verbData.date | date}}</td>
         <td>{{verbData.correct}}</td>
         <td>{{verbData.incorrect}}</td>
-        <td>{{verbData.percentage | number:1}}%</td>
+        <td>{{verbData.percentage | number:0}}%</td>
       </tr>
 
     </tbody>
