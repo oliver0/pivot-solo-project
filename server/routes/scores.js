@@ -14,18 +14,6 @@ router.post('/', function(req, res) {
       res.sendStatus(500);
     }
 
-    // client.query('SELECT id FROM users WHERE email = $1',
-    // [userEmail],
-    // function(err, result) {
-    //   done(); // close the connection.
-    //
-    //   if(err) {
-    //     console.log('select query error: ', err);
-    //     res.sendStatus(500);
-    //   } else {
-    //   console.log('Length of rows:', result.rows.length);
-    //   var userId = result.rows[0].id; // this is the id that corresponds to users email in users table
-    //   console.log('USER ID:', userId);
       client.query(
         'INSERT INTO scores (user_id, correct, incorrect, verb_id, game_id, date) ' +
         'VALUES ($1, $2, $3, $4, $5, $6)',

@@ -2,16 +2,13 @@
 
   <div class="jumbotron yellow"><h1>Score</h1></div>
 
-  <div class="row">
-      <div class="col-md-3 col-md-offset-3">
-          <ul class="nav nav-pills nav-justified">
-              <li><a href="#home" ng-click="score.resetGameData()">Home</a></li>
-              <li><button ng-click="score.changeView()">Repeat</button></li>
-          </ul>
-      </div>
+  <div class="row center">
+    <a href="#home"><span class="glyphicon glyphicon-home left"></span></a>
   </div>
-
-  <div id="scoreData" class="fuschia">
+  <div class="center">
+    <span ng-click="score.changeView()" class="glyphicon glyphicon-repeat"></span>
+  </div>
+  <div id="scoreData" class="blue">
     <h1>Total Correct: <span class="digit whiteFont">{{score.correct}}</span></h1>
     <h1>Total Incorrect: <span class="digit whiteFont">{{score.incorrect}}</span></h1>
     <h1>Percentage: <span class="digit whiteFont">{{score.percentage}}%</span></h1>
