@@ -19,6 +19,14 @@ input {
   margin-bottom: 50px;
 }
 
+p{
+  font-size: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 #p{
   color: #00ace6;
 }
@@ -43,7 +51,7 @@ input {
 }
 
 #title{
-  font-size: 85px;
+  font-size: 120px;
   color: black;
 }
 
@@ -63,7 +71,7 @@ input {
 }
 
 #choiceTitle{
-  font-size: 50px;
+  font-size: 60px;
   color: black;
   text-align: center;
   margin: 60px auto 50px auto;
@@ -175,9 +183,8 @@ color: black;
   border: 2px solid black;
   border-radius: 10px;
   text-align: center;
-  line-height: 200px;
+  /*line-height: 200px;*/
   display: inline-block;
-  font-size: 20px;
   margin: 50px;
   font-family: 'Walter Turncoat', cursive;
 
