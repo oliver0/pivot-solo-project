@@ -54,9 +54,12 @@ function userIdQuery(userEmail, req, next){
         res.sendStatus(500);
       } else {
         console.log('Length of ROWS:', result.rows.length);
-        var userId = result.rows[0].id; // this is the id that corresponds to users email in users table
-        console.log('USER ID DECODER:', userId);
-        req.userId = userId;
+        if(result.rows.length === 1){
+          var userId = result.rows[0].id;
+          req.userId = userId; // this is the id that corresponds to users email in users table
+          console.log('USER ID DECODER:', userId);
+        }
+
         next();
 
       }
