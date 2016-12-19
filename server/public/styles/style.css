@@ -117,10 +117,7 @@ table{
 .jumbotron{
   width: 100%;
   color: black;
-}
-
-.progress{
-  /*height: 1200px;*/
+  text-align: center;
 }
 
 .gameBackground{
@@ -135,11 +132,6 @@ table{
   font-family: 'Walter Turncoat', cursive;
 }
 
-.gameScore{
-  font-size: 40px;
-  margin: 25px 40px 0 0;;
-  float: right;
-}
 
 .whiteFont{
   color: white;
@@ -178,20 +170,6 @@ table{
   font-size: 85px;
 }
 
-.timer {
-  width: 150px;
-  height: 150px;
-  border-radius: 75px;
-  border: 8px solid black;
-  text-align: center;
-  line-height: 150px;
-  font-size: 75px;
-  margin: 0 auto 50px auto;
-  font-family: 'Orbitron', sans-serif;
-  background-color: #FF3562;
-  color: white;
-}
-
 .gameSquare {
   height: 200px;
   width: 200px;
@@ -203,92 +181,4 @@ table{
   margin: 50px;
   font-family: 'Walter Turncoat', cursive;
 
-}
-
-.guessOption {
-  height: 75px;
-  border: 2px solid black;
-  background-color: white;
-  font-family: 'Walter Turncoat', cursive;
-}
-
-.guessOption:hover{
-  background-color: #dddddd;
-}
-
-.question h2 {
-  text-align: center;
-  height: auto;
-  font-size: 40px;
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-weight: bold;
-  color: black;
-}
-
-.jumbotron {
-  text-align: center;
-}
-
-/*animations*/
-
-.grow {
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-.grow:hover, .hvr-grow:focus, .hvr-grow:active {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
-
-.rotate {
-  display: inline-block;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px transparent;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-.rotate:hover, .rotate:focus, .rotate:active {
-  -webkit-transform: rotate(4deg);
-  transform: rotate(4deg);
-}
-
-.shrink {
-  display: inline-block;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px transparent;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-.shrink:hover, .hvr-shrink:focus, .hvr-shrink:active {
-  -webkit-transform: scale(0.9);
-  transform: scale(0.9);
-}
-
-.sink {
-  display: inline-block;
-  -webkit-transform: perspective(1px) translateZ(0);
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px transparent;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-  -webkit-transition-timing-function: ease-out;
-  transition-timing-function: ease-out;
-}
-.sink:hover, .hvr-sink:focus, .hvr-sink:active {
-  -webkit-transform: translateY(8px);
-  transform: translateY(8px);
 }
