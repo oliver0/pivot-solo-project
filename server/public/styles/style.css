@@ -1,4 +1,9 @@
+html{
+  font-size: 16px;
+}
+
 body{
+  font-size: 62.5%;
   /*background-color: #00ace6;*/
   background-color: #ffdb4d;
 }
@@ -20,7 +25,7 @@ input {
 }
 
 p{
-  font-size: 25px;
+  font-size: 2em;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -43,10 +48,6 @@ table{
 
 #verbs{
   background-color: #3F88C5;
-}
-
-#guessOptions{
-  margin-top: 50px;
 }
 
 #gamesContainer{
@@ -75,7 +76,7 @@ table{
 }
 
 .title{
-  font-size: 60px;
+  font-size: 6em;
   color: black;
   text-align: center;
   margin: 60px auto 50px auto;
@@ -171,14 +172,15 @@ table{
 }
 
 .gameSquare {
-  height: 200px;
-  width: 200px;
+  height: 12em;
+  width: 12em;
   border: 2px solid black;
-  border-radius: 10px;
+  border-radius: 1em;
   text-align: center;
   box-shadow: 5px 2px 2px grey;
   display: inline-block;
-  margin: 50px;
+  margin: 4.19463087%;
   font-family: 'Walter Turncoat', cursive;
+  font-size:
 
 }
