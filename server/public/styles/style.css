@@ -12,7 +12,7 @@ h2 {
 
 h3{
   text-align: center;
-  font-size: 30px;
+  font-size: 35px;
 }
 
 input {
@@ -109,6 +109,7 @@ table{
 }
 
 .container{
+  margin-top: 60px;
   height: 100%;
   /*padding-bottom: 200px;*/
 }
@@ -215,25 +216,13 @@ table{
   background-color: #dddddd;
 }
 
-.definition {
+.question h2 {
   text-align: center;
-  height: 50px;
-  font-size: 25px;
-  background-color: #00ace6;
+  height: auto;
+  font-size: 40px;
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: bold;
-  color: white;
-}
-
-.blank {
-  text-align: center;
-  height: 75px;
-  font-size: 25px;
-  background-color: #ff8533;
-  margin: 20px 0;
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-weight: bold;
-  color: white;
+  color: black;
 }
 
 .jumbotron {
