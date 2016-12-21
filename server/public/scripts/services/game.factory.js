@@ -11,6 +11,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
   var currentVerb;
   var currentVerbObject;
   var currentGameId;
+  var correctAnswerPosition;
 
 
   function resetGame(){
@@ -69,7 +70,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
         uniqueVerbs.splice(i, 1); // removes it so we don't have duplicate correct answers.
       }
     }
-    var correctAnswerPosition = randomNumber(0, GUESS_OPTIONS-1);
+    correctAnswerPosition = randomNumber(0, GUESS_OPTIONS-1);
     for (var i = 0; i < GUESS_OPTIONS; i++) {
       if(i == correctAnswerPosition){
         guessOptions.push(currentVerb);
@@ -96,6 +97,9 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
     sentences: function() {
       return sentences;
     },
+    correctAnswerPosition: function(){
+      return correctAnswerPosition;
+    },
     uniquePhrasalVerbs: function() {
       return uniquePhrasalVerbs;
     },
@@ -111,7 +115,6 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
     assignGuessOptions: function() {
       return assignGuessOptions();
     }
-
   }
 
   return gameData;

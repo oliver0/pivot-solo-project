@@ -9,18 +9,18 @@
 
   <div id="guessOptions">
     <div class="row">
-      <div ng-click="def.isCorrect(def.guessOptions[0])" class="col-md-offset-2 col-md-4 guessOption">
+      <div id="guessOption0" ng-click="def.isCorrect(def.guessOptions[0], '#guessOption0')" class="col-md-offset-2 col-md-4 guessOption" >
         <h3 >{{def.guessOptions[0]}}</h3>
       </div>
-      <div ng-click="def.isCorrect(def.guessOptions[1])" class="col-md-4 guessOption">
+      <div id="guessOption1" ng-click="def.isCorrect(def.guessOptions[1], '#guessOption1')" ng-class="{1:correct}" class="col-md-4 guessOption">
         <h3 >{{def.guessOptions[1]}}</h3>
       </div>
     </div>
     <div class="row">
-      <div ng-click="def.isCorrect(def.guessOptions[2])" class="col-md-offset-2 col-md-4 guessOption">
+      <div id="guessOption2" ng-click="def.isCorrect(def.guessOptions[2], '#guessOption2')" ng-class="{2:correct}" class="col-md-offset-2 col-md-4 guessOption">
         <h3 >{{def.guessOptions[2]}}</h3>
       </div>
-      <div ng-click="def.isCorrect(def.guessOptions[3])" class="col-md-4 guessOption">
+      <div id="guessOption3" ng-click="def.isCorrect(def.guessOptions[3], '#guessOption3')" ng-class="{3:correct}" class="col-md-4 guessOption">
         <h3 >{{def.guessOptions[3]}}</h3>
       </div>
     </div>

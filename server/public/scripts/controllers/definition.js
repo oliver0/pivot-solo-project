@@ -26,7 +26,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
 
   self.countdown = function() {
     stopped = $timeout(function() {
-       console.log(self.counter);
+       //console.log(self.counter);
      self.countdown();
      self.counter--;
     }, 1000);
@@ -98,22 +98,35 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
     // Assign self.correct/incorrect to update variables in factory,
     // reset timer which calls self.getCurrentVerb() to repopulate game
     // with definition and guess options
-    self.isCorrect = function(verbPicked){
+    self.isCorrect = function(verbPicked, guessOptionElement){
       if(this.currentVerb == verbPicked){
         ScoreFactory.addCorrect();
         self.correct = ScoreFactory.correct();
+        //console.log(GameFactory.correctAnswerPosition());
         animationDelay();
       } else {
         ScoreFactory.addIncorrect();
         self.incorrect = ScoreFactory.incorrect();
-        self.start();
-        animationDelay();
+        animationDelay(guessOptionElement, true);
       }
     }
 
-    function animationDelay(){
+    function animationDelay(guessOptionElement, incorrect){
+      var correctPos = GameFactory.correctAnswerPosition();
+      var correctID = "#guessOption"+correctPos;
+      var correctElement = angular.element( document.querySelector(correctID ));
+      correctElement.addClass('green');
+      if(incorrect){
+        var incorrectElement = angular.element( document.querySelector(guessOptionElement));
+        incorrectElement.addClass('red');
+      }
       delay = $timeout(function(){
         self.start();
+        correctElement.removeClass('green');
+        if(incorrect){
+          incorrectElement.removeClass('red');
+        }
+
       }, 1000)
     }
 

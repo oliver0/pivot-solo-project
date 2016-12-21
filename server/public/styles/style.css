@@ -159,9 +159,6 @@ h3 .quote {
   background-color: #ffdb4d;
 }
 
-.green{
-  background-color: #80f25a;
-}
 
 .orange{
     background-color: #ff8533;
@@ -173,11 +170,6 @@ h3 .quote {
 
 .fuschia{
   background-color: #FF3562;
-}
-
-.red{
-  background-color: #D00000;
-  color: white;
 }
 
 .digit{
@@ -212,8 +204,20 @@ h3 .quote {
   font-family: 'Walter Turncoat', cursive;
 }
 
-.guessOption:hover{
+/*.guessOption:hover{
   background-color: #dddddd;
+}*/
+
+.green{
+  background-color: #80f25a;
+  color: black;
+  text-shadow: 2px 2px white;
+}
+
+.red{
+  background-color: #D00000;
+  color: white;
+  text-shadow: 2px 2px black;
 }
 
 .timer {
