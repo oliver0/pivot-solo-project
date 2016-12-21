@@ -102,12 +102,19 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
       if(this.currentVerb == verbPicked){
         ScoreFactory.addCorrect();
         self.correct = ScoreFactory.correct();
-        self.start();
+        animationDelay();
       } else {
         ScoreFactory.addIncorrect();
         self.incorrect = ScoreFactory.incorrect();
         self.start();
+        animationDelay();
       }
+    }
+
+    function animationDelay(){
+      delay = $timeout(function(){
+        self.start();
+      }, 1000)
     }
 
   }]);
