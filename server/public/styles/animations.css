@@ -1,4 +1,38 @@
-/*animations*/
+/* global */
+
+@keyframes fadeIn{
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;;
+  }
+}
+
+@keyframes slideUp{
+  from {
+    transform: translateY(600px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+/* logo */
+
+@keyframes slideDown{
+  from {
+    transform: translateY(-300px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+
+/* hover.css */
 
 .grow {
   display: inline-block;
