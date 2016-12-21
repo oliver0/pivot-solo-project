@@ -115,18 +115,27 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
       var correctPos = GameFactory.correctAnswerPosition();
       var correctID = "#guessOption"+correctPos;
       var correctElement = angular.element( document.querySelector(correctID ));
+      var score = angular.element( document.querySelector('.gameScore'));
       correctElement.addClass('green');
+
       if(incorrect){
         var incorrectElement = angular.element( document.querySelector(guessOptionElement));
         incorrectElement.addClass('red');
+        score.addClass('redFont');
+      } else {
+        score.addClass('scoreAnimation');
+        score.addClass('greenFont');
       }
       delay = $timeout(function(){
         self.start();
         correctElement.removeClass('green');
         if(incorrect){
           incorrectElement.removeClass('red');
+          score.removeClass('redFont');
+        } else {
+          score.removeClass('scoreAnimation');
+          score.removeClass('greenFont');
         }
-
       }, 1000)
     }
 

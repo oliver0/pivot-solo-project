@@ -61,13 +61,13 @@ h3 .quote {
 #gamesContainer{
   margin-top: 7.978723%;
   text-align: center;
-  animation: slideUp 0.6s;
+  animation: slideUp 0.4s;
 }
 
 #pivot h1{
   font-size: 9.5em;
   color: black;
-  animation: slideDown 0.6s;
+  animation: slideDown 0.4s;
 }
 
 #scoreData{
@@ -143,7 +143,7 @@ h3 .quote {
 
 .quote{
   font-family: 'Walter Turncoat', cursive;
-  animation: fadeIn 2s ease-in-out;
+  animation: fadeIn 1.5s ease-in-out;
 }
 
 
@@ -225,7 +225,6 @@ h3 .quote {
   height: 15em;
   border-radius: 7.5em;
   border: 8px solid black;
-  padding-top: 10px;
   text-align: center;
   margin: 0 auto 0 auto;
   font-family: 'Orbitron', sans-serif;
@@ -253,6 +252,20 @@ h3 .quote {
   font-size: 9em;
   margin: 0 10% 0 0;
   display: inline-block;
+}
+
+.scoreAnimation{
+  transform: scale(1.5);
+  transition: all 0.8s ease-in-out;
+  /*animation: ScaleUpDown 0.9s forwards;*/
+}
+
+.redFont{
+  color: #D00000;
+}
+.greenFont{
+  color: #80f25a;
+  text-shadow: 3px 3px black;
 }
 
 /* MEDIA */
