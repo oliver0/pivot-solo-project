@@ -12,6 +12,7 @@ app.controller("ScoreController", ["$http", "ScoreFactory", "$rootScope", "$loca
   self.correct = ScoreFactory.correct();
   self.incorrect = ScoreFactory.incorrect();
   self.percentage = (self.correct / (self.correct + self.incorrect))*100;
+  self.fiftyPercentAbove = self.percentage >= 50;
 
   self.changeView = function(){
     $location.path("game");

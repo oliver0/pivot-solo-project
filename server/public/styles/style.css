@@ -176,6 +176,11 @@ h3 .quote {
   padding: 5%;
 }
 
+.percentage {
+  font-size: 7em;
+  margin-top: 2.659574468%;
+}
+
 .gameSquare {
   height: 12em;
   width: 12em;
@@ -261,6 +266,7 @@ h3 .quote {
 
 .redFont{
   color: #D00000;
+  text-shadow: 3px 3px black;
 }
 .greenFont{
   color: #80f25a;
@@ -329,6 +335,11 @@ h3 .quote {
 
   .digit {
     font-size: 30px;
+  }
+
+  .percentage {
+    margin-top: 25px;
+    animation:bounce 1s;
   }
 
   .gameScore{
