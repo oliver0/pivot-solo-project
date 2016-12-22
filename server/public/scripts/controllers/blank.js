@@ -7,7 +7,6 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
   var GUESS_OPTIONS = 4;
   self.counter = 10;
   var stopped;
-  self.sentences = [];
   self.gameVerbs = [];
   self.currentVerbObject = {};
   self.currentVerbSentence = "";
@@ -75,7 +74,6 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
 
   function getVerbs() {
     GameFactory.getVerbs().then(function(response) {
-      self.sentences = GameFactory.sentences();
       self.uniquePhrasalVerbs = GameFactory.uniquePhrasalVerbs();
       self.gameVerbs = GameFactory.gameVerbs(); //get array of verb objects to be used in game.
       self.start(); //start timer
