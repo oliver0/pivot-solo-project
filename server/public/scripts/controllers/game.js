@@ -90,6 +90,8 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
     // reset timer which calls self.getCurrentVerb() to repopulate game
     // with definition and guess options
     self.isCorrect = function(verbPicked, guessOptionElement){
+      self.stopVisibleTimer();
+      self.timeRunningOut = false;
       if(this.currentVerb == verbPicked){
         ScoreFactory.addCorrect();
         self.correct = ScoreFactory.correct();
