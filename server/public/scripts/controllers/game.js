@@ -15,6 +15,7 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
   self.uniquePhrasalVerbs = [];
   self.correct = 0;
   self.incorrect = 0;
+  self.flag = true;
 
   self.changeView = function(){
     $location.path("score");
@@ -25,6 +26,7 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
      self.countdown();
      self.counter--;
      self.timeRunningOut = self.counter <= 3;
+     console.log('SECOND TIMER');
     }, 1000);
   };
 
@@ -41,6 +43,7 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
       getCurrentVerb();
       self.countdown();
       promise = $interval(function(){
+        console.log('MAIN TIMER');
         ScoreFactory.addIncorrect();
         getCurrentVerb();
       }, TIME_INTERVAL);
@@ -60,7 +63,7 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
     // seperate out definition and correct verb, call assignGuessOptions()
     function getCurrentVerb(){
       if (self.gameVerbs.length === 0) {
-        
+
         self.stop();
         self.stopVisibleTimer();
         self.changeView();
@@ -91,18 +94,23 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
     // reset timer which calls self.getCurrentVerb() to repopulate game
     // with definition and guess options
     self.isCorrect = function(verbPicked, guessOptionElement){
-      self.stopVisibleTimer();
-      self.timeRunningOut = false;
-      if(this.currentVerb == verbPicked){
-        ScoreFactory.addCorrect();
-        self.correct = ScoreFactory.correct();
-        //console.log(GameFactory.correctAnswerPosition());
-        animationDelay();
-      } else {
-        ScoreFactory.addIncorrect();
-        self.incorrect = ScoreFactory.incorrect();
-        animationDelay(guessOptionElement, true);
+      if(self.flag){
+        self.flag = false;
+        self.stopVisibleTimer();
+        self.timeRunningOut = false;
+        if(this.currentVerb == verbPicked){
+          ScoreFactory.addCorrect();
+          self.correct = ScoreFactory.correct();
+          //console.log(GameFactory.correctAnswerPosition());
+          animationDelay();
+        } else {
+          ScoreFactory.addIncorrect();
+          self.incorrect = ScoreFactory.incorrect();
+          animationDelay(guessOptionElement, true);
+        }
       }
+
+
     }
 
     function animationDelay(guessOptionElement, incorrect){
@@ -130,6 +138,7 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
           score.removeClass('scoreAnimation');
           score.removeClass('greenFont');
         }
+        self.flag = true;
       }, 1000)
     }
 

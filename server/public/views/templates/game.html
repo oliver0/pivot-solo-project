@@ -1,7 +1,7 @@
 <div class="container gameBackground">
   <a href="#home"><span class="glyphicon glyphicon-home grow"></span></a>
   <div class="gameScore shadow">{{game.correct}}</div>
-  <div class ="timer" ng-class="{bubble:game.timeRunningOut}"><h3>{{game.counter}}</h3></div>
+  <div class ="timer" ng-class="{'bubble':game.timeRunningOut}"><h3>{{game.counter}}</h3></div>
 
   <div class="question">
     <h2>{{game.currentGameQuestion}}</h2>
@@ -9,18 +9,18 @@
 
   <div id="guessOptions">
     <div class="row">
-      <div id="guessOption0" ng-click="game.isCorrect(game.guessOptions[0], '#guessOption0')" class="col-md-offset-2 col-md-4 guessOption" >
+      <div id="guessOption0" ng-click="game.isCorrect(game.guessOptions[0], '#guessOption0')"  ng-disabled="game.flag" class="col-md-offset-2 col-md-4 guessOption" >
         <h3 >{{game.guessOptions[0]}}</h3>
       </div>
-      <div id="guessOption1" ng-click="game.isCorrect(game.guessOptions[1], '#guessOption1')" class="col-md-4 guessOption">
+      <div id="guessOption1" ng-click="game.isCorrect(game.guessOptions[1], '#guessOption1')"  ng-disabled="game.flag" class="col-md-4 guessOption">
         <h3 >{{game.guessOptions[1]}}</h3>
       </div>
     </div>
     <div class="row">
-      <div id="guessOption2" ng-click="game.isCorrect(game.guessOptions[2], '#guessOption2')" class="col-md-offset-2 col-md-4 guessOption">
+      <div id="guessOption2" ng-click="game.isCorrect(game.guessOptions[2], '#guessOption2')"  ng-disabled="game.flag" class="col-md-offset-2 col-md-4 guessOption">
         <h3 >{{game.guessOptions[2]}}</h3>
       </div>
-      <div id="guessOption3" ng-click="game.isCorrect(game.guessOptions[3], '#guessOption3')" class="col-md-4 guessOption">
+      <div id="guessOption3" ng-click="game.isCorrect(game.guessOptions[3], '#guessOption3')"  ng-disabled="game.flag" class="col-md-4 guessOption">
         <h3 >{{game.guessOptions[3]}}</h3>
       </div>
     </div>
