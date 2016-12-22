@@ -1,7 +1,7 @@
 <div class="container gameBackground">
   <a href="#home"><span class="glyphicon glyphicon-home grow"></span></a>
   <div class="gameScore shadow">{{def.correct}}</div>
-  <div class ="timer"><h3>{{def.counter}}</h3></div>
+  <div class ="timer" ng-class="{bubble:def.timeRunningOut}"><h3>{{def.counter}}</h3></div>
 
   <div class="question">
     <h2>{{def.currentGameQuestion}}</h2>

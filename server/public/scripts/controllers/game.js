@@ -24,6 +24,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
     stopped = $timeout(function() {
      self.countdown();
      self.counter--;
+     self.timeRunningOut = self.counter <= 3;
     }, 1000);
   };
 
