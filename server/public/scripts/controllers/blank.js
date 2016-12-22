@@ -1,9 +1,7 @@
 app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$location", "$interval", "$rootScope", "$timeout", function($http, GameFactory, ScoreFactory, $location, $interval, $rootScope, $timeout){
 
-  console.log("BlankControler running");
-
   var self = this;
-  
+
   var TIME_INTERVAL = 10000; // in milliseconds
   var promise;
   var GUESS_OPTIONS = 4;
@@ -25,7 +23,6 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
 
   self.countdown = function() {
     stopped = $timeout(function() {
-      console.log(self.counter);
       self.countdown();
       self.counter--;
     }, 1000);
@@ -41,11 +38,11 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
     self.stop();
     self.stopVisibleTimer();
 
-    self.getCurrentVerb();
+    getCurrentVerb();
     self.countdown();
     promise = $interval(function(){
       ScoreFactory.addIncorrect();
-      self.getCurrentVerb();
+      getCurrentVerb();
     }, TIME_INTERVAL);
   };
 
@@ -61,9 +58,10 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
 
   // if there are no more verbs in game array, switch to score view. otherwise, take verb object from game array,
   // seperate out definition and correct verb, call assignGuessOptions()
-  self.getCurrentVerb = function(){
-    if(self.gameVerbs.length ==0){
+  function getCurrentVerb() {
+    if (self.gameVerbs.length === 0) {
       self.stop();
+      self.stopVisibleTimer();
       self.changeView();
     } else {
       self.counter = 10;
@@ -76,7 +74,6 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
 
 
   function getVerbs() {
-    console.log("GAME VERBS!");
     GameFactory.getVerbs().then(function(response) {
       self.sentences = GameFactory.sentences();
       self.uniquePhrasalVerbs = GameFactory.uniquePhrasalVerbs();
@@ -87,7 +84,6 @@ app.controller("BlankController", ["$http", "GameFactory", "ScoreFactory", "$loc
 
   function assignGuessOptions(){
     self.guessOptions = GameFactory.assignGuessOptions();
-    console.log(self.guessOptions);
   }
 
   // check if answer correct/incorrect, add to variable in factory.
