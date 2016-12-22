@@ -9,7 +9,7 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
   var stopped;
   self.gameVerbs = [];
   self.currentVerbObject = {};
-  self.currentVerbDefinition = "";
+  self.currentGameQuestion = "";
   self.currentVerb = "";
   self.guessOptions = [];
   self.uniquePhrasalVerbs = [];
@@ -65,8 +65,8 @@ app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", 
       } else {
           self.counter = 10;
           currentVerbObject = GameFactory.getCurrentVerbObject(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
-          self.currentVerbDefinition = currentVerbObject.definition;
-          self.currentVerb = currentVerbObject.phrasal_verb;
+          self.currentGameQuestion = currentVerbObject.gameQuestion;
+          self.currentVerb = currentVerbObject.currentVerb;
           assignGuessOptions();
       }
     };

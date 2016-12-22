@@ -12,6 +12,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
   var currentVerbObject;
   var currentGameId;
   var correctAnswerPosition;
+  var gameQuestion;
 
 
   function resetGame(){
@@ -36,7 +37,6 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
 
   // add verbs to game array, currently 10 but can be changed.
   function addVerbsToGame(gameId){
-    //console.log('GAME ID:', gameId);
     var verbList;
     if(gameId === 1){
       verbList = databaseVerbs;
@@ -49,15 +49,19 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
       gameVerbs.push(verb);
     }
   }
+
   // get verb and definition from object returned from gameVerbs.pop(). return both in an object
   function getCurrentVerbObject(){
     currentVerbObject = gameVerbs.pop();
-    //console.log('CURRENT VERB OBJECT:', currentVerbObject);
-    //console.log('currentVerbObject ID:', currentVerbObject.id );
+    if(currentGameId === 1){
+      gameQuestion = currentVerbObject.definition;
+    }
+    if(currentGameId === 2){
+      gameQuestion = currentVerbObject.sentence;
+    }
     ScoreFactory.setVerbId(currentVerbObject.id);
     currentVerb = currentVerbObject.phrasal_verb;
-    //console.log('CURRENT VERB OBJECT', currentVerbObject);
-    return currentVerbObject;
+    return {gameQuestion:gameQuestion, currentVerb:currentVerb};
   }
 
   // copy unique phrasal verb array, if correct verb in it remove it. For loop runs as long as number of options,
