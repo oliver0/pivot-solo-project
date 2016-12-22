@@ -21,7 +21,8 @@ router.get('/', function(req, res) {
                  'JOIN phrasal_verbs ON scores.verb_id = phrasal_verbs.id ' +
                  'JOIN users ON scores.user_id = users.id ' +
                  'WHERE users.id = ' + userId + ' ' +
-                 'GROUP BY date;',
+                 'GROUP BY date ' +
+                 'ORDER BY date DESC;',
     function(err, result) {
       done(); // close the connection.
 
