@@ -60,6 +60,7 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
     // seperate out definition and correct verb, call assignGuessOptions()
     function getCurrentVerb(){
       if (self.gameVerbs.length === 0) {
+        
         self.stop();
         self.stopVisibleTimer();
         self.changeView();

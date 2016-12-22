@@ -27,15 +27,70 @@
   -webkit-animation:pulse 1s infinite;
 }
 
+.invertColor {
+  animation:invertColor 1s infinite;
+}
+
 @keyframes pulse {
-  0%      { transform:scale(1); }
-  25%     { transform:scale(1.4); }
-  75%     { transform:scale(1); }
+  0%      {
+    transform:scale(1);
+    color:#FF3562;
+    background-color: white;
+  }
+  25%     {
+    transform:scale(1.4);
+    color:white;
+    background-color: #FF3562;
+  }
+  50%     {
+    color:#FF3562;
+    background-color: white;
+  }
+  75%     {
+    transform:scale(1);
+    color:white;
+    background-color: #FF3562;
+  }
 }
 @-webkit-keyframes pulse {
-  0%      { -webkit-transform:scale(1); }
-  25%     { -webkit-transform:scale(1.4); }
-  75%     { -webkit-transform:scale(1); }
+  0%      {
+    -webkit-transform:scale(1);
+    color:#FF3562;
+    background-color: white;
+  }
+  25%     {
+    -webkit-transform:scale(1.4);
+    color:white;
+    background-color: #FF3562;
+  }
+  50%     {
+    color:#FF3562;
+    background-color: white;
+  }
+  75%     {
+    -webkit-transform:scale(1);
+    color:white;
+    background-color: #FF3562;
+  }
+}
+
+@keyframes invertColor {
+  0%      {
+    color:#FF3562;
+    background-color: white;
+  }
+  25%     {
+    color:white;
+    background-color: #FF3562;
+  }
+  50%     {
+    color:#FF3562;
+    background-color: white;
+   }
+  75%     {
+    color:white;
+    background-color: #FF3562;
+  }
 }
 
 /* logo */
