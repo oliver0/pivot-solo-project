@@ -1,4 +1,4 @@
-app.controller("DefinitionController", ["$http", "GameFactory", "ScoreFactory", "$location", "$interval", "$rootScope", "CountdownTimer", "$timeout",function($http, GameFactory, ScoreFactory, $location, $interval, $rootScope, CountdownTimer, $timeout){
+app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$location", "$interval", "$rootScope", "CountdownTimer", "$timeout",function($http, GameFactory, ScoreFactory, $location, $interval, $rootScope, CountdownTimer, $timeout){
 
   var self = this;
 

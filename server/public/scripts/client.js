@@ -24,8 +24,8 @@ app.config(['$routeProvider', function($routeProvider) {
   })
   .when('/game', {
     templateUrl: '/views/templates/game.html',
-    controller: 'DefinitionController',
-    controllerAs: 'def'
+    controller: 'GameController',
+    controllerAs: 'game'
   })
   .when('/score', {
     templateUrl: '/views/templates/score.html',
