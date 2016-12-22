@@ -27,11 +27,6 @@ app.config(['$routeProvider', function($routeProvider) {
     controller: 'DefinitionController',
     controllerAs: 'def'
   })
-  .when('/blank', {
-    templateUrl: '/views/templates/blank.html',
-    controller: 'BlankController',
-    controllerAs: 'blank'
-  })
   .when('/score', {
     templateUrl: '/views/templates/score.html',
     controller: 'ScoreController',
