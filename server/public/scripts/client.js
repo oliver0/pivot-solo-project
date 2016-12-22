@@ -22,8 +22,8 @@ app.config(['$routeProvider', function($routeProvider) {
     controller: 'ChoiceController',
     controllerAs: 'choice'
   })
-  .when('/definition', {
-    templateUrl: '/views/templates/definition.html',
+  .when('/game', {
+    templateUrl: '/views/templates/game.html',
     controller: 'DefinitionController',
     controllerAs: 'def'
   })

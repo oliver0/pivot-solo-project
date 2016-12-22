@@ -3,7 +3,6 @@ app.controller("ScoreController", ["$http", "ScoreFactory", "$rootScope", "$loca
   console.log("ScoreController running");
 
   var self = this;
-  var currentGame;
   // reset score on view change -
   var destroy = $rootScope.$on('$locationChangeSuccess', function(){
     ScoreFactory.resetGameData();
@@ -15,19 +14,7 @@ app.controller("ScoreController", ["$http", "ScoreFactory", "$rootScope", "$loca
   self.percentage = (self.correct / (self.correct + self.incorrect))*100;
 
   self.changeView = function(){
-    $location.path("definition");
-  }
-
-  getCurrentGame();
-
-  function getCurrentGame(){
-    var gameId = ScoreFactory.getGameId();
-    if(gameId === 1){
-      currentGame = "definition";
-    }
-    if(gameId ===2){
-      currentGame = "blank";
-    }
+    $location.path("game");
   }
 
   }]);
