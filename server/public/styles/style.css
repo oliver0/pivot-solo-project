@@ -340,6 +340,7 @@ h3 .quote {
   .percentage {
     margin-top: 25px;
     animation:bounce 1s;
+    -webkit-animation: bounce 1s;
   }
 
   .gameScore{
