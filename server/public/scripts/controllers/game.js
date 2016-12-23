@@ -96,6 +96,7 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
     self.isCorrect = function(verbPicked, guessOptionElement){
       if(self.flag){
         self.flag = false;
+        self.stop();
         self.stopVisibleTimer();
         self.timeRunningOut = false;
         if(this.currentVerb == verbPicked){
