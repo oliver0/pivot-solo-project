@@ -7,7 +7,7 @@ app.controller("HomeController", ["$http", "AuthFactory", function($http, AuthFa
   self.getDisplayName= function(){
     var displayName = AuthFactory.getCurrentUserDisplayName()
     if(displayName){
-      return displayName.substring(0, 7) + ("'s'");
+      return displayName.split(" ")[0] + ("'s");
     } else {
       return 'your';
     }
