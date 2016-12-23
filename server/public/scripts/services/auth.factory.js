@@ -4,6 +4,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
   var self = this;
   var currentUser;
   var currentUserId = 1;
+  var loggedIn = false;
 
   // This code runs whenever the user logs in
   function logIn(){
@@ -20,14 +21,20 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
     return currentUser;
   }
 
+  function isLoggedIn(){
+    return loggedIn;
+  }
+
   // This code runs whenever the user changes authentication states
   // e.g. whevenever the user logs in or logs out
   //
   auth.$onAuthStateChanged(function(firebaseUser){
+    console.log('User is logged in:', loggedIn);
     // firebaseUser will be null if not logged in
     currentUser = firebaseUser;
     console.log('currentUser:',currentUser);
     if(currentUser) {
+
       firebaseUser.getToken().then(function(idToken){
         //console.log('ID TOKEN:', idToken)
         $http({
@@ -49,23 +56,37 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
             })
             .then(function(response) {
               console.log('POST SUCCESSFUL');
+
             });
           }
+
         });
         });
+        loggedIn = true;
+
       } else {
         console.log('Not logged in or not authorized.');
       }
+
+
+      console.log('User is logged in:', loggedIn);
     });
 
   // This code runs when the user logs out
   function logOut (){
     auth.$signOut().then(function(){
       console.log('Logging the user out!');
+      loggedIn = false;
     });
   };
 
   var userData = {
+    currentUserId: function(){
+      return currentUserId;
+    },
+    isLoggedIn: function(){
+      return loggedIn;
+    },
     logIn: function() {
       return logIn();
     },
@@ -74,9 +95,6 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
     },
     getCurrentUser: function(){
       return getCurrentUser();
-    },
-    currentUserId: function(){
-      return currentUserId;
     }
   }
 

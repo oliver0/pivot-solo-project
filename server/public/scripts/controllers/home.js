@@ -4,16 +4,30 @@ app.controller("HomeController", ["$http", "AuthFactory", function($http, AuthFa
   var self = this;
 
   var currentUser;
+  self.loggedIn;
+
+  self.logInOut = function(){
+    self.loggedIn = AuthFactory.isLoggedIn();
+    if(self.loggedIn){
+      logOut();
+      self.loggedIn = AuthFactory.isLoggedIn();
+      console.log('User is logged in', self.loggedIn );
+    } else{
+      logIn();
+      self.loggedIn = AuthFactory.isLoggedIn();
+      console.log('User is logged in', self.loggedIn );
+    }
+  }
 
 
-  self.logIn = function(){
+  function logIn(){
     console.log('ANYTHING!');
     AuthFactory.logIn();
     };
 
   //currentUser = AuthFactory.currentUser();  }
 
-  self.logOut = function(){
+  function logOut(){
     console.log('ANYTHING!');
     AuthFactory.logOut();
   }
