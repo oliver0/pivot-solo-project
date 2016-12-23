@@ -92,6 +92,7 @@ h3 .quote {
   font-size: 9.5em;
   color: black;
   animation: slideDown 0.4s;
+  clear: right;;
 }
 
 #scoreData{
@@ -148,6 +149,22 @@ h3 .quote {
   font-size: 6em;
 }
 
+.glyphicon-log-in, .glyphicon-log-out {
+  float: right;
+  font-size: 3em;
+  margin: 0 2.659574468% 2.659574468% 0;
+}
+
+.glyphicon-log-in {
+  color: #00ace6;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.glyphicon-log-out {
+  color: #FF3562;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
 .shadow{
   text-shadow: 2px 2px white;
 }
@@ -157,15 +174,16 @@ h3 .quote {
 }
 
 .container{
-  margin-top: 6.382978723%;
-  width: 90%;
+  padding: 2%;
+  margin-top: 4;
+  width: 94%;
 }
 
 .jumbotron{
   width: 100%;
   color: black;
   text-align: center;
-  font-size: 3.75em;
+  font-size: 3.45em;
 }
 
 .gameBackground{
