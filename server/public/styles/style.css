@@ -332,6 +332,56 @@ h3 .quote {
 
 /* MEDIA */
 
+@media screen and (max-width: 1050px){
+  #pivot h1{
+
+  }
+  .gameSquare {
+    width: 15vw;
+    height: 15vw;
+  }
+}
+
+@media screen and (max-width: 930px){
+  #pivot h1{
+    font-size: 17vw;
+  }
+  .gameSquare {
+    width: 17vw;
+    height: 17vw;
+  }
+}
+
+@media screen and (max-width: 700px){
+  #pivot h1{
+    font-size: 20vw;
+  }
+  .gameSquare {
+    width: 20vw;
+    height: 20vw;
+  }
+}
+
+@media screen and (max-width: 550px){
+  #pivot h1{
+    font-size: 23vw;
+  }
+  .gameSquare {
+    width: 23vw;
+    height: 23vw;
+  }
+}
+
+@media screen and (max-width: 550px){
+  #pivot h1{
+    font-size: 26vw;
+  }
+  .gameSquare {
+    width: 26vw;
+    height: 26vw;
+  }
+}
+
 @media screen and (max-width: 375px) {
 
   h3 {
