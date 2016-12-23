@@ -1,32 +1,24 @@
-html{
-  font-size: 16px;
-}
+html{font-size: 16px;}
 
 body{
   font-size: 62.5%;
-  /*background-color: #00ace6;*/
   background-color: #ffdb4d;
 }
-main{
-  padding-bottom: 0;
-}
+main{padding-bottom: 0;}
+
 h1{
   font-family: 'Montserrat Alternates', sans-serif;
   font-size: 2em;
 }
 
-h2 {
-  padding: 10px;
-}
+h2 {padding: 10px;}
 
 h3{
   text-align: center;
   font-size: 3.5em;
 }
 
-input {
-  margin-bottom: 50px;
-}
+input {margin-bottom: 50px;}
 
 a{
   text-decoration: none;
@@ -36,12 +28,9 @@ a{
 a:hover{
   text-decoration: none;
   color: white;
-
 }
 
-table{
-  margin-top: 25px;
-}
+table{margin-top: 25px;}
 
 th {
   font-family: 'Montserrat Alternates', sans-serif;
@@ -49,13 +38,7 @@ th {
   text-align: center;
 }
 
-th:hover {
-
-}
-
-td{
-  font-size: 1.3em;
-}
+td{font-size: 1.3em;}
 
 p{
   font-size: 2em;
@@ -66,21 +49,13 @@ p{
 }
 
 
-h3 .quote {
-  font-size: 3.5em;
-}
+h3 .quote {font-size: 3.5em;}
 
-#verbsTableHeader th:hover{
-  background-color: #e60032	;
-}
+#verbsTableHeader th:hover{background-color: #e60032;}
 
-#progressTableHeader th:hover{
-  background-color: #ff6600;
-}
+#progressTableHeader th:hover{background-color: #ff6600;}
 
-#verbs{
-  background-color: #3F88C5;
-}
+#verbs{background-color: #3F88C5;}
 
 #gamesContainer{
   margin-top: 7.978723%;
@@ -112,15 +87,9 @@ h3 .quote {
   margin-top: 3.191489%;
 }
 
-.p{
-  color: #00ace6;
-}
-.v{
-  color: #FF3562;
-}
-.t{
-  color: #ff8533;
-}
+.p{color: #00ace6;}
+.v{color: #FF3562;}
+.t{color: #ff8533;}
 
 .title{
   font-size: 6em;
@@ -141,14 +110,11 @@ h3 .quote {
 }
 
 .glyphicon{
-  /*float: left;*/
   font-size: 4em;
   color: black;
 }
 
-.glyphicon-repeat{
-  font-size: 6em;
-}
+.glyphicon-repeat{font-size: 6em;}
 
 .glyphicon-log-in, .glyphicon-log-out {
   float: right;
@@ -156,23 +122,14 @@ h3 .quote {
   margin: 0 2.659574468% 2.659574468% 0;
 }
 
-.glyphicon-log-in {
-  color: #00ace6;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
+.glyphicon-log-in {color: #00ace6;}
+.glyphicon-log-out {color: #FF3562;}
 
-.glyphicon-log-out {
-  color: #FF3562;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
+/* text shadows */
 
-.shadow{
-  text-shadow: 2px 2px white;
-}
-
-.darkShadow{
-  text-shadow: 2px 2px black;
-}
+.shadow{text-shadow: 2px 2px white;}
+.darkShadow{text-shadow: 2px 2px black;}
+.borderShadow{text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
 
 .container{
   padding: 2%;
@@ -187,13 +144,7 @@ h3 .quote {
   font-size: 3.45em;
 }
 
-.gameBackground{
-  background-color: #ffdb4d;
-}
-
-.home{
-  float: left;
-}
+.home{float: left;}
 
 .quote{
   font-family: 'Walter Turncoat', cursive;
@@ -201,30 +152,15 @@ h3 .quote {
 }
 
 
-.whiteFont{
-  color: white;
-}
+.whiteFont{color: white;}
 
-.blue{
-  background-color: #00ace6;
-}
+/* background colors */
 
-.yellow{
-  background-color: #ffdb4d;
-}
-
-
-.orange{
-    background-color: #ff8533;
-}
-
-.white{
-  background-color: white;
-}
-
-.fuschia{
-  background-color: #FF3562;
-}
+.blue{background-color: #00ace6;}
+.yellow{background-color: #ffdb4d;}
+.orange{background-color: #ff8533;}
+.white{background-color: white;}
+.fuschia{background-color: #FF3562;}
 
 .digit{
   font-size: 2.361111em;
@@ -253,10 +189,7 @@ h3 .quote {
 
 /* GAME SCREEN */
 
-#guessOptions{
-  margin-top: 5.319149%;
-  /*height:31.914893617%*/
-}
+#guessOptions{margin-top: 5.319149%;}
 
 .guessOption {
   height: 25%;
@@ -264,10 +197,6 @@ h3 .quote {
   background-color: white;
   font-family: 'Walter Turncoat', cursive;
 }
-
-/*.guessOption:hover{
-  background-color: #dddddd;
-}*/
 
 .green{
   background-color: #80f25a;
@@ -293,10 +222,7 @@ h3 .quote {
   color: white;
 }
 
-.timer h3 {
-  /*line-height: 1.5em;*/
-  font-size: 7.5em;
-}
+.timer h3 {font-size: 7.5em;}
 
 .question h2 {
   clear:both;
@@ -318,7 +244,6 @@ h3 .quote {
 .scoreAnimation{
   transform: scale(1.5);
   transition: all 0.8s ease-in-out;
-  /*animation: ScaleUpDown 0.9s forwards;*/
 }
 
 .redFont{
@@ -333,9 +258,8 @@ h3 .quote {
 /* MEDIA */
 
 @media screen and (max-width: 1050px){
-  #pivot h1{
+  #pivot h1{font-size: 15vw;}
 
-  }
   .gameSquare {
     width: 15vw;
     height: 15vw;
@@ -343,9 +267,8 @@ h3 .quote {
 }
 
 @media screen and (max-width: 930px){
-  #pivot h1{
-    font-size: 17vw;
-  }
+  #pivot h1{font-size: 17vw;}
+
   .gameSquare {
     width: 17vw;
     height: 17vw;
@@ -353,9 +276,8 @@ h3 .quote {
 }
 
 @media screen and (max-width: 700px){
-  #pivot h1{
-    font-size: 20vw;
-  }
+  #pivot h1{font-size: 20vw;}
+
   .gameSquare {
     width: 20vw;
     height: 20vw;
@@ -363,9 +285,8 @@ h3 .quote {
 }
 
 @media screen and (max-width: 550px){
-  #pivot h1{
-    font-size: 23vw;
-  }
+  #pivot h1{font-size: 23vw;}
+
   .gameSquare {
     width: 23vw;
     height: 23vw;
@@ -373,9 +294,8 @@ h3 .quote {
 }
 
 @media screen and (max-width: 550px){
-  #pivot h1{
-    font-size: 26vw;
-  }
+  #pivot h1{font-size: 26vw;}
+
   .gameSquare {
     width: 26vw;
     height: 26vw;
@@ -384,13 +304,9 @@ h3 .quote {
 
 @media screen and (max-width: 375px) {
 
-  h3 {
-    font-size: 30px;
-  }
+  h3 {font-size: 30px;}
 
-  #pivot h1{
-    font-size: 80px;
-  }
+  #pivot h1{font-size: 80px;}
 
   #gamesContainer{
     margin-top: 35px;
@@ -429,10 +345,7 @@ h3 .quote {
     margin: 0 auto 0 auto;
   }
 
-  .timer h3 {
-    /*line-height: 1.5em;*/
-    font-size: 50px;
-  }
+  .timer h3 {font-size: 50px;}
   .question h2 {
     margin: 0 2px 5px 2px;
     padding-top: 20px;
@@ -440,9 +353,7 @@ h3 .quote {
     font-size: 22px;
   }
 
-  .digit {
-    font-size: 30px;
-  }
+  .digit {font-size: 30px;}
 
   .percentage {
     margin-top: 25px;
