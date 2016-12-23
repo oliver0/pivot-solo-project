@@ -162,6 +162,21 @@ h3 .quote {font-size: 3.5em;}
 .white{background-color: white;}
 .fuschia{background-color: #FF3562;}
 
+/* background percentage colors */
+
+.greenEqualBelow100{background-color: #92f372;}
+.greenBelow90{background-color: #80f15b;}
+.greenBelow80{background-color: #6eef43;}
+.greenBelow70{background-color: #5ced2c;}
+.greenBelow60{background-color: #4aeb14;}
+.redBelow50{background-color: #ff0037;}
+.redBelow40{background-color: #e60032;}
+.redBelow30{background-color: #cc002c;}
+.redBelow20{background-color: #b30027;}
+.redBelow10{background-color: #990021;}
+
+
+
 
 
 .digit{
