@@ -2,8 +2,16 @@ app.controller("HomeController", ["$http", "AuthFactory", function($http, AuthFa
 
   console.log("HomeControler running");
   var self = this;
-
   var currentUser;
+
+  self.getDisplayName= function(){
+    var displayName = AuthFactory.getCurrentUserDisplayName()
+    if(displayName){
+      return displayName.substring(0, 7) + ("'s'");
+    } else {
+      return 'your';
+    }
+  }
   self.loggedIn = function(){
     return AuthFactory.isLoggedIn();
 }
@@ -13,6 +21,7 @@ app.controller("HomeController", ["$http", "AuthFactory", function($http, AuthFa
     var isLoggedIn = self.loggedIn();
     if(isLoggedIn){
       logOut();
+      self.getDisplayName();
       // self.inOut = "In";
     } else{
       logIn();

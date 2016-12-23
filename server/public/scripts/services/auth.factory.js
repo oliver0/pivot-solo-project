@@ -5,11 +5,13 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
   var currentUser;
   var currentUserId = 1;
   var loggedIn = false;
+  var displayName;
 
   // This code runs whenever the user logs in
   function logIn(){
     auth.$signInWithPopup("google").then(function(firebaseUser) {
       currentUser = firebaseUser;
+      displayName = currentUser.user.displayName;
       console.log(firebaseUser.user.displayName);
     }).catch(function(error) {
       console.log("Authentication failed: ", error);
@@ -19,6 +21,10 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
 
   function getCurrentUser(){
     return currentUser;
+  }
+
+  function getCurrentUserDisplayName(){
+    return displayName;
   }
 
   function isLoggedIn(){
@@ -32,9 +38,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
     console.log('User is logged in:', loggedIn);
     // firebaseUser will be null if not logged in
     currentUser = firebaseUser;
-    console.log('currentUser:',currentUser);
     if(currentUser) {
-
       firebaseUser.getToken().then(function(idToken){
         //console.log('ID TOKEN:', idToken)
         $http({
@@ -77,6 +81,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
     auth.$signOut().then(function(){
       console.log('Logging the user out!');
       loggedIn = false;
+      displayName = "";
     });
   };
 
@@ -86,6 +91,9 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
     },
     isLoggedIn: function(){
       return loggedIn;
+    },
+    getCurrentUserDisplayName: function(){
+      return displayName;
     },
     logIn: function() {
       return logIn();
