@@ -39,10 +39,8 @@ a:hover{
 
 }
 
-
-th:hover {
-
-  background-color: #e60032	;
+table{
+  margin-top: 25px;
 }
 
 th {
@@ -51,6 +49,9 @@ th {
   text-align: center;
 }
 
+th:hover {
+
+}
 
 td{
   font-size: 1.3em;
@@ -64,12 +65,17 @@ p{
   transform: translateX(-50%) translateY(-50%);
 }
 
-table{
-  margin-top: 25px;
-}
 
 h3 .quote {
   font-size: 3.5em;
+}
+
+#verbsTableHeader th:hover{
+  background-color: #e60032	;
+}
+
+#progressTableHeader th:hover{
+  background-color: #ff6600;
 }
 
 #p{

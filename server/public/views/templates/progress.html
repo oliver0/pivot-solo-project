@@ -10,20 +10,20 @@
 
   <table class="table table-bordered table-striped">
     <thead>
-      <tr>
-        <th>Date</th>
-        <th>Correct</th>
-        <th>Incorrect</th>
-        <th class="percentageTableHeader">Percentage</th>
+      <tr id="progressTableHeader" class="orange whiteFont">
+        <th ng-click="prog.sortType = 'date'; prog.sortReverse = !prog.sortReverse" >Date</th>
+        <th ng-click="prog.sortType = 'correct'; prog.sortReverse = !prog.sortReverse" >Correct</th>
+        <th ng-click="prog.sortType = 'incorrect'; prog.sortReverse = !prog.sortReverse" >Incorrect</th>
+        <th ng-click="prog.sortType = 'percentage'; prog.sortReverse = !prog.sortReverse" >%</th>
       </tr>
     </thead>
     <tbody>
 
-      <tr ng-repeat="verbData in prog.tableData">
+      <tr ng-repeat="verbData in prog.tableData | orderBy:prog.sortType:prog.sortReverse">
         <td class="center">{{verbData.date | date}}</td>
         <td class="center">{{verbData.correct}}</td>
         <td class="center">{{verbData.incorrect}}</td>
-        <td class="center">{{verbData.percentage | number:0}}%</td>
+        <td class="center">{{verbData.percentage | number:0}}</td>
       </tr>
 
     </tbody>

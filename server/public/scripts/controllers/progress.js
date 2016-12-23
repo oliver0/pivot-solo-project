@@ -3,8 +3,9 @@ app.controller("ProgressController", ["$http", "AuthFactory", function($http, Au
   console.log("ProgressControler running");
 
   var self = this;
-
-  //self.tableData;
+  self.sortType = 'date';
+  self.sortReverse = true;
+  self.search = '';
 
 
   getProgressTableData();
