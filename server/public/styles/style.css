@@ -162,6 +162,8 @@ h3 .quote {font-size: 3.5em;}
 .white{background-color: white;}
 .fuschia{background-color: #FF3562;}
 
+
+
 .digit{
   font-size: 2.361111em;
   padding: 5%;
@@ -198,13 +200,13 @@ h3 .quote {font-size: 3.5em;}
   font-family: 'Walter Turncoat', cursive;
 }
 
-.green{
+.correctGreen{
   background-color: #80f25a;
   color: black;
   text-shadow: 2px 2px white;
 }
 
-.red{
+.incorrectRed{
   background-color: #D00000;
   color: white;
   text-shadow: 2px 2px black;

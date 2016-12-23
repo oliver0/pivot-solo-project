@@ -27,7 +27,7 @@
       <tr ng-repeat="verbData in verbs.tableData | orderBy:verbs.sortType:verbs.sortReverse | filter:search">
         <td class="center">{{verbData.phrasal_verb}}</td>
         <td>{{verbData.definition}}</td>
-        <td class="center" >{{verbData.percentage | number:0}}</td>
+        <td class="center" ng-class="{green:verbData.percentage >= 30, red:verbData.percentage < 30}">{{verbData.percentage | number:0}}</td>
       </tr>
 
     </tbody>

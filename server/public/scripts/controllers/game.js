@@ -119,11 +119,11 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
       var correctID = "#guessOption"+correctPos;
       var correctElement = angular.element( document.querySelector(correctID ));
       var score = angular.element( document.querySelector('.gameScore'));
-      correctElement.addClass('green');
+      correctElement.addClass('correctGreen');
 
       if(incorrect){
         var incorrectElement = angular.element( document.querySelector(guessOptionElement));
-        incorrectElement.addClass('red');
+        incorrectElement.addClass('incorrectRed');
         score.addClass('redFont');
       } else {
         score.addClass('scoreAnimation');
@@ -131,9 +131,9 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
       }
       delay = $timeout(function(){
         self.start();
-        correctElement.removeClass('green');
+        correctElement.removeClass('correctGreen');
         if(incorrect){
-          incorrectElement.removeClass('red');
+          incorrectElement.removeClass('incorrectRed');
           score.removeClass('redFont');
         } else {
           score.removeClass('scoreAnimation');
