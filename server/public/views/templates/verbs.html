@@ -14,14 +14,17 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>Phrasal Verb</th>
-        <th>Definition</th>
-        <th>Percentage</th>
+        <th><a ng-click="verbs.sortType = 'phrasal_verb'; verbs.sortReverse = !verbs.sortReverse">Phrasal Verb</a></th>
+
+        <th><a ng-click="verbs.sortType = 'definition'; verbs.sortReverse = !verbs.sortReverse">Definition</a></th>
+
+        <th><a ng-click="verbs.sortType = 'percentage'; verbs.sortReverse = !verbs.sortReverse">Percentage</a></th>
       </tr>
     </thead>
     <tbody>
 
-      <tr ng-repeat="verbData in verbs.tableData | filter:search">
+      <!-- <tr ng-repeat="verbData in verbs.tableData | filter:search"> -->
+      <tr ng-repeat="verbData in verbs.tableData | orderBy:verbs.sortType:verbs.sortReverse | filter:search">
         <td>{{verbData.phrasal_verb}}</td>
         <td>{{verbData.definition}}</td>
         <td>{{verbData.percentage | number:0}}%</td>

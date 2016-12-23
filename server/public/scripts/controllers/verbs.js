@@ -3,6 +3,9 @@ app.controller("VerbsController", ["$http", "AuthFactory", function($http, AuthF
   console.log("VerbsControler running");
 
   var self = this;
+  self.sortType = 'percentage';
+  self.sortReverse = false;
+  self.search = '';
 
   getVerbTableData();
 
