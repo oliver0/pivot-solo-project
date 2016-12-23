@@ -4,18 +4,19 @@ app.controller("HomeController", ["$http", "AuthFactory", function($http, AuthFa
   var self = this;
 
   var currentUser;
-  self.loggedIn;
+  self.loggedIn = function(){
+    return AuthFactory.isLoggedIn();
+}
+  // self.inOut = self.loggedIn ? "In" : "Out"; // if self.loggedIn is true, the user sees Log Out, otherwise, Log In
 
   self.logInOut = function(){
-    self.loggedIn = AuthFactory.isLoggedIn();
-    if(self.loggedIn){
+    var isLoggedIn = self.loggedIn();
+    if(isLoggedIn){
       logOut();
-      self.loggedIn = AuthFactory.isLoggedIn();
-      console.log('User is logged in', self.loggedIn );
+      // self.inOut = "In";
     } else{
       logIn();
-      self.loggedIn = AuthFactory.isLoggedIn();
-      console.log('User is logged in', self.loggedIn );
+      // self.inOut = "Out";
     }
   }
 
@@ -24,8 +25,6 @@ app.controller("HomeController", ["$http", "AuthFactory", function($http, AuthFa
     console.log('ANYTHING!');
     AuthFactory.logIn();
     };
-
-  //currentUser = AuthFactory.currentUser();  }
 
   function logOut(){
     console.log('ANYTHING!');

@@ -1,6 +1,8 @@
 <div class="container">
   <div id="logIn">
-    <button class="btn-primary" ng-click="home.logInOut()">Log In</button>
+    <!-- <button class="btn-primary" ng-click="home.logInOut()">Log {{home.inOut}}</button> -->
+    <span ng-if="!home.loggedIn()" ng-click="home.logInOut()" class="glyphicon glyphicon-log-in grow"></span>
+    <span ng-if="home.loggedIn()" ng-click="home.logInOut()" class="glyphicon glyphicon-log-out grow"></span>
     <!-- <button class="btn-primary" ng-click="home.logOut()">Log Out</button> -->
   </div>
   <div id="pivot" >
