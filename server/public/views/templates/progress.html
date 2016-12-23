@@ -14,16 +14,16 @@
         <th>Date</th>
         <th>Correct</th>
         <th>Incorrect</th>
-        <th>Percentage</th>
+        <th class="percentageTableHeader">Percentage</th>
       </tr>
     </thead>
     <tbody>
 
       <tr ng-repeat="verbData in prog.tableData">
-        <td>{{verbData.date | date}}</td>
-        <td>{{verbData.correct}}</td>
-        <td>{{verbData.incorrect}}</td>
-        <td>{{verbData.percentage | number:0}}%</td>
+        <td class="center">{{verbData.date | date}}</td>
+        <td class="center">{{verbData.correct}}</td>
+        <td class="center">{{verbData.incorrect}}</td>
+        <td class="center">{{verbData.percentage | number:0}}%</td>
       </tr>
 
     </tbody>

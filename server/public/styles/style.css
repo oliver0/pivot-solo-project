@@ -28,6 +28,34 @@ input {
   margin-bottom: 50px;
 }
 
+a{
+  text-decoration: none;
+  color: white;
+}
+
+a:hover{
+  text-decoration: none;
+  color: white;
+
+}
+
+
+th:hover {
+
+  background-color: #e60032	;
+}
+
+th {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+
+td{
+  font-size: 1.3em;
+}
+
 p{
   font-size: 2em;
   position: absolute;
