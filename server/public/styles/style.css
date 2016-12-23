@@ -89,7 +89,7 @@ h3 .quote {
 }
 
 #pivot h1{
-  font-size: 9.5em;
+  font-size: 12vw;
   color: black;
   animation: slideDown 0.4s;
   clear: right;;
@@ -239,8 +239,8 @@ h3 .quote {
 }
 
 .gameSquare {
-  height: 12em;
-  width: 12em;
+  height: 12vw;
+  width: 12vw;
   border: 2px solid black;
   border-radius: 1em;
   text-align: center;
