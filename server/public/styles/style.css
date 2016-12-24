@@ -8,7 +8,7 @@ main{padding-bottom: 0;}
 
 h1{
   font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 2em;
+  font-size: 2vw;
 }
 
 h2 {padding: 10px;}
@@ -43,7 +43,7 @@ th {
 td{font-size: 1.3em;}
 
 p{
-  font-size: 2vw;
+  font-size: 2.2vw;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -75,7 +75,7 @@ h3 .quote {font-size: 3.5em;}
 #scoreData{
   box-sizing: border-box;
   margin: 5.319149% auto 5.319149% auto;
-  width: 80%;
+  width: 50vw;
   height: 53.191489%;
   padding: 5%;
   border-radius: 10px;
@@ -248,7 +248,7 @@ h3 .quote {font-size: 3.5em;}
 .question h2 {
   clear:both;
   text-align: center;
-  height: auto;
+  height: 10vw;
   font-size: 4em;
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: bold;
@@ -279,6 +279,9 @@ h3 .quote {font-size: 3.5em;}
 /* MEDIA */
 
 @media screen and (max-width: 1050px){
+
+  h1 {font-size: 2.5vw;}
+
   #pivot h1{font-size: 15vw;}
 
   p{font-size: 3vw;}
@@ -292,8 +295,10 @@ h3 .quote {font-size: 3.5em;}
 }
 
 @media screen and (max-width: 930px){
-  #pivot h1{font-size: 17vw;}
 
+  h1 {font-size: 3vw;}
+
+  #pivot h1{font-size: 17vw;}
 
   .gameSquare {
     width: 17vw;
@@ -302,6 +307,9 @@ h3 .quote {font-size: 3.5em;}
 }
 
 @media screen and (max-width: 700px){
+
+  h1 {font-size: 3.4vw;}
+
   #pivot h1{font-size: 20vw;}
 
   p{font-size: 4vw;}
@@ -313,9 +321,12 @@ h3 .quote {font-size: 3.5em;}
 }
 
 @media screen and (max-width: 550px){
+
+  h1 {font-size: 4.2vw;}
+
   #pivot h1{font-size: 23vw;}
 
-  p{font-size: 5vw;}
+  p{font-size: 4.7vw;}
 
   .gameSquare {
     width: 23vw;
@@ -323,18 +334,14 @@ h3 .quote {font-size: 3.5em;}
   }
 }
 
-@media screen and (max-width: 550px){
-  #pivot h1{font-size: 26vw;}
-
-  .gameSquare {
-    width: 26vw;
-    height: 26vw;
-  }
-}
 
 @media screen and (max-width: 375px) {
 
+  h1 {font-size: 6vw;}
+
   h3 {font-size: 30px;}
+
+  p{font-size: 6vw;}
 
   #pivot h1{font-size: 80px;}
 
