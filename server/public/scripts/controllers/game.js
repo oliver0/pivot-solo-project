@@ -17,6 +17,7 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
   self.incorrect = 0;
   self.flag = true;
 
+
   self.changeView = function(){
     $location.path("score");
   }
@@ -45,7 +46,8 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
       promise = $interval(function(){
         console.log('MAIN TIMER');
         ScoreFactory.addIncorrect();
-        getCurrentVerb();
+        animationDelay(true, true);
+        self.counter = 0;
       }, TIME_INTERVAL);
     };
 
@@ -96,9 +98,7 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
     self.isCorrect = function(verbPicked, guessOptionElement){
       if(self.flag){
         self.flag = false;
-        self.stop();
-        self.stopVisibleTimer();
-        self.timeRunningOut = false;
+
         if(this.currentVerb == verbPicked){
           ScoreFactory.addCorrect();
           self.correct = ScoreFactory.correct();
@@ -114,7 +114,11 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
 
     }
 
-    function animationDelay(guessOptionElement, incorrect){
+    function animationDelay(guessOptionElement, incorrect, timeRanOut){
+      self.flag = false;
+      self.stop();
+      self.stopVisibleTimer();
+      self.timeRunningOut = false;
       var correctPos = GameFactory.correctAnswerPosition();
       var correctID = "#guessOption"+correctPos;
       var correctElement = angular.element( document.querySelector(correctID ));
@@ -122,10 +126,13 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
       correctElement.addClass('correctGreen');
 
       if(incorrect){
-        var incorrectElement = angular.element( document.querySelector(guessOptionElement));
-        incorrectElement.addClass('incorrectRed');
         score.addClass('redFont');
-      } else {
+        if(!timeRanOut){
+          var incorrectElement = angular.element( document.querySelector(guessOptionElement));
+          incorrectElement.addClass('incorrectRed');
+        }
+      }
+      else {
         score.addClass('scoreAnimation');
         score.addClass('greenFont');
       }
