@@ -91,6 +91,13 @@ h3 .quote {font-size: 3.5em;}
 .v{color: #FF3562;}
 .t{color: #ff8533;}
 
+#welcomeMessage {
+  font-size: 4.5vw;
+  font-family: 'Montserrat Alternates', sans-serif;
+  margin: -2vw -10vw 0 -10vw;
+  padding: 0.35vw;
+}
+
 .title{
   font-size: 6em;
   color: black;

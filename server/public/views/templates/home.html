@@ -1,14 +1,15 @@
 <div class="container">
+  <div id="welcomeMessage" ng-class="{fuschia: home.loggedIn(), blue: !home.loggedIn()}" class="center whiteFont" >{{home.getDisplayName()}}</div>
+
   <div id="logIn">
     <!-- <button class="btn-primary" ng-click="home.logInOut()">Log {{home.inOut}}</button> -->
     <span ng-if="!home.loggedIn()" ng-click="home.logInOut()" class="glyphicon glyphicon-log-in grow borderShadow"></span>
     <span ng-if="home.loggedIn()" ng-click="home.logInOut()" class="glyphicon glyphicon-log-out grow borderShadow"></span>
-    <!-- <button class="btn-primary" ng-click="home.logOut()">Log Out</button> -->
   </div>
   <div id="pivot" >
   <h1 class='shadow center'><span class="p sink">P</span>i<span class="v shrink">V</span>o<span class="t rotate">T</span>
   </div>
-  <h3 class="quote">The turning point in {{home.getDisplayName()}} <span class="p">Phrasal</span> <span class="v">Verb</span> <span class="t">Training!</span></h3>
+  <h3 class="quote">The turning point in {{home.getDisplayName(true)}} <span class="p">Phrasal</span> <span class="v">Verb</span> <span class="t">Training!</span></h3>
 
   <div id="gamesContainer">
     <a href="#choice" class="gameSquare grow blue whiteFont" ><p>Choose Game</p></a>

@@ -1,20 +1,36 @@
-app.controller("HomeController", ["$http", "AuthFactory", function($http, AuthFactory, $firebaseAuth){
+app.controller('HomeController', ['$http', 'AuthFactory', function ($http, AuthFactory, $firebaseAuth) {
 
-  console.log("HomeControler running");
+  console.log('HomeControler running');
   var self = this;
   var currentUser;
 
-  self.getDisplayName= function(){
-    var displayName = AuthFactory.getCurrentUserDisplayName()
-    if(displayName){
-      return displayName.split(" ")[0] + ("'s");
+  self.getDisplayName= function(onlyFirstName){
+    var displayName = AuthFactory.getCurrentUserDisplayName();
+    if(onlyFirstName){
+      if(displayName){
+        return displayName.split(' ')[0] + ("'s");
+      }
+      else {
+        return 'your';
+      }
     } else {
-      return 'your';
+      if (self.loggedIn()){
+        if(displayName){
+          return 'Welcome ' + displayName + '!';
+        }
+        else{
+          return 'Welcome!';
+        }
+      } else {
+        return 'Log in to save scores!';
+      }
+
     }
   }
+
   self.loggedIn = function(){
     return AuthFactory.isLoggedIn();
-}
+  }
   // self.inOut = self.loggedIn ? "In" : "Out"; // if self.loggedIn is true, the user sees Log Out, otherwise, Log In
 
   self.logInOut = function(){
@@ -33,7 +49,7 @@ app.controller("HomeController", ["$http", "AuthFactory", function($http, AuthFa
   function logIn(){
     console.log('ANYTHING!');
     AuthFactory.logIn();
-    };
+  };
 
   function logOut(){
     console.log('ANYTHING!');
@@ -44,4 +60,4 @@ app.controller("HomeController", ["$http", "AuthFactory", function($http, AuthFa
     currentUser = AuthFactory.currentUser();
   }
 
-  }]);
+}]);
