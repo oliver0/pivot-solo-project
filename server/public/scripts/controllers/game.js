@@ -27,7 +27,6 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
      self.countdown();
      self.counter--;
      self.timeRunningOut = self.counter <= 3;
-     console.log('SECOND TIMER');
     }, 1000);
   };
 
