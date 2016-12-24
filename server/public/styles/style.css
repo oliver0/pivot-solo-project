@@ -243,13 +243,17 @@ h3 .quote {font-size: 3.5em;}
   color: white;
 }
 
-.timer h3 {font-size: 7.5em;}
+.timer h3 {
+  font-size: 7.5em;
+  padding-top: 1vw;
+}
 
 .question h2 {
   clear:both;
   text-align: center;
-  height: 10vw;
-  font-size: 4em;
+  height: 9vw;
+  margin-top: 4vw;
+  font-size: 3vw;
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: bold;
   color: black;
@@ -286,6 +290,12 @@ h3 .quote {font-size: 3.5em;}
 
   p{font-size: 3vw;}
 
+  .question h2 {
+    height: 12vw;
+    margin-top: 6vw;
+    font-size: 4vw;
+  }
+
   #welcomeMessage {font-size: 1.5em;}
 
   .gameSquare {
@@ -314,10 +324,22 @@ h3 .quote {font-size: 3.5em;}
 
   p{font-size: 4vw;}
 
+  .question h2 {
+    height: 15vw;
+    margin-top: 8vw;
+    font-size: 5vw;
+  }
+
+  .timer h3 {
+    padding-top: 2.2vw;
+  }
+
   .gameSquare {
     width: 20vw;
     height: 20vw;
   }
+
+
 }
 
 @media screen and (max-width: 550px){
@@ -327,6 +349,16 @@ h3 .quote {font-size: 3.5em;}
   #pivot h1{font-size: 23vw;}
 
   p{font-size: 4.7vw;}
+
+  .question h2 {
+    font-size: 6vw;
+    height: 25vw;
+    margin-top: 4vw;
+  }
+
+  .timer h3 {
+    padding-top: 3vw;
+  }
 
   .gameSquare {
     width: 23vw;
@@ -382,7 +414,10 @@ h3 .quote {font-size: 3.5em;}
     margin: 0 auto 0 auto;
   }
 
-  .timer h3 {font-size: 50px;}
+  .timer h3 {
+    font-size: 50px;
+    padding-top: 0.5vw;
+  }
 
   .question h2 {
     margin: 0 2px 5px 2px;
