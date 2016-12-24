@@ -376,10 +376,11 @@ h3 .quote {font-size: 3.5em;}
   }
 
   .timer h3 {font-size: 50px;}
+
   .question h2 {
     margin: 0 2px 5px 2px;
     padding-top: 20px;
-    height: 115px;
+    height: 40vw;
     font-size: 22px;
   }
 
