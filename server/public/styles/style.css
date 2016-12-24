@@ -92,10 +92,10 @@ h3 .quote {font-size: 3.5em;}
 .t{color: #ff8533;}
 
 #welcomeMessage {
-  font-size: 4.5vw;
+  font-size: 1.5em;
   font-family: 'Montserrat Alternates', sans-serif;
   margin: -2vw -10vw 0 -10vw;
-  padding: 0.35vw;
+  padding: 0.4vw
 }
 
 .title{
@@ -283,6 +283,7 @@ h3 .quote {font-size: 3.5em;}
 
 @media screen and (max-width: 1050px){
   #pivot h1{font-size: 15vw;}
+
 
   .gameSquare {
     width: 15vw;
