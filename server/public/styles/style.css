@@ -41,7 +41,7 @@ th {
 td{font-size: 1.3em;}
 
 p{
-  font-size: 2em;
+  font-size: 2vw;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -182,10 +182,6 @@ h3 .quote {font-size: 3.5em;}
 .redBelow20{background-color: #b30027;}
 .redBelow10{background-color: #990021;}
 
-
-
-
-
 .digit{
   font-size: 2.361111em;
   padding: 5%;
@@ -208,7 +204,6 @@ h3 .quote {font-size: 3.5em;}
   display: inline-block;
   margin: 4.19463087%;
   font-family: 'Walter Turncoat', cursive;
-  font-size:
 }
 
 /* GAME SCREEN */
@@ -284,6 +279,8 @@ h3 .quote {font-size: 3.5em;}
 @media screen and (max-width: 1050px){
   #pivot h1{font-size: 15vw;}
 
+  p{font-size: 3vw;}
+
   #welcomeMessage {font-size: 1.5em;}
 
   .gameSquare {
@@ -305,6 +302,8 @@ h3 .quote {font-size: 3.5em;}
 @media screen and (max-width: 700px){
   #pivot h1{font-size: 20vw;}
 
+  p{font-size: 4vw;}
+
   .gameSquare {
     width: 20vw;
     height: 20vw;
@@ -313,6 +312,8 @@ h3 .quote {font-size: 3.5em;}
 
 @media screen and (max-width: 550px){
   #pivot h1{font-size: 23vw;}
+
+  p{font-size: 5vw;}
 
   .gameSquare {
     width: 23vw;
