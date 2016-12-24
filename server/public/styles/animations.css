@@ -1,4 +1,4 @@
-/* global */
+/* GLOBAL */
 
 @keyframes fadeIn{
   from {
@@ -20,7 +20,24 @@
   }
 }
 
-/* timer */
+/* VERB TABLE */
+
+.searchInput + .searchLabel {
+  font-size: 15px;
+  position: relative;
+  padding: 0 1em;
+  top: -27px;
+  color: #777777;
+  transition: all 0.4s;
+}
+
+.searchInput:focus + .searchLabel {
+  color: #222222;
+  transform: scale(0.8) translateY(-40px) translateX(-10px);
+  -webkit-transform: scale(0.8) translateY(-40px) translateX(-10px);
+}
+
+/* TIMER */
 
 .bubble {
   animation:pulse 1s infinite;
@@ -180,7 +197,7 @@
   }
 }
 
-/* logo */
+/* LOGO */
 
 @keyframes slideDown{
   from {
@@ -204,7 +221,7 @@
 }*/
 
 
-/* hover.css */
+/* HOVER.css */
 
 .grow {
   display: inline-block;

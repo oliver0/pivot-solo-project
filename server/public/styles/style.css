@@ -276,22 +276,6 @@ h3 .quote {font-size: 3.5em;}
   text-shadow: 3px 3px black;
 }
 
-/* VERB TABLE */
-
-.searchInput + .searchLabel {
-  font-size: 15px;
-  position: relative;
-  padding: 0 1em;
-  top: -27px;
-  color: #777777;
-  transition: all 0.3s;
-}
-
-.searchInput:focus + .searchLabel {
-  color: #222222;
-  transform: scale(0.8) translateY(-40px) translateX(-10px);
-}
-
 /* MEDIA */
 
 @media screen and (max-width: 1050px){
