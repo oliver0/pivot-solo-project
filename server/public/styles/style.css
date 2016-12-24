@@ -18,7 +18,9 @@ h3{
   font-size: 3.5em;
 }
 
-input {margin-bottom: 50px;}
+input {margin-top: 15px;}
+
+
 
 a{
   text-decoration: none;
@@ -30,7 +32,7 @@ a:hover{
   color: white;
 }
 
-table{margin-top: 25px;}
+table{margin-top: 15px;}
 
 th {
   font-family: 'Montserrat Alternates', sans-serif;
@@ -272,6 +274,22 @@ h3 .quote {font-size: 3.5em;}
 .greenFont{
   color: #80f25a;
   text-shadow: 3px 3px black;
+}
+
+/* VERB TABLE */
+
+.searchInput + .searchLabel {
+  font-size: 15px;
+  position: relative;
+  padding: 0 1em;
+  top: -27px;
+  color: #777777;
+  transition: all 0.3s;
+}
+
+.searchInput:focus + .searchLabel {
+  color: #222222;
+  transform: scale(0.8) translateY(-40px) translateX(-10px);
 }
 
 /* MEDIA */

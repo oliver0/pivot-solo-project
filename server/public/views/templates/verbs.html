@@ -6,10 +6,10 @@
     <a href="#home"><span class="glyphicon glyphicon-home grow"></span></a>
   </div>
 
-  <div>
-    <label for="verbSearch">Search</label>
-    <input name="verbSearch" type="text" class="form-control" placeholder="Search for phrasal verb" ng-model="search">
-  </div>
+  <fieldset>
+    <input id="verbSearch" type="text" class="form-control searchInput"  ng-model="search">
+    <label class=searchLabel for="verbSearch">Search</label>
+  </fieldset>
 
   <table class="table table-bordered table-striped">
     <thead>
