@@ -12,10 +12,9 @@ router.get('/', function(req, res) {
       res.sendStatus(500);
     }
 
-    // could use if statements here based on the game id to determine which queries should
-    // be made.
-
-    client.query('SELECT * FROM phrasal_verbs',
+    client.query('SElECT id, phrasal_verb, base, preposition, definition, sentence ' +
+                'FROM phrasal_verbs ' +
+                'JOIN sentences ON phrasal_verbs.id = sentences.verb_id;',
     function(err, result) {
       done(); // close the connection.
 
@@ -25,20 +24,6 @@ router.get('/', function(req, res) {
       }
       //console.log(result.rows);
       data.verbs = result.rows;
-    });
-    client.query('SElECT sentence, phrasal_verb, id, base, preposition ' +
-                 'FROM phrasal_verbs ' +
-                 'JOIN sentences ON phrasal_verbs.id = sentences.verb_id ' +
-                 'GROUP BY sentence, phrasal_verb, id, base, preposition;',
-    function(err, result) {
-      done(); // close the connection.
-
-      if(err) {
-        console.log('select query error: ', err);
-        res.sendStatus(500);
-      }
-      //console.log(result.rows);
-      data.sentences = result.rows;
     });
     client.query('SELECT phrasal_verb FROM phrasal_verbs GROUP BY phrasal_verb',
     function(err, result) {

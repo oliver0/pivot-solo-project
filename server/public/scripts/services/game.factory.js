@@ -27,25 +27,17 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
      // reset correct/incorrect to 0
     return $http.get('/verbs')
     .then(function(response) {
-      sentences = response.data.sentences;
+      // sentences = response.data.sentences;
       databaseVerbs = response.data.verbs;
       uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
-      //console.log('CURRENT GAME ID:', currentGameId);
       addVerbsToGame(currentGameId);
     });
   }
 
   // add verbs to game array, currently 10 but can be changed.
   function addVerbsToGame(gameId){
-    var verbList;
-    if(gameId === 1){
-      verbList = databaseVerbs;
-    }
-    if(gameId === 2){
-      verbList = sentences;
-    }
     for (var i = 0; i < GAME_VERBS ; i++) {
-      var verb = verbList[randomNumber(0, verbList.length-1)];
+      var verb = databaseVerbs[randomNumber(0, databaseVerbs.length-1)];
       gameVerbs.push(verb);
     }
   }
