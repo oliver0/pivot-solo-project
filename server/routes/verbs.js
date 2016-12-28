@@ -1,4 +1,5 @@
 var express = require('express');
+var modify = require('../modules/modify');
 var router = express.Router();
 var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/pivot';
@@ -31,6 +32,7 @@ router.get('/', function(req, res) {
         console.log('select query error: ', err);
         res.sendStatus(500);
       }
+      modify();
       data.verbs = result.rows;
     });
     client.query('SELECT phrasal_verb FROM phrasal_verbs GROUP BY phrasal_verb',
