@@ -29,7 +29,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
         console.log("NUMBER 3");
         return $http({
           method: 'GET',
-          url: '/verbs',
+          url: '/verbs/' + GAME_VERBS,
           headers: {
             id_token: idToken
           }
@@ -48,7 +48,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
   // get verb and definition from object returned from gameVerbs.pop(). return both in an object
   function getCurrentVerbObject(){
     currentVerbObject = gameVerbs.pop();
-    console.log("CURRENT VERB OBJECT:", currentVerbObject);
+    console.log("CURRENT VERB OBJECT PERCENT:", currentVerbObject.percentage);
     if(currentGameId === 1){
       gameQuestion = currentVerbObject.definition;
     }

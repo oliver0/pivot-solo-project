@@ -5,11 +5,13 @@ var router = express.Router();
 var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/pivot';
 
-router.get('/', function(req, res) {
+router.get('/:numVerbs', function(req, res) {
+
   console.log('ARRIVED IN VERBS GET!');
   var data = {};
   var userId = req.userId;
-  console.log("USER ID:",userId);
+  var numVerbs = req.params.numVerbs;
+  console.log('NUMBER OF VERBS:', numVerbs);
   // get verbs from DB
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
@@ -34,7 +36,7 @@ router.get('/', function(req, res) {
         res.sendStatus(500);
       }
       // console.log(modify(result.rows));
-      data.verbs = randomize(modify(result.rows));
+      data.verbs = randomize(modify(result.rows, numVerbs));
     });
     client.query('SELECT phrasal_verb FROM phrasal_verbs GROUP BY phrasal_verb',
     function(err, result) {

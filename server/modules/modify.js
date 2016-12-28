@@ -1,16 +1,16 @@
 var random = require('../modules/random');
 
 
-function modifyVerbList(verbs) {
+function modifyVerbList(verbs, numVerbs) {
   var verb;
   var gameVerbs = [];
   var oneOfWOrstTwo = verbs.splice(random(0, 1), 1);
   gameVerbs.push(oneOfWOrstTwo[0]);
 
-
-  for (var i = 0; i < 9; i++) {
+  var lowPercentNumber = Math.round(numVerbs/2);
+  for (var i = 0; i < numVerbs - 1; i++) {
     var lowPercent = Math.round(verbs.length / 2);
-    if (i < 5) {
+    if (i < lowPercentNumber) {
       verb = verbs.splice(random(0, lowPercent - 1), 1);
       gameVerbs.push(verb[0]);
     } else {
