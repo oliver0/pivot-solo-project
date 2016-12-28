@@ -3,32 +3,37 @@ var router = express.Router();
 var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/pivot';
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   console.log('ARRIVED IN VERB_TABLE GET!');
   var verbTableData = {};
   var userId = req.userId;
   console.log('USER ID:', userId);
+
   // get verbs from DB
-  pg.connect(connectionString, function(err, client, done) {
-    if(err) {
+  pg.connect(connectionString, function (err, client, done) {
+    if (err) {
       console.log('connection error: ', err);
       res.sendStatus(500);
     }
 
-    client.query('SELECT phrasal_verb, verb_id, definition, (SUM(correct) / (SUM(correct) + SUM(incorrect)))*100 AS percentage, users.id ' +
-                 'FROM scores ' +
-                 'JOIN phrasal_verbs ON scores.verb_id = phrasal_verbs.id ' +
-                 'JOIN users ON scores.user_id = users.id ' +
-                 'WHERE users.id = ' + userId + ' ' +
-                 'GROUP BY phrasal_verb, verb_id, definition, users.id;',
-    function(err, result) {
+    client.query('SELECT s.user_id, pv.id "verb_id", pv.phrasal_verb, pv.base, pv.preposition, pv.definition, ' +
+                 'sen.sentence, (SUM(correct) / (SUM(correct) + SUM(incorrect)))*100 AS percentage ' +
+                 'FROM scores s ' +
+                 'JOIN sentences sen ON sen.verb_id = s.verb_id ' +
+                 'JOIN phrasal_verbs pv ON s.verb_id = pv.id ' +
+                 'JOIN users u ON s.user_id = u.id ' +
+                 'WHERE u.id = ' + userId + ' ' +
+                 'GROUP BY s.user_id,pv.id, pv.phrasal_verb, pv.base, pv.preposition, pv.definition, sen.sentence ' +
+                 'ORDER BY percentage;',
+    function (err, result) {
       done(); // close the connection.
 
-      if(err) {
+      if (err) {
         console.log('select query error: ', err);
         res.sendStatus(500);
       }
-      verbTableData.verbData = result.rows
+
+      verbTableData.verbData = result.rows;
       console.log(verbTableData);
       res.send(verbTableData);
     });
