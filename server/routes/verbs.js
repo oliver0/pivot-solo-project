@@ -32,8 +32,8 @@ router.get('/', function(req, res) {
         console.log('select query error: ', err);
         res.sendStatus(500);
       }
-      modify();
       data.verbs = result.rows;
+      console.log(modify(data.verbs));
     });
     client.query('SELECT phrasal_verb FROM phrasal_verbs GROUP BY phrasal_verb',
     function(err, result) {
