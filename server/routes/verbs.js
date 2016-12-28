@@ -1,5 +1,6 @@
 var express = require('express');
 var modify = require('../modules/modify');
+var randomize = require('../modules/randomize');
 var router = express.Router();
 var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/pivot';
@@ -33,7 +34,7 @@ router.get('/', function(req, res) {
         res.sendStatus(500);
       }
       // console.log(modify(result.rows));
-      data.verbs = modify(result.rows);
+      data.verbs = randomize(modify(result.rows));
     });
     client.query('SELECT phrasal_verb FROM phrasal_verbs GROUP BY phrasal_verb',
     function(err, result) {
