@@ -27,8 +27,10 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     currentUser = AuthFactory.getCurrentUser();
     console.log('CURRENT USER:', currentUser);
     if(currentUser) {
-      currentUser.getToken().then(function(idToken){
-        console.log('USER:', idToken);
+      console.log("NUMBER 2");
+      return currentUser.getToken().then(function(idToken){
+        console.log("NUMBER 3");
+        // console.log('USER:', idToken);
         return $http({
           method: 'GET',
           url: '/verbs',
@@ -42,6 +44,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
           console.log("DATABASE VERBS", databaseVerbs);
           uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
           addVerbsToGame(currentGameId);
+
         });
       });
     }
@@ -67,7 +70,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     if(currentGameId === 2){
       gameQuestion = currentVerbObject.sentence;
     }
-    ScoreFactory.setVerbId(currentVerbObject.id);
+    ScoreFactory.setVerbId(currentVerbObject.verb_id);
     currentVerb = currentVerbObject.phrasal_verb;
     return {gameQuestion:gameQuestion, currentVerb:currentVerb};
   }

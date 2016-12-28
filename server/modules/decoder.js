@@ -20,7 +20,7 @@ var tokenDecoder = function(req, res, next){
       // Adding the decodedToken to the request so that downstream processes can use it
       req.decodedToken = decodedToken;
       // req.userId = 17;
-      console.log('DECODED TOKEN:', decodedToken);
+      console.log('GOT DECODED TOKEN');
 
       userIdQuery(decodedToken.email, req, next);
     })
@@ -32,7 +32,7 @@ var tokenDecoder = function(req, res, next){
     });
 
   } else {
-    console.log('HERE');
+    console.log('NO ID TOKEN');
     res.send(403);
   }
 }
