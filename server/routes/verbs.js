@@ -4,7 +4,10 @@ var pg = require('pg');
 var connectionString = 'postgres://localhost:5432/pivot';
 
 router.get('/', function(req, res) {
+  console.log('ARRIVED IN VERBS GET!');
   var data = {};
+  var userId = req.userId;
+  console.log("USER ID:",userId);
   // get verbs from DB
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
@@ -12,9 +15,16 @@ router.get('/', function(req, res) {
       res.sendStatus(500);
     }
 
-    client.query('SElECT id, phrasal_verb, base, preposition, definition, sentence ' +
-                'FROM phrasal_verbs ' +
-                'JOIN sentences ON phrasal_verbs.id = sentences.verb_id;',
+    client.query('SELECT s.user_id, pv.id "verb_id", pv.phrasal_verb, pv.base, pv.preposition, pv.definition, ' +
+                 'sen.sentence, (SUM(correct) / (SUM(correct) + SUM(incorrect)))*100 AS percentage ' +
+                 'FROM scores s ' +
+                 'JOIN sentences sen ON sen.verb_id = s.verb_id ' +
+                 'JOIN phrasal_verbs pv ON s.verb_id = pv.id ' +
+                 'JOIN users u ON s.user_id = u.id ' +
+                //  'WHERE u.id = ' + userId + ' ' +
+                 'WHERE u.id = 17 ' +
+                 'GROUP BY s.user_id,pv.id, pv.phrasal_verb, pv.base, pv.preposition, pv.definition, sen.sentence ' +
+                 'ORDER BY percentage;',
     function(err, result) {
       done(); // close the connection.
 

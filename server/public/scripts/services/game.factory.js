@@ -1,4 +1,4 @@
-app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactory) {
+app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($http, ScoreFactory, AuthFactory) {
   console.log('Game Factory running');
 
   var GAME_VERBS = 10;
@@ -24,14 +24,30 @@ app.factory('GameFactory', ["$http", "ScoreFactory", function($http, ScoreFactor
   function getVerbs() {
     resetGame();
     currentGameId = ScoreFactory.getGameId();
-     // reset correct/incorrect to 0
-    return $http.get('/verbs')
-    .then(function(response) {
-      // sentences = response.data.sentences;
-      databaseVerbs = response.data.verbs;
-      uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
-      addVerbsToGame(currentGameId);
-    });
+    currentUser = AuthFactory.getCurrentUser();
+    console.log('CURRENT USER:', currentUser);
+    if(currentUser) {
+      currentUser.getToken().then(function(idToken){
+        console.log('USER:', idToken);
+        return $http({
+          method: 'GET',
+          url: '/verbs',
+          headers: {
+            id_token: idToken
+          }
+        })
+        .then(function(response) {
+          // sentences = response.data.sentences;
+          databaseVerbs = response.data.verbs;
+          console.log("DATABASE VERBS", databaseVerbs);
+          uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
+          addVerbsToGame(currentGameId);
+        });
+      });
+    }
+    else{
+      console.log('An error has occurred');
+    }
   }
 
   // add verbs to game array, currently 10 but can be changed.

@@ -18,12 +18,13 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, './public/views/index.html'));
 });
 
-app.use('/verbs', verbs);
+
 
 
 app.use(decoder.token);
 //my routes
 app.use('/users', users);
+app.use('/verbs', verbs);
 app.use('/scores', scores);
 app.use('/verb_table', verbTable);
 app.use('/progress', progress);
