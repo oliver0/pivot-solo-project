@@ -38,6 +38,17 @@ router.get('/:numVerbs', function(req, res) {
       // console.log(modify(result.rows));
       data.verbs = randomize(modify(result.rows, numVerbs));
     });
+    client.query('SELECT preposition FROM phrasal_verbs GROUP BY preposition;',
+    function(err, result) {
+      done(); // close the connection.
+
+      if(err) {
+        console.log('select query error: ', err);
+        res.sendStatus(500);
+      }
+      console.log(result.rows);
+      data.uniquePrepositions  = result.rows;
+    });
     client.query('SELECT phrasal_verb FROM phrasal_verbs GROUP BY phrasal_verb',
     function(err, result) {
       done(); // close the connection.
