@@ -21,8 +21,7 @@ router.get('/', function(req, res) {
                  'JOIN sentences sen ON sen.verb_id = s.verb_id ' +
                  'JOIN phrasal_verbs pv ON s.verb_id = pv.id ' +
                  'JOIN users u ON s.user_id = u.id ' +
-                //  'WHERE u.id = ' + userId + ' ' +
-                 'WHERE u.id = 17 ' +
+                 'WHERE u.id = ' + userId + ' ' +
                  'GROUP BY s.user_id,pv.id, pv.phrasal_verb, pv.base, pv.preposition, pv.definition, sen.sentence ' +
                  'ORDER BY percentage;',
     function(err, result) {

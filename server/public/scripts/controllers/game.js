@@ -82,7 +82,6 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
       console.log("NUMBER 1");
       //console.log("GAMEFACTORY:", GameFactory.getVerbs());
       GameFactory.getVerbs().then(function(response) {
-        console.log("NUMBER 4");
         self.uniquePhrasalVerbs = GameFactory.uniquePhrasalVerbs();
         self.gameVerbs = GameFactory.gameVerbs(); //get array of verb objects to be used in game.
         self.start(); //start timer
