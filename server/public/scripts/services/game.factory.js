@@ -3,9 +3,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
 
   var GAME_VERBS = 10;
   var GUESS_OPTIONS = 4;
-  var databaseVerbs = undefined;
   var uniquePhrasalVerbs = undefined;
-  var sentences = undefined;
   var gameVerbs = [];
   var guessOptions = [];
   var currentVerb;
@@ -25,12 +23,10 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     resetGame();
     currentGameId = ScoreFactory.getGameId();
     currentUser = AuthFactory.getCurrentUser();
-    console.log('CURRENT USER:', currentUser);
     if(currentUser) {
       console.log("NUMBER 2");
       return currentUser.getToken().then(function(idToken){
         console.log("NUMBER 3");
-        // console.log('USER:', idToken);
         return $http({
           method: 'GET',
           url: '/verbs',
@@ -40,11 +36,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
         })
         .then(function(response) {
           gameVerbs = response.data.verbs;
-          console.log("GAME VERBS:", gameVerbs);
           uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
-          console.log("uniquePhrasalVerbs:", uniquePhrasalVerbs);
-          // addVerbsToGame(currentGameId);
-
         });
       });
     }
@@ -52,14 +44,6 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
       console.log('An error has occurred');
     }
   }
-
-  // add verbs to game array, currently 10 but can be changed.
-  // function addVerbsToGame(gameId){
-  //   for (var i = 0; i < GAME_VERBS ; i++) {
-  //     var verb = databaseVerbs[randomNumber(0, databaseVerbs.length-1)];
-  //     gameVerbs.push(verb);
-  //   }
-  // }
 
   // get verb and definition from object returned from gameVerbs.pop(). return both in an object
   function getCurrentVerbObject(){
@@ -105,15 +89,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     return Math.floor(Math.random() * (1 + max - min) + min);
   }
 
-
-
   var gameData = {
-    databaseVerbs: function() {
-      return databaseVerbs;
-    },
-    sentences: function() {
-      return sentences;
-    },
     correctAnswerPosition: function(){
       return correctAnswerPosition;
     },
