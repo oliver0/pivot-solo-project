@@ -198,8 +198,8 @@ p{
 }
 
 .gameSquare {
-  height: 12vw;
-  width: 12vw;
+  height: 13vw;
+  width: 13vw;
   border: 2px solid black;
   border-radius: 1em;
   text-align: center;
@@ -300,8 +300,8 @@ p{
   #welcomeMessage {font-size: 1.5em;}
 
   .gameSquare {
-    width: 15vw;
-    height: 15vw;
+    width: 17vw;
+    height: 17vw;
   }
 }
 
@@ -312,12 +312,12 @@ p{
   #pivot h1{font-size: 17vw;}
 
   .gameSquare {
-    width: 17vw;
-    height: 17vw;
+    width: 18vw;
+    height: 18vw;
   }
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 650px){
 
   h1 {font-size: 3.4vw;}
 
@@ -339,8 +339,8 @@ p{
   }
 
   .gameSquare {
-    width: 20vw;
-    height: 20vw;
+    width: 23vw;
+    height: 23vw;
   }
 }
 
@@ -363,8 +363,8 @@ p{
   }
 
   .gameSquare {
-    width: 23vw;
-    height: 23vw;
+    width: 28vw;
+    height: 28vw;
   }
 }
 
