@@ -3,7 +3,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
 
   var GAME_VERBS = 10;
   var GUESS_OPTIONS = 4;
-  var uniquePhrasalVerbs = undefined;
+  var uniqueGuessFillers = undefined;
   var gameVerbs = [];
   var guessOptions = [];
   var currentVerb;
@@ -36,7 +36,12 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
         })
         .then(function(response) {
           gameVerbs = response.data.verbs;
-          uniquePhrasalVerbs  = response.data.uniquePhrasalVerbs ;
+          if (currentGameId === 3) {
+            uniqueGuessFillers  = response.data.uniquePrepositions;
+          } else{
+            uniqueGuessFillers  = response.data.uniquePhrasalVerbs;
+          }
+          console.log(uniqueGuessFillers);
         });
       });
     }
