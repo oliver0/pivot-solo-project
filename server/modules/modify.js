@@ -1,6 +1,5 @@
 var random = require('../modules/random');
 
-
 function modifyVerbList(verbs, numVerbs) {
   var verb;
   var gameVerbs = [];

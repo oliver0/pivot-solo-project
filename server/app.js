@@ -4,6 +4,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var decoder = require('./modules/decoder');
 var users = require('./routes/users.js');
+var verbsNoAuth = require('./routes/verbsNoAuth');
 var verbs = require('./routes/verbs.js');
 var scores = require('./routes/scores.js');
 var verbTable = require('./routes/verb_table.js');
@@ -17,6 +18,8 @@ app.use(express.static(path.resolve('./server/public')));
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, './public/views/index.html'));
 });
+
+app.use('/verbsNoAuth', verbsNoAuth);
 
 app.use(decoder.token);
 //my routes

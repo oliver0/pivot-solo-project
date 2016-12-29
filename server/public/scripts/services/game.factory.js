@@ -3,7 +3,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
 
   var GAME_VERBS = 10;
   var GUESS_OPTIONS = 4;
-  var uniqueGuessFillers = undefined;
+  var uniqueGuessFillers;
   var gameVerbs = [];
   var guessOptions = [];
   var correctAnswer;
@@ -12,8 +12,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
   var correctAnswerPosition;
   var gameQuestion;
 
-
-  function resetGame(){
+  function resetGame() {
     ScoreFactory.resetGameData();
     gameVerbs = [];
     guessOptions = [];
@@ -23,10 +22,11 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     resetGame();
     currentGameId = ScoreFactory.getGameId();
     currentUser = AuthFactory.getCurrentUser();
-    if(currentUser) {
-      console.log("NUMBER 2");
-      return currentUser.getToken().then(function(idToken){
-        console.log("NUMBER 3");
+    console.log('CURRENT USER:', currentUser);
+    if (currentUser) {
+      console.log('CURRENT USER:', currentUser);
+      return currentUser.getToken().then(function (idToken) {
+        console.log('NUMBER 3');
         return $http({
           method: 'GET',
           url: '/verbs/' + GAME_VERBS,
@@ -42,13 +42,30 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
           } else {
             uniqueGuessFillers  = response.data.uniquePhrasalVerbs;
           }
-          console.log(uniqueGuessFillers);
         });
       });
     }
-    else{
-      console.log('An error has occurred');
+    else {
+      return getVerbsNoAuth();
+
+      // console.log('An error has occurred');
     }
+  }
+
+  function getVerbsNoAuth() {
+    return $http.get('/verbsNoAuth/' + GAME_VERBS)
+    .then(function (response) {
+      gameVerbs = response.data.verbs;
+      console.log(gameVerbs);
+      if (currentGameId === 3) {
+        uniqueGuessFillers  = response.data.uniquePrepositions;
+      } else {
+        uniqueGuessFillers  = response.data.uniquePhrasalVerbs;
+      }
+    })
+    .catch(function (error) {
+      console.log('An error has occurred');
+    });
   }
 
   // get verb and definition from object returned from gameVerbs.pop(). return both in an object
