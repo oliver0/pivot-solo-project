@@ -75,16 +75,17 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
   function assignGuessOptions() {
     guessOptions = [];
     var unique = removeCorrectAnswer();
+    console.log(unique);
     correctAnswerPosition = randomNumber(0, GUESS_OPTIONS - 1);
 
     for (var i = 0; i < GUESS_OPTIONS; i++) {
       if (i === correctAnswerPosition) {
         guessOptions.push(correctAnswer);
       } else {
-        var indexWrongVerb = randomNumber(0, unique.length - 1);
-        var wrongVerb = unique.splice(indexWrongVerb, 1);
-
-        guessOptions.push(wrongVerb[0].phrasal_verb);
+        var indexWrongAnswer = randomNumber(0, unique.length - 1);
+        var wrongAnswer = unique.splice(indexWrongAnswer, 1);
+        if(currentGameId === 1 || currentGameId === 2){ guessOptions.push(wrongAnswer[0].phrasal_verb);}
+        if(currentGameId === 3){guessOptions.push(wrongAnswer[0].preposition);}
       }
     }
     return guessOptions;
