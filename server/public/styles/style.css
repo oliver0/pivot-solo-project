@@ -15,6 +15,7 @@ h2 {padding: 10px;}
 
 h3{
   text-align: center;
+  font-size: 3vw;
 }
 
 input {margin-top: 15px;}
@@ -287,9 +288,13 @@ p{
 
   h1 {font-size: 2.5vw;}
 
-  #pivot h1{font-size: 15vw;}
+  h3 {font-size: 4vw;}
 
   p{font-size: 3vw;}
+
+  #pivot h1{font-size: 15vw;}
+
+
 
   .question h2 {
     height: 12vw;
@@ -309,6 +314,8 @@ p{
 
   h1 {font-size: 3vw;}
 
+  h3 {font-size: 4.5vw;}
+
   #pivot h1{font-size: 17vw;}
 
   .gameSquare {
@@ -320,6 +327,8 @@ p{
 @media screen and (max-width: 650px){
 
   h1 {font-size: 3.4vw;}
+
+  h3 {font-size: 5.5vw;}
 
   #pivot h1{font-size: 20vw;}
 
@@ -348,6 +357,8 @@ p{
 
   h1 {font-size: 4.2vw;}
 
+  h3 {font-size: 6vw;}
+
   #pivot h1{font-size: 23vw;}
 
   p{font-size: 4.7vw;}
@@ -373,7 +384,7 @@ p{
 
   h1 {font-size: 6vw;}
 
-  h3 {font-size: 30px;}
+  h3 {font-size: 8vw;}
 
   p{font-size: 6vw;}
 
@@ -401,8 +412,8 @@ p{
   .quote {font-size: 7vw;}
 
   .gameSquare {
-    height: 34vw;
-    width: 34vw;
+    height: 36vw;
+    width: 36vw;
   }
   .title{
     font-size: 45px;
