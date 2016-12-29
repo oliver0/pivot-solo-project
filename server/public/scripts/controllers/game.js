@@ -10,9 +10,9 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
   self.gameVerbs = [];
   self.currentVerbObject = {};
   self.currentGameQuestion = "";
-  self.currentVerb = "";
+  self.correctAnswer = "";
   self.guessOptions = [];
-  self.uniquePhrasalVerbs = [];
+  self.uniqueGuessFillers = [];
   self.correct = 0;
   self.incorrect = 0;
   self.flag = true;
@@ -72,7 +72,7 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
           self.counter = 10;
           currentVerbObject = GameFactory.getCurrentVerbObject(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
           self.currentGameQuestion = currentVerbObject.gameQuestion;
-          self.currentVerb = currentVerbObject.currentVerb;
+          self.correctAnswer = currentVerbObject.correctAnswer;
           assignGuessOptions();
       }
     };
@@ -82,7 +82,7 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
       console.log("NUMBER 1");
       //console.log("GAMEFACTORY:", GameFactory.getVerbs());
       GameFactory.getVerbs().then(function(response) {
-        self.uniquePhrasalVerbs = GameFactory.uniquePhrasalVerbs();
+        self.uniqueGuessFillers = GameFactory.uniqueGuessFillers();
         self.gameVerbs = GameFactory.gameVerbs(); //get array of verb objects to be used in game.
         self.start(); //start timer
       });
@@ -96,11 +96,11 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
     // Assign self.correct/incorrect to update variables in factory,
     // reset timer which calls self.getCurrentVerb() to repopulate game
     // with definition and guess options
-    self.isCorrect = function(verbPicked, guessOptionElement){
+    self.isCorrect = function(guessOptionPicked, guessOptionElement){
       if(self.flag){
         self.flag = false;
 
-        if(this.currentVerb == verbPicked){
+        if(this.correctAnswer == guessOptionPicked){
           ScoreFactory.addCorrect();
           self.correct = ScoreFactory.correct();
           //console.log(GameFactory.correctAnswerPosition());
