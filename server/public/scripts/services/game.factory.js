@@ -36,6 +36,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
         })
         .then(function (response) {
           gameVerbs = response.data.verbs;
+          console.log(gameVerbs);
           if (currentGameId === 3) {
             uniqueGuessFillers  = response.data.uniquePrepositions;
           } else {
@@ -64,6 +65,9 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     if (currentGameId === 2 || currentGameId === 3) {
       gameQuestion = currentVerbObject.sentence;
       if (currentGameId === 3) {
+        var baseVerb = currentVerbObject.base;
+        var underscoreRegex = /_/;
+        gameQuestion = gameQuestion.replace(underscoreRegex, baseVerb);
         correctAnswer = currentVerbObject.preposition;
       }
     }
