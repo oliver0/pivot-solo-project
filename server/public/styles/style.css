@@ -386,9 +386,9 @@ p{
 
   h3 {font-size: 8vw;}
 
-  p{font-size: 6vw;}
+  p{font-size: 5.7vw;}
 
-  #pivot h1{font-size: 80px;}
+  #pivot h1{font-size: 24vw;}
 
   #gamesContainer{
     margin-top: 35px;
@@ -412,8 +412,8 @@ p{
   .quote {font-size: 7vw;}
 
   .gameSquare {
-    height: 36vw;
-    width: 36vw;
+    height: 33vw;
+    width: 33vw;
   }
   .title{
     font-size: 45px;
