@@ -15,7 +15,6 @@ h2 {padding: 10px;}
 
 h3{
   text-align: center;
-  font-size: 3.5em;
 }
 
 input {margin-top: 15px;}
@@ -51,7 +50,7 @@ p{
 }
 
 
-h3 .quote {font-size: 3.5em;}
+
 
 #verbsTableHeader th:hover{background-color: #e60032;}
 
@@ -89,16 +88,18 @@ h3 .quote {font-size: 3.5em;}
   margin-top: 3.191489%;
 }
 
-.p{color: #00ace6;}
-.v{color: #FF3562;}
-.t{color: #ff8533;}
-
 #welcomeMessage {
   font-size: 1.5vw;
   font-family: 'Montserrat Alternates', sans-serif;
   margin: -2vw -10vw 0 -10vw;
   padding: 0.4vw
 }
+
+.quote {font-size: 3.5vw;}
+
+.p{color: #00ace6;}
+.v{color: #FF3562;}
+.t{color: #ff8533;}
 
 .title{
   font-size: 6em;
@@ -324,6 +325,9 @@ h3 .quote {font-size: 3.5em;}
 
   p{font-size: 4vw;}
 
+  .quote {font-size: 5.5vw;}
+
+
   .question h2 {
     height: 15vw;
     margin-top: 8vw;
@@ -338,8 +342,6 @@ h3 .quote {font-size: 3.5em;}
     width: 20vw;
     height: 20vw;
   }
-
-
 }
 
 @media screen and (max-width: 550px){
@@ -367,7 +369,7 @@ h3 .quote {font-size: 3.5em;}
 }
 
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
 
   h1 {font-size: 6vw;}
 
@@ -394,12 +396,13 @@ h3 .quote {font-size: 3.5em;}
     padding: 5%;
     border-radius: 10px;
     border: 2px solid white;
-
   }
 
+  .quote {font-size: 7vw;}
+
   .gameSquare {
-    height: 100px;
-    width: 100px;
+    height: 34vw;
+    width: 34vw;
   }
   .title{
     font-size: 45px;
