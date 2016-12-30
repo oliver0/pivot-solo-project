@@ -1,7 +1,12 @@
 var admin = require("firebase-admin");
 var express = require('express');
 var pg = require('pg');
-var connectionString = 'postgres://localhost:5432/pivot';
+if(process.env.DATABASE_URL != undefined) {
+    connectionString = process.env.DATABASE_URL + "?ssl=true";
+} else {
+    // running locally, use local database instead
+    connectionString = 'postgres://localhost:5432/pivot';
+}
 
 admin.initializeApp({
   credential: admin.credential.cert("./server/firebase-service-account.json"),
