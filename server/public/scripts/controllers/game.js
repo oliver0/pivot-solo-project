@@ -79,7 +79,6 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
 
 
     function getVerbs() {
-      console.log("NUMBER 1");
       //console.log("GAMEFACTORY:", GameFactory.getVerbs());
       GameFactory.getVerbs().then(function(response) {
         self.uniqueGuessFillers = GameFactory.uniqueGuessFillers();

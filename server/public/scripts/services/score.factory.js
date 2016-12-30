@@ -30,7 +30,6 @@ app.factory("ScoreFactory", ["$http", "AuthFactory", "$location", function($http
     scoreInfo.verb_id = verb_id;
     scoreInfo.game_id = gameId;
     scoreInfo.date = new Date();
-    console.log('DIFFERENT!');
     currentUser = AuthFactory.getCurrentUser();
     //console.log('CURRENT USER:', currentUser);
     if(currentUser) {

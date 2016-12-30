@@ -22,11 +22,8 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     resetGame();
     currentGameId = ScoreFactory.getGameId();
     currentUser = AuthFactory.getCurrentUser();
-    console.log('CURRENT USER:', currentUser);
     if (currentUser) {
-      console.log('CURRENT USER:', currentUser);
       return currentUser.getToken().then(function (idToken) {
-        console.log('NUMBER 3');
         return $http({
           method: 'GET',
           url: '/verbs/' + GAME_VERBS,
@@ -56,7 +53,6 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     return $http.get('/verbsNoAuth/' + GAME_VERBS)
     .then(function (response) {
       gameVerbs = response.data.verbs;
-      console.log(gameVerbs);
       if (currentGameId === 3) {
         uniqueGuessFillers  = response.data.uniquePrepositions;
       } else {
@@ -71,7 +67,6 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
   // get verb and definition from object returned from gameVerbs.pop(). return both in an object
   function getCurrentVerbObject() {
     currentVerbObject = gameVerbs.pop();
-    console.log('CURRENT VERB OBJECT PERCENT:', currentVerbObject.percentage);
     ScoreFactory.setVerbId(currentVerbObject.verb_id);
 
     if (currentGameId === 1 || currentGameId === 2) {
@@ -96,7 +91,6 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
   function assignGuessOptions() {
     guessOptions = [];
     var unique = removeCorrectAnswer();
-    console.log(unique);
     correctAnswerPosition = randomNumber(0, GUESS_OPTIONS - 1);
 
     for (var i = 0; i < GUESS_OPTIONS; i++) {
