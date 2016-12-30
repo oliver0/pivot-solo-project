@@ -36,11 +36,14 @@ table{margin-top: 15px;}
 
 th {
   font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 1.5em;
+  font-size: 1.5vw;
   text-align: center;
 }
 
-td{font-size: 1.3em;}
+td{
+  font-size: 1.3vw;
+  font-family: 'tahoma', sans-serif;
+}
 
 p{
   font-size: 2.2vw;
@@ -292,6 +295,10 @@ p{
 
   p{font-size: 3vw;}
 
+  th{font-size: 3.27vw;}
+
+  td{font-size: 2.1vw;}
+
   #pivot h1{font-size: 15vw;}
 
 
@@ -318,6 +325,10 @@ p{
 
   #pivot h1{font-size: 17vw;}
 
+  th{font-size: 3.92vw;}
+
+  td{font-size: 2.52vw;}
+
   .gameSquare {
     width: 18vw;
     height: 18vw;
@@ -331,6 +342,10 @@ p{
   h3 {font-size: 5.5vw;}
 
   #pivot h1{font-size: 20vw;}
+
+  th{font-size: 4.36vw;}
+
+  td{font-size: 2.8vw;}
 
   p{font-size: 4vw;}
 
@@ -361,6 +376,10 @@ p{
 
   #pivot h1{font-size: 23vw;}
 
+  th{font-size: 5.12vw;}
+
+  td{font-size: 3.29vw;}
+
   p{font-size: 4.7vw;}
 
   .question h2 {
@@ -387,6 +406,10 @@ p{
   h3 {font-size: 8vw;}
 
   p{font-size: 5.7vw;}
+
+  th{font-size: 6.2vw;}
+
+  td{font-size: 4vw;}
 
   #pivot h1{font-size: 24vw;}
 
