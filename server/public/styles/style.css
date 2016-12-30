@@ -32,7 +32,8 @@ a:hover{
   color: white;
 }
 
-table{margin-top: 15px;}
+table{
+  margin: 15px 0 0 0;}
 
 th {
   font-family: 'Montserrat Alternates', sans-serif;
@@ -407,7 +408,7 @@ p{
 
   p{font-size: 5.7vw;}
 
-  th{font-size: 5.5vw;}
+  th{font-size: 5vw;}
 
   td{font-size: 4vw;}
 
@@ -419,7 +420,9 @@ p{
     bottom:0;
   }
   #guessOptions{
-    margin-top: 10px;;
+    border: 2px solid black;
+    margin-top: 10px;
+
   }
 
   #scoreData{
@@ -430,6 +433,11 @@ p{
     padding: 5%;
     border-radius: 10px;
     border: 2px solid white;
+  }
+
+  .container{
+    padding-top: 2%;
+    width: 100%;
   }
 
   .quote {font-size: 7vw;}
