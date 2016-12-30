@@ -33,6 +33,8 @@ app.use('/progress', progress);
 // server index file
 
 
-app.listen(3000, function() {
-  console.log("server running, check localhost:3000");
+app.set('port', process.env.PORT || 3000);
+
+app.listen(app.get('port'), function() {
+  console.log('Server is listening on port ' + app.get('port'));
 });
