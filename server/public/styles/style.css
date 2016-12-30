@@ -435,6 +435,10 @@ p{
     border: 2px solid white;
   }
 
+  .left {
+    margin: 5vw 0 0 10vw;
+  }
+
   .container{
     padding-top: 2%;
     width: 100%;
