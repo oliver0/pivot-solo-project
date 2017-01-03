@@ -1,4 +1,4 @@
-<div class="container">
+<div ng-if="game.correctAnswer" class="container">
   <a href="#home"><span class="glyphicon glyphicon-home grow"></span></a>
   <div class="gameScore shadow">{{game.correct}}</div>
   <div class ="timer" ng-class="{'bubble':game.timeRunningOut}"><h3>{{game.counter}}</h3></div>
