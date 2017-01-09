@@ -21,5 +21,8 @@
   },
   "peerDependencies": {
     "browserify": ">= 2.3.0 < 14"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
