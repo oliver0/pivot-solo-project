@@ -1,3 +1,4 @@
+//----------------------------------------------------------------------------//
 require('dotenv').config();
 var express = require('express');
 var app = express();
@@ -10,6 +11,8 @@ var verbs = require('./routes/verbs.js');
 var scores = require('./routes/scores.js');
 var verbTable = require('./routes/verb_table.js');
 var progress = require('./routes/progress.js');
+//----------------------------------------------------------------------------//
+//---------------------------------- SETUP -----------------------------------//
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -20,9 +23,12 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, './public/views/index.html'));
 });
 
+//----------------------------- ROUTES & MODULES -----------------------------//
+
+
 app.use('/verbsNoAuth', verbsNoAuth);
 
-app.use(decoder.token);
+app.use(decoder.token); // Routes below require authentication
 //my routes
 app.use('/users', users);
 app.use('/verbs', verbs);
@@ -31,11 +37,12 @@ app.use('/verb_table', verbTable);
 app.use('/progress', progress);
 
 
-// server index file
-
+//------------------------------- START SERVER -------------------------------//
 
 app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), function() {
   console.log('Server is listening on port ' + app.get('port'));
 });
+
+//----------------------------------------------------------------------------//

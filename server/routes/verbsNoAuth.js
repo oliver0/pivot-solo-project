@@ -1,3 +1,4 @@
+//----------------------------------------------------------------------------//
 var express = require('express');
 var random = require('../modules/random');
 var router = express.Router();
@@ -9,6 +10,8 @@ if(process.env.DATABASE_URL != undefined) {
     // running locally, use local database instead
     connectionString = 'postgres://localhost:5432/pivot';
 }
+//----------------------------------------------------------------------------//
+
 
 router.get('/:numVerbs', function (req, res) {
 
@@ -71,5 +74,8 @@ router.get('/:numVerbs', function (req, res) {
     });
   });
 });
+
+//----------------------------------------------------------------------------//
+
 
 module.exports = router;

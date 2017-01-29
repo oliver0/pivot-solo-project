@@ -1,3 +1,4 @@
+//----------------------------------------------------------------------------//
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
@@ -8,6 +9,8 @@ if(process.env.DATABASE_URL != undefined) {
     // running locally, use local database instead
     connectionString = 'postgres://localhost:5432/pivot';
 }
+//----------------------------------------------------------------------------//
+
 router.post('/', function(req, res) {
   console.log('ARRIVED IN SCORES POST');
   var scoreInfo = req.body;
@@ -35,5 +38,7 @@ router.post('/', function(req, res) {
         });
      });
    });
+
+//----------------------------------------------------------------------------//
 
 module.exports = router;
