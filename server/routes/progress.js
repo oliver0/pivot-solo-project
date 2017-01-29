@@ -5,12 +5,12 @@ var pg = require('pg');
 var connectionString = require('../modules/db-config.module');
 //----------------------------------------------------------------------------//
 
+// Get overall scores --------------------------------------------------------//
 router.get('/', function(req, res) {
   console.log('ARRIVED IN PROGRESS GET!');
   var progressData = {};
   var userId = req.userId;
   console.log('USER ID:', userId);
-  //var userId = req.params.id;
   // get verbs from DB
   pg.connect(connectionString, function(err, client, done) {
     if(err) {
@@ -36,7 +36,6 @@ router.get('/', function(req, res) {
       console.log(progressData);
       res.send(progressData);
     });
-
   });
 });
 

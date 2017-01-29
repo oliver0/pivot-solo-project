@@ -6,7 +6,7 @@ var pg = require('pg');
 var connectionString = require('../modules/db-config.module');
 //----------------------------------------------------------------------------//
 
-
+// get verbs for the games, these are not specific to the user ---------------//
 router.get('/:numVerbs', function (req, res) {
 
   console.log('ARRIVED IN VERBS GET!');

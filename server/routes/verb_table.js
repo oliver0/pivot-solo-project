@@ -5,6 +5,7 @@ var pg = require('pg');
 var connectionString = require('../modules/db-config.module');
 //----------------------------------------------------------------------------//
 
+// get phrasal verbs, definitions and percentage scores ----------------------//
 router.get('/', function(req, res) {
   console.log('ARRIVED IN VERB_TABLE GET!');
   var verbTableData = {};

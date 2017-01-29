@@ -5,6 +5,7 @@ var pg = require('pg');
 var connectionString = require('../modules/db-config.module');
 //----------------------------------------------------------------------------//
 
+// Check if user in db -------------------------------------------------------//
 router.get('/', function(req, res) {
   console.log('ARRIVED IN USERS GET!');
   var userEmail = req.decodedToken.email;
@@ -33,7 +34,9 @@ router.get('/', function(req, res) {
 
   });
 });
+//----------------------------------------------------------------------------//
 
+// If user not in db, add user -----------------------------------------------//
 router.post('/', function(req, res) {
   console.log('POST SUCCESSFUL');
   var userEmail = req.decodedToken.email;

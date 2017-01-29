@@ -5,6 +5,7 @@ var pg = require('pg');
 var connectionString = require('../modules/db-config.module');
 //----------------------------------------------------------------------------//
 
+// Post score for phrasal verb -----------------------------------------------//
 router.post('/', function(req, res) {
   console.log('ARRIVED IN SCORES POST');
   var scoreInfo = req.body;
