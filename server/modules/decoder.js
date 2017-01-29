@@ -38,7 +38,7 @@ var tokenDecoder = function(req, res, next){
       // req.userId = 17;
       console.log('GOT DECODED TOKEN');
 
-      userIdQuery(decodedToken.email, req, next);
+      userIdQuery(decodedToken.email, req, res, next);
     })
     .catch(function(error) {
       // If the id_token isn't right, you end up in this callback function
@@ -53,7 +53,7 @@ var tokenDecoder = function(req, res, next){
   }
 }
 
-function userIdQuery(userEmail, req, next){
+function userIdQuery(userEmail, req, res, next){
   return pg.connect(connectionString, function(err, client, done) {
     if(err) {
       console.log('connection error: ', err);
