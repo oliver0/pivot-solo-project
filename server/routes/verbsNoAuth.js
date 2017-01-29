@@ -3,13 +3,7 @@ var express = require('express');
 var random = require('../modules/random');
 var router = express.Router();
 var pg = require('pg');
-var connectionString = '';
-if(process.env.DATABASE_URL != undefined) {
-    connectionString = process.env.DATABASE_URL + "?ssl=true";
-} else {
-    // running locally, use local database instead
-    connectionString = 'postgres://localhost:5432/pivot';
-}
+var connectionString = require('../modules/db-config.module');
 //----------------------------------------------------------------------------//
 
 
