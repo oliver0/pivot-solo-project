@@ -23,7 +23,17 @@
         <td class="center">{{verbData.date | date}}</td>
         <td class="center">{{verbData.correct}}</td>
         <td class="center">{{verbData.incorrect}}</td>
-        <td class="center">{{verbData.percentage | number:0}}</td>
+        <td class="center whiteFont borderShadow" ng-class="
+                                      {greenEqualBelow100:verbData.percentage <= 100,
+                                      greenBelow90:verbData.percentage < 90,
+                                      greenBelow80:verbData.percentage < 80,
+                                      greenBelow70:verbData.percentage < 70,
+                                      greenBelow60:verbData.percentage < 60,
+                                      redBelow50:verbData.percentage < 50,
+                                      redBelow40:verbData.percentage < 40,
+                                      redBelow30:verbData.percentage < 30,
+                                      redBelow20:verbData.percentage < 20,
+                                      redBelow10:verbData.percentage < 10}">{{verbData.percentage | number:0}}</td>
       </tr>
 
     </tbody>

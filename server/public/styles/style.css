@@ -1,32 +1,26 @@
-html{
-  font-size: 16px;
-}
+html{font-size: 16px;}
 
 body{
   font-size: 62.5%;
-  /*background-color: #00ace6;*/
   background-color: #ffdb4d;
 }
-main{
-  padding-bottom: 0;
-}
+main{padding-bottom: 0;}
+
 h1{
   font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 2em;
+  font-size: 2vw;
 }
 
-h2 {
-  padding: 10px;
-}
+h2 {padding: 10px;}
 
 h3{
   text-align: center;
-  font-size: 3.5em;
+  font-size: 3vw;
 }
 
-input {
-  margin-bottom: 50px;
-}
+input {margin-top: 15px;}
+
+
 
 a{
   text-decoration: none;
@@ -36,29 +30,24 @@ a{
 a:hover{
   text-decoration: none;
   color: white;
-
 }
 
 table{
-  margin-top: 25px;
-}
+  margin: 15px 0 0 0;}
 
 th {
   font-family: 'Montserrat Alternates', sans-serif;
-  font-size: 1.5em;
+  font-size: 1.5vw;
   text-align: center;
 }
 
-th:hover {
-
-}
-
 td{
-  font-size: 1.3em;
+  font-size: 1.3vw;
+  font-family: 'tahoma', sans-serif;
 }
 
 p{
-  font-size: 2em;
+  font-size: 2.2vw;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -66,24 +55,16 @@ p{
 }
 
 
-h3 .quote {
-  font-size: 3.5em;
-}
 
-#verbsTableHeader th:hover{
-  background-color: #e60032	;
-}
 
-#progressTableHeader th:hover{
-  background-color: #ff6600;
-}
+#verbsTableHeader th:hover{background-color: #e60032;}
 
-#verbs{
-  background-color: #3F88C5;
-}
+#progressTableHeader th:hover{background-color: #ff6600;}
+
+#verbs{background-color: #3F88C5;}
 
 #gamesContainer{
-  margin-top: 7.978723%;
+  margin-top: 5vw;
   text-align: center;
   animation: slideUp 0.4s;
 }
@@ -98,7 +79,7 @@ h3 .quote {
 #scoreData{
   box-sizing: border-box;
   margin: 5.319149% auto 5.319149% auto;
-  width: 80%;
+  width: 50vw;
   height: 53.191489%;
   padding: 5%;
   border-radius: 10px;
@@ -112,15 +93,18 @@ h3 .quote {
   margin-top: 3.191489%;
 }
 
-.p{
-  color: #00ace6;
+#welcomeMessage {
+  font-size: 1.5vw;
+  font-family: 'Montserrat Alternates', sans-serif;
+  margin: -2vw -10vw 0 -10vw;
+  padding: 0.4vw
 }
-.v{
-  color: #FF3562;
-}
-.t{
-  color: #ff8533;
-}
+
+.quote {font-size: 3.5vw;}
+
+.p{color: #00ace6;}
+.v{color: #FF3562;}
+.t{color: #ff8533;}
 
 .title{
   font-size: 6em;
@@ -141,14 +125,11 @@ h3 .quote {
 }
 
 .glyphicon{
-  /*float: left;*/
   font-size: 4em;
   color: black;
 }
 
-.glyphicon-repeat{
-  font-size: 6em;
-}
+.glyphicon-repeat{font-size: 6em;}
 
 .glyphicon-log-in, .glyphicon-log-out {
   float: right;
@@ -156,23 +137,14 @@ h3 .quote {
   margin: 0 2.659574468% 2.659574468% 0;
 }
 
-.glyphicon-log-in {
-  color: #00ace6;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
+.glyphicon-log-in {color: #00ace6;}
+.glyphicon-log-out {color: #FF3562;}
 
-.glyphicon-log-out {
-  color: #FF3562;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-}
+/* text shadows */
 
-.shadow{
-  text-shadow: 2px 2px white;
-}
-
-.darkShadow{
-  text-shadow: 2px 2px black;
-}
+.shadow{text-shadow: 2px 2px white;}
+.darkShadow{text-shadow: 2px 2px black;}
+.borderShadow{text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
 
 .container{
   padding: 2%;
@@ -187,13 +159,7 @@ h3 .quote {
   font-size: 3.45em;
 }
 
-.gameBackground{
-  background-color: #ffdb4d;
-}
-
-.home{
-  float: left;
-}
+.home{float: left;}
 
 .quote{
   font-family: 'Walter Turncoat', cursive;
@@ -201,30 +167,28 @@ h3 .quote {
 }
 
 
-.whiteFont{
-  color: white;
-}
+.whiteFont{color: white;}
 
-.blue{
-  background-color: #00ace6;
-}
+/* background colors */
 
-.yellow{
-  background-color: #ffdb4d;
-}
+.blue{background-color: #00ace6;}
+.yellow{background-color: #ffdb4d;}
+.orange{background-color: #ff8533;}
+.white{background-color: white;}
+.fuschia{background-color: #FF3562;}
 
+/* background percentage colors */
 
-.orange{
-    background-color: #ff8533;
-}
-
-.white{
-  background-color: white;
-}
-
-.fuschia{
-  background-color: #FF3562;
-}
+.greenEqualBelow100{background-color: #92f372;}
+.greenBelow90{background-color: #80f15b;}
+.greenBelow80{background-color: #6eef43;}
+.greenBelow70{background-color: #5ced2c;}
+.greenBelow60{background-color: #4aeb14;}
+.redBelow50{background-color: #ff0037;}
+.redBelow40{background-color: #e60032;}
+.redBelow30{background-color: #cc002c;}
+.redBelow20{background-color: #b30027;}
+.redBelow10{background-color: #990021;}
 
 .digit{
   font-size: 2.361111em;
@@ -239,8 +203,8 @@ h3 .quote {
 }
 
 .gameSquare {
-  height: 12vw;
-  width: 12vw;
+  height: 13vw;
+  width: 13vw;
   border: 2px solid black;
   border-radius: 1em;
   text-align: center;
@@ -248,15 +212,11 @@ h3 .quote {
   display: inline-block;
   margin: 4.19463087%;
   font-family: 'Walter Turncoat', cursive;
-  font-size:
 }
 
 /* GAME SCREEN */
 
-#guessOptions{
-  margin-top: 5.319149%;
-  /*height:31.914893617%*/
-}
+#guessOptions{margin-top: 5.319149%;}
 
 .guessOption {
   height: 25%;
@@ -265,17 +225,13 @@ h3 .quote {
   font-family: 'Walter Turncoat', cursive;
 }
 
-/*.guessOption:hover{
-  background-color: #dddddd;
-}*/
-
-.green{
+.correctGreen{
   background-color: #80f25a;
   color: black;
   text-shadow: 2px 2px white;
 }
 
-.red{
+.incorrectRed{
   background-color: #D00000;
   color: white;
   text-shadow: 2px 2px black;
@@ -294,15 +250,16 @@ h3 .quote {
 }
 
 .timer h3 {
-  /*line-height: 1.5em;*/
   font-size: 7.5em;
+  padding-top: 1vw;
 }
 
 .question h2 {
   clear:both;
   text-align: center;
-  height: auto;
-  font-size: 4em;
+  height: 9vw;
+  margin-top: 4vw;
+  font-size: 3vw;
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: bold;
   color: black;
@@ -318,7 +275,6 @@ h3 .quote {
 .scoreAnimation{
   transform: scale(1.5);
   transition: all 0.8s ease-in-out;
-  /*animation: ScaleUpDown 0.9s forwards;*/
 }
 
 .redFont{
@@ -333,39 +289,80 @@ h3 .quote {
 /* MEDIA */
 
 @media screen and (max-width: 1050px){
-  #pivot h1{
 
-  }
-  .gameSquare {
-    width: 15vw;
-    height: 15vw;
-  }
-}
+  h1 {font-size: 2.5vw;}
 
-@media screen and (max-width: 930px){
-  #pivot h1{
-    font-size: 17vw;
+  h3 {font-size: 4vw;}
+
+  p{font-size: 3vw;}
+
+  th{font-size: 3.27vw;}
+
+  td{font-size: 2.1vw;}
+
+  #pivot h1{font-size: 15vw;}
+
+
+
+  .question h2 {
+    height: 12vw;
+    margin-top: 6vw;
+    font-size: 4vw;
   }
+
+  #welcomeMessage {font-size: 1.5em;}
+
   .gameSquare {
     width: 17vw;
     height: 17vw;
   }
 }
 
-@media screen and (max-width: 700px){
-  #pivot h1{
-    font-size: 20vw;
-  }
+@media screen and (max-width: 930px){
+
+  h1 {font-size: 3vw;}
+
+  h3 {font-size: 4.5vw;}
+
+  #pivot h1{font-size: 17vw;}
+
+  th{font-size: 3.92vw;}
+
+  td{font-size: 2.52vw;}
+
   .gameSquare {
-    width: 20vw;
-    height: 20vw;
+    width: 18vw;
+    height: 18vw;
   }
 }
 
-@media screen and (max-width: 550px){
-  #pivot h1{
-    font-size: 23vw;
+@media screen and (max-width: 650px){
+
+  h1 {font-size: 3.4vw;}
+
+  h3 {font-size: 5.5vw;}
+
+  #pivot h1{font-size: 20vw;}
+
+  th{font-size: 4.36vw;}
+
+  td{font-size: 2.8vw;}
+
+  p{font-size: 4vw;}
+
+  .quote {font-size: 5.5vw;}
+
+
+  .question h2 {
+    height: 15vw;
+    margin-top: 8vw;
+    font-size: 5vw;
   }
+
+  .timer h3 {
+    padding-top: 2.2vw;
+  }
+
   .gameSquare {
     width: 23vw;
     height: 23vw;
@@ -373,24 +370,49 @@ h3 .quote {
 }
 
 @media screen and (max-width: 550px){
-  #pivot h1{
-    font-size: 26vw;
+
+  h1 {font-size: 4.2vw;}
+
+  h3 {font-size: 6vw;}
+
+  #pivot h1{font-size: 23vw;}
+
+  th{font-size: 5.12vw;}
+
+  td{font-size: 3.29vw;}
+
+  p{font-size: 4.7vw;}
+
+  .question h2 {
+    font-size: 6vw;
+    height: 25vw;
+    margin-top: 4vw;
   }
+
+  .timer h3 {
+    padding-top: 3vw;
+  }
+
   .gameSquare {
-    width: 26vw;
-    height: 26vw;
+    width: 28vw;
+    height: 28vw;
   }
 }
 
-@media screen and (max-width: 375px) {
 
-  h3 {
-    font-size: 30px;
-  }
+@media screen and (max-width: 414px) {
 
-  #pivot h1{
-    font-size: 80px;
-  }
+  h1 {font-size: 6vw;}
+
+  h3 {font-size: 8vw;}
+
+  p{font-size: 5.7vw;}
+
+  th{font-size: 5vw;}
+
+  td{font-size: 4vw;}
+
+  #pivot h1{font-size: 24vw;}
 
   #gamesContainer{
     margin-top: 35px;
@@ -398,7 +420,9 @@ h3 .quote {
     bottom:0;
   }
   #guessOptions{
-    margin-top: 10px;;
+    border: 2px solid black;
+    margin-top: 10px;
+
   }
 
   #scoreData{
@@ -409,15 +433,25 @@ h3 .quote {
     padding: 5%;
     border-radius: 10px;
     border: 2px solid white;
-
   }
+
+  .left {
+    margin: 5vw 0 0 10vw;
+  }
+
+  .container{
+    padding-top: 2%;
+    width: 100%;
+  }
+
+  .quote {font-size: 7vw;}
 
   .gameSquare {
-    height: 100px;
-    width: 100px;
+    height: 33vw;
+    width: 33vw;
   }
   .title{
-    font-size: 45px;
+    font-size: 16.5vw;
     margin: 40px 0 25px 0;
   }
 
@@ -430,19 +464,18 @@ h3 .quote {
   }
 
   .timer h3 {
-    /*line-height: 1.5em;*/
     font-size: 50px;
+    padding-top: 0.5vw;
   }
+
   .question h2 {
     margin: 0 2px 5px 2px;
     padding-top: 20px;
-    height: 115px;
+    height: 40vw;
     font-size: 22px;
   }
 
-  .digit {
-    font-size: 30px;
-  }
+  .digit {font-size: 30px;}
 
   .percentage {
     margin-top: 25px;
