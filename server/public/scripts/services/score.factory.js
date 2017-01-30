@@ -10,6 +10,12 @@ app.factory("ScoreFactory", ["$http", "AuthFactory", "$location", function($http
   var verb_id;
   var authFactory = AuthFactory;
 
+  function resetGameData(){
+    correct = 0;
+    incorrect = 0;
+    return;
+  }
+
   function setGameId(id){
     gameId = id;
     return;
@@ -43,28 +49,19 @@ app.factory("ScoreFactory", ["$http", "AuthFactory", "$location", function($http
             id_token: idToken
           }
         });
-  });
+      });
+    }
   }
-}
 
   function addCorrect(){
     correct++;
     addScore(1, 0);
-    //console.log("Correct", correct);
     return;
   }
 
   function addInCorrect(verb_id){
     incorrect++;
     addScore(0, 1);
-    //console.log("Incorrect:", incorrect);
-    return;
-  }
-
-  function resetGameData(){
-    //console.log("GAME RESET!");
-    correct = 0;
-    incorrect = 0;
     return;
   }
 

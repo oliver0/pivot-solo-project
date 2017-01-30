@@ -11,13 +11,16 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
   var currentGameId;
   var correctAnswerPosition;
   var gameQuestion;
+  //--------------------------------------------------------------------------//
 
   function resetGame() {
     ScoreFactory.resetGameData();
     gameVerbs = [];
     guessOptions = [];
   }
+  //--------------------------------------------------------------------------//
 
+  // get game verbs - authenticated ------------------------------------------//
   function getVerbs() {
     resetGame();
     currentGameId = ScoreFactory.getGameId();
@@ -44,11 +47,12 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     }
     else {
       return getVerbsNoAuth();
-
-      // console.log('An error has occurred');
+    // console.log('An error has occurred');
     }
   }
+  //--------------------------------------------------------------------------//
 
+  // get game verbs - not authenticated --------------------------------------//
   function getVerbsNoAuth() {
     return $http.get('/verbsNoAuth/' + GAME_VERBS)
     .then(function (response) {
@@ -63,8 +67,9 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
       console.log('An error has occurred');
     });
   }
+  //--------------------------------------------------------------------------//
 
-  // get verb and definition from object returned from gameVerbs.pop(). return both in an object
+  // get verb and definition from object returned from gameVerbs.pop() -------//
   function getCurrentVerbObject() {
     currentVerbObject = gameVerbs.pop();
     ScoreFactory.setVerbId(currentVerbObject.verb_id);
@@ -85,9 +90,10 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     }
     return { gameQuestion: gameQuestion, correctAnswer: correctAnswer };
   }
+  //--------------------------------------------------------------------------//
 
-  // copy unique phrasal verb array, if correct verb in it remove it. For loop runs as long as number of options,
-  // assign correct answer to random position and random wrong answers to other positions
+  // copy unique phrasal verb array, if correct verb in it remove it. Assign
+  // correct answer to random position, random wrong answers to remaining positions
   function assignGuessOptions() {
     guessOptions = [];
     var unique = removeCorrectAnswer();
@@ -105,21 +111,27 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     }
     return guessOptions;
   }
+  //--------------------------------------------------------------------------//
 
   function removeCorrectAnswer() {
     var unique = uniqueGuessFillers.slice(0); //unique is a list of objects. {phrasal_verb: "get up"}
     for (var i = 0; i < unique.length; i++) {
-      if (unique[i].phrasal_verb === correctAnswer || unique[i].preposition === correctAnswer) { // finds correct verb in unique
+      // finds correct verb in unique
+      if (unique[i].phrasal_verb === correctAnswer || unique[i].preposition === correctAnswer) {
         unique.splice(i, 1); // removes it so we don't have duplicate correct answers.
       }
     }
     return unique;
   }
+  //--------------------------------------------------------------------------//
 
   function randomNumber(min, max) {
     return Math.floor(Math.random() * (1 + max - min) + min);
   }
+  //--------------------------------------------------------------------------//
 
+
+  //--------------------------------------------------------------------------//
   var gameData = {
     correctAnswerPosition: function () {
       return correctAnswerPosition;
@@ -140,6 +152,6 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
       return assignGuessOptions();
     }
   }
-
   return gameData;
 }]);
+//--------------------------------------------------------------------------//
