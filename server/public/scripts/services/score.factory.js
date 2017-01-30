@@ -9,26 +9,31 @@ app.factory("ScoreFactory", ["$http", "AuthFactory", "$location", function($http
   var scoreInfo = {};
   var verb_id;
   var authFactory = AuthFactory;
+  //--------------------------------------------------------------------------//
 
   function resetGameData(){
     correct = 0;
     incorrect = 0;
     return;
   }
+  //--------------------------------------------------------------------------//
 
   function setGameId(id){
     gameId = id;
     return;
   }
+  //--------------------------------------------------------------------------//
 
   function setVerbId(id){
     verb_id  = id;
     return;
   }
+  //--------------------------------------------------------------------------//
 
   function getGameId(){
     return gameId;
   }
+  //--------------------------------------------------------------------------//
 
   function addScore(correct, incorrect) {
     scoreInfo.correct = correct;
@@ -52,19 +57,24 @@ app.factory("ScoreFactory", ["$http", "AuthFactory", "$location", function($http
       });
     }
   }
+  //--------------------------------------------------------------------------//
 
   function addCorrect(){
     correct++;
     addScore(1, 0);
     return;
   }
+  //--------------------------------------------------------------------------//
 
   function addInCorrect(verb_id){
     incorrect++;
     addScore(0, 1);
     return;
   }
+  //--------------------------------------------------------------------------//
 
+
+  //--------------------------------------------------------------------------//
   var scoreData = {
     setGameId: function(id) {
       return setGameId(id);
@@ -91,6 +101,6 @@ app.factory("ScoreFactory", ["$http", "AuthFactory", "$location", function($http
       return resetGameData();
     }
   }
-
   return scoreData;
 }]);
+//----------------------------------------------------------------------------//
