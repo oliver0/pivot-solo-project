@@ -1,11 +1,10 @@
 app.controller("VerbsController", ["$http", "AuthFactory", function($http, AuthFactory){
 
-  console.log("VerbsControler running");
-
   var self = this;
   self.sortType = 'percentage';
   self.sortReverse = false;
   self.search = '';
+  //--------------------------------------------------------------------------//
 
   getVerbTableData();
 
@@ -13,6 +12,7 @@ app.controller("VerbsController", ["$http", "AuthFactory", function($http, AuthF
     console.log('HELLO!');
     return AuthFactory.currentUserId();
   }
+  //--------------------------------------------------------------------------//
 
   function getVerbTableData() {
     console.log('getVerbTableData() ');
@@ -31,10 +31,13 @@ app.controller("VerbsController", ["$http", "AuthFactory", function($http, AuthF
           }
         })
         .then(function(verbTableData) {
-              self.tableData = verbTableData.data.verbData;
-              console.log(self.tableData);
-            });
-          });
-        }
-      }
-  }]);
+          self.tableData = verbTableData.data.verbData;
+          console.log(self.tableData);
+        });
+      });
+    }
+  }
+  //--------------------------------------------------------------------------//
+
+}]);
+//----------------------------------------------------------------------------//
