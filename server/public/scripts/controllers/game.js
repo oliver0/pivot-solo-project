@@ -1,12 +1,16 @@
-app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$location", "$interval", "$rootScope", "CountdownTimer", "$timeout",function($http, GameFactory, ScoreFactory, $location, $interval, $rootScope, CountdownTimer, $timeout){
+app.controller("GameController", ["$http", "GameFactory", "ScoreFactory",
+                "$location", "$interval", "$rootScope", "CountdownTimer",
+                "$timeout", function($http, GameFactory, ScoreFactory, $location,
+                $interval, $rootScope, CountdownTimer, $timeout){
 
   var self = this;
-
   var TIME_INTERVAL = 10000; // in milliseconds
-  var promise;
+  var BEGIN_TIME_WARNING = 3;
   var GUESS_OPTIONS = 4;
-  self.counter = 10;
+  var promise;
   var stopped;
+
+  self.counter = 10;
   self.gameVerbs = [];
   self.currentVerbObject = {};
   self.currentGameQuestion = "";
@@ -17,29 +21,33 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
   self.incorrect = 0;
   self.flag = true;
   self.startClicked = false;
-
+  //--------------------------------------------------------------------------//
 
   self.changeView = function(){
     $location.path("score");
-  }
+  };
+  //--------------------------------------------------------------------------//
 
+  // timer showing seconds ticking down --------------------------------------//
   self.countdown = function() {
     stopped = $timeout(function() {
       self.countdown();
       self.counter--;
-      self.timeRunningOut = self.counter <= 3;
+      self.timeRunningOut = self.counter <= BEGIN_TIME_WARNING;
     }, 1000);
   };
+  //--------------------------------------------------------------------------//
 
+  // stop visual second timer ------------------------------------------------//
   self.stopVisibleTimer = function(){
     $timeout.cancel(stopped);
-  }
+  };
+  //--------------------------------------------------------------------------//
 
+  // timer keeping track of seconds left to guess ----------------------------//
   self.start = function(){
-
     self.stopVisibleTimer();
     self.stop();
-
     getCurrentVerb();
     self.countdown();
     promise = $interval(function(){
@@ -49,21 +57,27 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
       self.counter = 0;
     }, TIME_INTERVAL);
   };
+  //--------------------------------------------------------------------------//
 
+  // stop main game timer ----------------------------------------------------//
   self.stop = function(){
     $interval.cancel(promise);
   };
+  //--------------------------------------------------------------------------//
+
 
   var destroy = $rootScope.$on('$locationChangeSuccess', function(){
     $timeout.cancel(stopped);
     $interval.cancel(promise);
     destroy();
   });
+  //--------------------------------------------------------------------------//
+
 
   getVerbs();
 
-  // if there are no more verbs in game array, switch to score view. otherwise, take verb object from game array,
-  // seperate out definition and correct verb, call assignGuessOptions()
+  // if no more verbs in game array, switch to score view, otherwise, take verb
+  // object from game array, seperate out definition and correct verb, call assignGuessOptions()
   function getCurrentVerb(){
     if (self.gameVerbs.length === 0) {
 
@@ -72,39 +86,40 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
       self.changeView();
     } else {
       self.counter = 10;
-      currentVerbObject = GameFactory.getCurrentVerbObject(); // {currentVerb:currentVerb, currentVerbDefinition:currentVerbDefinition}
+      currentVerbObject = GameFactory.getCurrentVerbObject();
       self.currentGameQuestion = currentVerbObject.gameQuestion;
       self.correctAnswer = currentVerbObject.correctAnswer;
       assignGuessOptions();
     }
-  };
-
+  }
+  //--------------------------------------------------------------------------//
 
   function getVerbs() {
-    //console.log("GAMEFACTORY:", GameFactory.getVerbs());
     GameFactory.getVerbs().then(function(response) {
       self.uniqueGuessFillers = GameFactory.uniqueGuessFillers();
-      self.gameVerbs = GameFactory.gameVerbs(); //get array of verb objects to be used in game.
+      //get array of verb objects to be used in game.
+      self.gameVerbs = GameFactory.gameVerbs();
       self.start(); //start timer
     });
   }
+  //--------------------------------------------------------------------------//
+
 
   function assignGuessOptions(){
     self.guessOptions = GameFactory.assignGuessOptions();
   }
+  //--------------------------------------------------------------------------//
 
-  // check if answer correct/incorrect, add to variable in factory.
-  // Assign self.correct/incorrect to update variables in factory,
-  // reset timer which calls self.getCurrentVerb() to repopulate game
-  // with definition and guess options
+
+  // check if guess correct --------------------------------------------------//
   self.isCorrect = function(guessOptionPicked, guessOptionElement){
+    // this prevents button mashing after choice made
     if(self.flag){
       self.flag = false;
 
       if(this.correctAnswer == guessOptionPicked){
         ScoreFactory.addCorrect();
         self.correct = ScoreFactory.correct();
-        //console.log(GameFactory.correctAnswerPosition());
         animationDelay();
       } else {
         ScoreFactory.addIncorrect();
@@ -112,8 +127,10 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
         animationDelay(guessOptionElement, true);
       }
     }
-  }
+  };
+  //--------------------------------------------------------------------------//
 
+  // visually show if guess correct. Always reveal correct answer ------------//
   function animationDelay(guessOptionElement, incorrect, timeRanOut){
     self.flag = false;
     self.stop();
@@ -147,7 +164,8 @@ app.controller("GameController", ["$http", "GameFactory", "ScoreFactory", "$loca
         score.removeClass('greenFont');
       }
       self.flag = true;
-    }, 1000)
+    }, 1000);
   }
 
 }]);
+//----------------------------------------------------------------------------//

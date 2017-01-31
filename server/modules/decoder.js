@@ -1,7 +1,7 @@
 var admin = require("firebase-admin");
 var express = require('express');
 var pg = require('pg');
-if(process.env.DATABASE_URL != undefined) {
+if(process.env.DATABASE_URL !== undefined) {
     connectionString = process.env.DATABASE_URL + "?ssl=true";
 } else {
     // running locally, use local database instead
@@ -51,7 +51,7 @@ var tokenDecoder = function(req, res, next){
     console.log('NO ID TOKEN');
     res.send(403);
   }
-}
+};
 
 function userIdQuery(userEmail, req, res, next){
   return pg.connect(connectionString, function(err, client, done) {
@@ -82,7 +82,7 @@ function userIdQuery(userEmail, req, res, next){
 
     });
 
-  })
+  });
 }
 
 module.exports = { token: tokenDecoder };

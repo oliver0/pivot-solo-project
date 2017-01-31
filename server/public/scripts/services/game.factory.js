@@ -151,7 +151,7 @@ app.factory('GameFactory', ["$http", "ScoreFactory", "AuthFactory", function($ht
     assignGuessOptions: function() {
       return assignGuessOptions();
     }
-  }
+  };
   return gameData;
 }]);
 //--------------------------------------------------------------------------//

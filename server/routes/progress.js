@@ -32,7 +32,7 @@ router.get('/', function(req, res) {
         console.log('select query error: ', err);
         res.sendStatus(500);
       }
-      progressData.progress = result.rows
+      progressData.progress = result.rows;
       console.log(progressData);
       res.send(progressData);
     });

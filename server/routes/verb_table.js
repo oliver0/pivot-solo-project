@@ -32,7 +32,7 @@ router.get('/', function(req, res) {
         console.log('select query error: ', err);
         res.sendStatus(500);
       }
-      verbTableData.verbData = result.rows
+      verbTableData.verbData = result.rows;
       console.log(verbTableData);
       res.send(verbTableData);
     });

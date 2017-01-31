@@ -17,7 +17,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
     }).catch(function(error) {
       console.log("Authentication failed: ", error);
     });
-  };
+  }
   //--------------------------------------------------------------------------//
 
   function getCurrentUser(){
@@ -80,7 +80,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
       loggedIn = false;
       displayName = "";
     });
-  };
+  }
   //--------------------------------------------------------------------------//
 
 
@@ -104,7 +104,7 @@ app.factory('AuthFactory', ["$http", "$firebaseAuth", function($http, $firebaseA
     getCurrentUser: function(){
       return getCurrentUser();
     }
-  }
+  };
   return userData;
 }]);
 //----------------------------------------------------------------------------//

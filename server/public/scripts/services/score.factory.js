@@ -100,7 +100,7 @@ app.factory("ScoreFactory", ["$http", "AuthFactory", "$location", function($http
     resetGameData: function() {
       return resetGameData();
     }
-  }
+  };
   return scoreData;
 }]);
 //----------------------------------------------------------------------------//
