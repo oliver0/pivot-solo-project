@@ -22,15 +22,13 @@ router.get('/:numVerbs', function(req, res) {
       res.sendStatus(500);
     }
 
-    client.query('SELECT s.user_id, pv.id "verb_id", pv.phrasal_verb, pv.base, pv.preposition, pv.definition, ' +
-                 'sen.sentence, (SUM(correct) / (SUM(correct) + SUM(incorrect)))*100 AS percentage ' +
-                 'FROM scores s ' +
-                 'JOIN sentences sen ON sen.verb_id = s.verb_id ' +
-                 'JOIN phrasal_verbs pv ON s.verb_id = pv.id ' +
-                 'JOIN users u ON s.user_id = u.id ' +
-                 'WHERE u.id = ' + userId + ' ' +
-                 'GROUP BY s.user_id,pv.id, pv.phrasal_verb, pv.base, pv.preposition, pv.definition, sen.sentence ' +
-                 'ORDER BY percentage;',
+    client.query('SElECT u.id "user_id", pv.id "verb_id", pv.phrasal_verb, pv.base, pv.preposition, pv.definition, sen.sentence, (SUM(correct) / (SUM(correct) + SUM(incorrect)))*100 AS percentage ' +
+'FROM phrasal_verbs pv ' +
+'JOIN sentences sen ON pv.id = sen.verb_id ' +
+'FULL OUTER JOIN scores s ON s.verb_id = pv.id ' +
+'FULL OUTER JOIN users u ON u.id = s.user_id ' +
+'WHERE u.id = 3 OR u.id = ' + userId +' ' +
+'GROUP BY u.id, pv.id, phrasal_verb, base, preposition, definition, sentence;',
     function(err, result) {
       done(); // close the connection.
 
@@ -38,7 +36,8 @@ router.get('/:numVerbs', function(req, res) {
         console.log('select query error: ', err);
         res.sendStatus(500);
       }
-      // console.log(modify(result.rows));
+      console.log("result.rows:", result.rows);
+      console.log("MODIFIED VERB LIST:", data.verbs);
       data.verbs = randomize(modify(result.rows, numVerbs));
     });
     client.query('SELECT preposition FROM phrasal_verbs GROUP BY preposition;',
